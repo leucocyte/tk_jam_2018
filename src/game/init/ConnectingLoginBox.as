@@ -31,9 +31,10 @@ public class ConnectingLoginBox extends ConnectingBox{
 
         server=new ComboBox();
         server.addItem("localhost:8345");
-        server.addItem("146.185.28.156:9355");
+//        server.addItem("146.185.28.156:9355");
+        server.addItem("192.168.10.101:8345");
 //        server.addItem("192.168.1.101");
-        server.addItem("10.0.0.64");
+//        server.addItem("10.0.0.64");
         server.selectedColor=0x008800;
 //        server.rolloverColor=0x0000aa;
         addChild(server);
