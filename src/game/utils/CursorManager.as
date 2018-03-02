@@ -38,7 +38,7 @@ public class CursorManager {
 
     public static function init():void
     {
-        var cursorBitmaps:Vector.<BitmapData> = new Vector.<BitmapData>();
+        /*        var cursorBitmaps:Vector.<BitmapData> = new Vector.<BitmapData>();
         cursorBitmaps.push((new Cursor() as Bitmap).bitmapData);
 
         var mouseCursorData:MouseCursorData = new MouseCursorData();
@@ -57,7 +57,7 @@ public class CursorManager {
 
         Mouse.registerCursor(MouseCursor.AUTO, mouseCursorData);
         Mouse.registerCursor(MouseCursor.ARROW, mouseCursorData);
-        Mouse.registerCursor(CHOP, mouseCursorDataDown);
+//        Mouse.registerCursor(CHOP, mouseCursorDataDown);
 //        Mouse.registerCursor(MouseCursor.BUTTON, mouseCursorDataHand);
 //        Mouse.registerCursor(MouseCursor.IBEAM,mouseCursorDataIBeam);
 //        Mouse.registerCursor(DOOR,mouseCursorDataDoor);

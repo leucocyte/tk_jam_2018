@@ -4,6 +4,7 @@
 package game
 {
 
+import feathers.controls.Button;
 import feathers.controls.Label;
 import feathers.controls.text.TextFieldTextRenderer;
 import feathers.core.ITextRenderer;
@@ -14,7 +15,13 @@ import flash.text.TextFormat;
 
 import flashx.textLayout.formats.TextAlign;
 
+import game.init.ConnectingBox;
+
+import game.init.ConnectingLoginBox;
+
+
 import game.load.GameAssetsManager;
+import game.ui.StartMenu;
 import game.utils.CursorManager;
 import game.utils.Settings;
 
@@ -30,6 +37,8 @@ public class Game extends Sprite
     private static var _instance:Game;
 
    private var _backGround:Background;
+    private var _startMenu:StartMenu;
+    private var _trainScene:TrainScene;
     /*     private var _hero:Hero;
 
     private var _trees:Vector.<Tree>;
@@ -69,7 +78,6 @@ public class Game extends Sprite
         CursorManager.init();
         Background.getInstance().init();
 //        aimerTest();
-        initHero();
         initMenu();
 
         addEventListener(Event.ENTER_FRAME, onEnterFrame);
@@ -78,30 +86,21 @@ public class Game extends Sprite
 
     private function initMenu():void {
 
+        _startMenu = new StartMenu();
+        _startMenu.x = 100;
+        _startMenu.y = 100;
+        addChild(_startMenu);
 
-        var _labelCombo = new Label();
-        _labelCombo.x = 400;
-        _labelCombo.y = 400;
-        _labelCombo.text = "Witaj qrwa!";
-        _labelCombo.width = 800;
-        _labelCombo.pivotX = int(_labelCombo.width/2);
-        _labelCombo.textRendererFactory = function():ITextRenderer
-        {
-            var textFormat:TextFormat = new TextFormat();
-            textFormat.font = Settings.FONT;
-            textFormat.size = 40;
-            textFormat.color = 0xFF0000;
-            textFormat.align = TextAlign.CENTER;
+    }
 
+    public function startGame():void {
+        removeChild(_startMenu);
+        _trainScene = new TrainScene();
+        addChild(_trainScene);
+    }
 
-            var textRenderer:TextFieldTextRenderer = new TextFieldTextRenderer();
-            textRenderer.textFormat = textFormat;
-            textRenderer.nativeFilters = [new DropShadowFilter()];
-
-            return textRenderer;
-        };
-        Game.instance.addChild(_labelCombo);
-
+    private function joinClicked(event:Event):void {
+        trace("JOIN!");
     }
 
 
@@ -183,6 +182,7 @@ public class Game extends Sprite
         trace("mouse up");
 
     }
+
 
 }
 }

@@ -9,6 +9,7 @@ import flash.events.Event;
 import flash.geom.Rectangle;
 
 import game.Game;
+import game.init.ConnectingLoginBox;
 
 import starling.core.Starling;
 
@@ -20,6 +21,7 @@ public class Main extends Sprite
 
     private var _starling:Starling;
     public static var instance:Main;
+    private var _connectingBox:ConnectingLoginBox;
 
     public function Main()
     {
@@ -28,9 +30,18 @@ public class Main extends Sprite
         stage.align = StageAlign.TOP_LEFT;
 //        stage.displayState = StageDisplayState.FULL_SCREEN;
 
+        _connectingBox = new ConnectingLoginBox();
+        addChild(_connectingBox);
+
         instance= this;
 //        loadIntro();
+//        initStarling();
+    }
+
+
+    public function onConnected():void{
         initStarling();
+        removeChild(_connectingBox);
     }
 
 
