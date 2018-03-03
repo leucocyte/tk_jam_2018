@@ -22,8 +22,12 @@ public class HeroStatesDisplay extends Sprite {
 	private var _hang:HeroStateDisplay;
 	private var _all:Array;
 	private var _currentState:HeroStateDisplay;
+	private var _headID:uint;
+	private var _hue:Number;
 
-	public function HeroStatesDisplay() {
+	public function HeroStatesDisplay(headID:uint, hue:Number) {
+		_headID = headID;
+		_hue = hue;
 		_squat = createState(
 				'crouch',
 				['crouch_leg'],
@@ -166,7 +170,7 @@ public class HeroStatesDisplay extends Sprite {
 
 	private function createState(stateName:String, leg:Array, torso:Array, hand:Array, headType:uint):HeroStateDisplay {
 		var state:HeroStateDisplay = new HeroStateDisplay(stateName, leg, torso, hand,
-				Math.random() * 8 + 1, headType, Math.random());
+				_headID, headType, _hue);
 		return state;
 	}
 

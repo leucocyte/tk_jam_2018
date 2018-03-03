@@ -1,106 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
-<!-- $TexturePacker:SmartUpdate:87ec05683ec5e3c5280ce28b62b1087d:38098ea5490af9228a4aacbc0c247905:8eec8c0b8d4b7d2b3d85462beed99c3d$ -->
-<TextureAtlas imagePath="body.png" width="1518" height="512">
-    <SubTexture name="crouch_hand" x="231" y="143" rotated="true" width="64" height="95" frameX="-30" frameY="-63" frameWidth="125" frameHeight="127"/>
-    <SubTexture name="crouch_head1" x="1116" y="310" rotated="true" width="86" height="81" frameX="-44" frameY="0" frameWidth="125" frameHeight="127"/>
-    <SubTexture name="crouch_leg" x="752" y="186" rotated="true" width="64" height="82" frameX="0" frameY="-60" frameWidth="125" frameHeight="127"/>
-    <SubTexture name="crouch_torso" x="1157" y="155" width="75" height="65" frameX="-14" frameY="-44" frameWidth="125" frameHeight="127"/>
-    <SubTexture name="crouchPunch_hand" x="820" y="1" rotated="true" width="114" height="96" frameX="-30" frameY="-54" frameWidth="130" frameHeight="168"/>
-    <SubTexture name="crouchPunch_head1" x="1117" y="222" width="82" height="86" frameX="-48" frameY="0" frameWidth="130" frameHeight="168"/>
-    <SubTexture name="crouchPunch_leg" x="752" y="102" rotated="true" width="64" height="82" frameX="0" frameY="-51" frameWidth="130" frameHeight="168"/>
-    <SubTexture name="crouchPunch_torso" x="1450" y="266" rotated="true" width="61" height="76" frameX="-14" frameY="-41" frameWidth="130" frameHeight="168"/>
+<!-- $TexturePacker:SmartUpdate:98a9a0ae53aec1a101bc8e625dacc9ae:ad2b13d08a930692bc32198039cb8ae2:8eec8c0b8d4b7d2b3d85462beed99c3d$ -->
+<TextureAtlas imagePath="body.png" width="1549" height="512">
+    <SubTexture name="crouch_hand" x="522" y="163" rotated="true" width="64" height="95" frameX="-30" frameY="-63" frameWidth="125" frameHeight="127"/>
+    <SubTexture name="crouch_head1" x="1042" y="168" width="81" height="86" frameX="-44" frameY="0" frameWidth="125" frameHeight="127"/>
+    <SubTexture name="crouch_leg" x="1060" y="102" width="82" height="64" frameX="0" frameY="-60" frameWidth="125" frameHeight="127"/>
+    <SubTexture name="crouch_torso" x="1145" y="433" rotated="true" width="65" height="75" frameX="-14" frameY="-44" frameWidth="125" frameHeight="127"/>
+    <SubTexture name="crouchPunch_hand" x="1092" y="1" rotated="true" width="114" height="96" frameX="-30" frameY="-54" frameWidth="130" frameHeight="168"/>
+    <SubTexture name="crouchPunch_head1" x="766" y="356" width="82" height="86" frameX="-48" frameY="0" frameWidth="130" frameHeight="168"/>
+    <SubTexture name="crouchPunch_leg" x="765" y="444" width="82" height="64" frameX="0" frameY="-51" frameWidth="130" frameHeight="168"/>
+    <SubTexture name="crouchPunch_torso" x="285" y="435" rotated="true" width="61" height="76" frameX="-14" frameY="-41" frameWidth="130" frameHeight="168"/>
     <SubTexture name="hang_hand" x="146" y="1" width="154" height="72" frameX="0" frameY="-24" frameWidth="154" frameHeight="216"/>
-    <SubTexture name="hang_head1" x="1241" y="74" width="83" height="86" frameX="-34" frameY="0" frameWidth="154" frameHeight="216"/>
-    <SubTexture name="hang_leg" x="1418" y="91" rotated="true" width="93" height="82" frameX="-36" frameY="-123" frameWidth="154" frameHeight="216"/>
-    <SubTexture name="hang_torso" x="950" y="437" width="56" height="69" frameX="-51" frameY="-75" frameWidth="154" frameHeight="216"/>
-    <SubTexture name="hangHit_hand" x="1046" y="82" width="116" height="71" frameX="-4" frameY="-39" frameWidth="120" frameHeight="232"/>
-    <SubTexture name="hangHit_head1" x="442" y="413" width="82" height="98" frameX="0" frameY="0" frameWidth="120" frameHeight="232"/>
-    <SubTexture name="hangHit_leg" x="334" y="72" rotated="true" width="104" height="84" frameX="-21" frameY="-128" frameWidth="120" frameHeight="232"/>
-    <SubTexture name="hangHit_torso" x="950" y="437" width="56" height="69" frameX="-17" frameY="-89" frameWidth="120" frameHeight="232"/>
-    <SubTexture name="head1_anim1" x="1116" y="393" rotated="true" width="87" height="83" frameX="-15" frameY="-13" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head1_anim2" x="603" y="224" width="83" height="90" frameX="-15" frameY="-10" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head1_anim3" x="526" y="411" width="83" height="99" frameX="-15" frameY="-1" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head1_scream1" x="651" y="102" rotated="true" width="99" height="83" frameX="-18" frameY="-1" frameWidth="106" frameHeight="115"/>
-    <SubTexture name="head1_scream2" x="1170" y="1" width="123" height="71" frameX="-8" frameY="0" frameWidth="138" frameHeight="73"/>
-    <SubTexture name="head2_anim1" x="1204" y="309" rotated="true" width="86" height="82" frameX="-21" frameY="-5" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head2_anim2" x="1292" y="398" width="82" height="86" frameX="-21" frameY="-5" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head2_anim3" x="778" y="375" rotated="true" width="86" height="80" frameX="-21" frameY="-5" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head2_scream1" x="1020" y="222" rotated="true" width="95" height="83" frameX="-23" frameY="-5" frameWidth="106" frameHeight="115"/>
-    <SubTexture name="head2_scream2" x="820" y="99" width="114" height="64" frameX="-20" frameY="-7" frameWidth="138" frameHeight="73"/>
-    <SubTexture name="head3_anim1" x="1205" y="393" width="85" height="87" frameX="-16" frameY="-11" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head3_anim2" x="1326" y="73" rotated="true" width="90" height="87" frameX="-16" frameY="-8" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="hang_head1" x="1040" y="256" width="83" height="86" frameX="-34" frameY="0" frameWidth="154" frameHeight="216"/>
+    <SubTexture name="hang_leg" x="766" y="261" width="82" height="93" frameX="-36" frameY="-123" frameWidth="154" frameHeight="216"/>
+    <SubTexture name="hang_torso" x="1469" y="446" rotated="true" width="69" height="56" frameX="-51" frameY="-75" frameWidth="154" frameHeight="216"/>
+    <SubTexture name="hangHit_hand" x="90" y="383" rotated="true" width="71" height="116" frameX="-4" frameY="-39" frameWidth="120" frameHeight="232"/>
+    <SubTexture name="hangHit_head1" x="348" y="74" rotated="true" width="98" height="82" frameX="0" frameY="0" frameWidth="120" frameHeight="232"/>
+    <SubTexture name="hangHit_leg" x="512" y="260" width="84" height="104" frameX="-21" frameY="-128" frameWidth="120" frameHeight="232"/>
+    <SubTexture name="hangHit_torso" x="1469" y="446" rotated="true" width="69" height="56" frameX="-17" frameY="-89" frameWidth="120" frameHeight="232"/>
+    <SubTexture name="head1_anim1" x="508" y="366" rotated="true" width="87" height="83" frameX="-15" frameY="-13" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head1_anim2" x="1307" y="197" rotated="true" width="90" height="83" frameX="-15" frameY="-10" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head1_anim3" x="941" y="168" rotated="true" width="99" height="83" frameX="-15" frameY="-1" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head1_scream1" x="665" y="350" rotated="true" width="99" height="83" frameX="-18" frameY="-1" frameWidth="106" frameHeight="115"/>
+    <SubTexture name="head1_scream2" x="146" y="75" width="123" height="71" frameX="-8" frameY="0" frameWidth="138" frameHeight="73"/>
+    <SubTexture name="head2_anim1" x="1307" y="282" rotated="true" width="86" height="82" frameX="-21" frameY="-5" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head2_anim2" x="1395" y="285" rotated="true" width="86" height="82" frameX="-21" frameY="-5" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head2_anim3" x="939" y="431" rotated="true" width="86" height="80" frameX="-21" frameY="-5" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head2_scream1" x="588" y="163" width="83" height="95" frameX="-23" frameY="-5" frameWidth="106" frameHeight="115"/>
+    <SubTexture name="head2_scream2" x="944" y="102" width="114" height="64" frameX="-20" frameY="-7" frameWidth="138" frameHeight="73"/>
+    <SubTexture name="head3_anim1" x="1039" y="344" width="85" height="87" frameX="-16" frameY="-11" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head3_anim2" x="850" y="354" width="87" height="90" frameX="-16" frameY="-8" frameWidth="103" frameHeight="108"/>
     <SubTexture name="head3_anim3" x="1" y="413" width="87" height="98" frameX="-16" frameY="0" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head3_scream1" x="1418" y="1" rotated="true" width="99" height="88" frameX="-18" frameY="-1" frameWidth="106" frameHeight="115"/>
-    <SubTexture name="head3_scream2" x="567" y="1" width="126" height="72" frameX="-8" frameY="0" frameWidth="138" frameHeight="73"/>
-    <SubTexture name="head4_anim1" x="1329" y="162" width="87" height="91" frameX="-16" frameY="0" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head4_anim2" x="1418" y="175" rotated="true" width="91" height="89" frameX="-12" frameY="0" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head4_anim3" x="1234" y="162" width="93" height="91" frameX="-6" frameY="0" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head4_scream1" x="399" y="322" rotated="true" width="100" height="89" frameX="-14" frameY="0" frameWidth="106" frameHeight="115"/>
-    <SubTexture name="head4_scream2" x="302" y="1" width="131" height="69" frameX="0" frameY="-2" frameWidth="138" frameHeight="73"/>
-    <SubTexture name="head5_anim1" x="936" y="96" rotated="true" width="108" height="88" frameX="-15" frameY="0" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head5_anim2" x="221" y="240" width="89" height="108" frameX="-12" frameY="0" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head5_anim3" x="936" y="1" rotated="true" width="108" height="93" frameX="-6" frameY="0" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head6_anim1" x="90" y="413" rotated="true" width="87" height="98" frameX="0" frameY="-4" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head6_anim2" x="179" y="413" rotated="true" width="87" height="98" frameX="0" frameY="-4" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head6_anim3" x="268" y="413" rotated="true" width="87" height="98" frameX="0" frameY="-4" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head6_scream1" x="399" y="224" width="100" height="96" frameX="-1" frameY="-4" frameWidth="106" frameHeight="115"/>
-    <SubTexture name="head7_anim1" x="501" y="322" width="99" height="87" frameX="0" frameY="-4" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head7_anim2" x="818" y="165" width="99" height="87" frameX="0" frameY="-4" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head7_anim3" x="919" y="186" width="99" height="87" frameX="0" frameY="-4" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head7_scream1" x="501" y="224" width="100" height="96" frameX="-1" frameY="-4" frameWidth="106" frameHeight="115"/>
-    <SubTexture name="head7_scream2" x="435" y="1" width="130" height="67" frameX="-1" frameY="-6" frameWidth="138" frameHeight="73"/>
-    <SubTexture name="head8_anim1" x="546" y="75" rotated="true" width="103" height="88" frameX="-15" frameY="-3" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head8_anim2" x="440" y="70" rotated="true" width="104" height="88" frameX="-15" frameY="-3" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head8_anim3" x="312" y="240" width="85" height="103" frameX="-15" frameY="-3" frameWidth="103" frameHeight="108"/>
-    <SubTexture name="head8_scream1" x="131" y="237" width="88" height="110" frameX="-18" frameY="-5" frameWidth="106" frameHeight="115"/>
-    <SubTexture name="head8_scream2" x="146" y="75" width="118" height="66" frameX="-20" frameY="-7" frameWidth="138" frameHeight="73"/>
-    <SubTexture name="idle1_hand" x="1019" y="307" width="95" height="49" frameX="-1" frameY="-79" frameWidth="96" frameHeight="185"/>
-    <SubTexture name="idle1_head1" x="866" y="375" width="82" height="86" frameX="0" frameY="0" frameWidth="96" frameHeight="185"/>
-    <SubTexture name="idle1_leg" x="688" y="278" rotated="true" width="62" height="78" frameX="-10" frameY="-123" frameWidth="96" frameHeight="185"/>
-    <SubTexture name="idle1_torso" x="1441" y="423" width="56" height="75" frameX="-16" frameY="-67" frameWidth="96" frameHeight="185"/>
-    <SubTexture name="idle2_hand" x="1019" y="358" width="95" height="49" frameX="-1" frameY="-83" frameWidth="96" frameHeight="185"/>
-    <SubTexture name="idle2_head" x="1292" y="309" width="82" height="87" frameX="0" frameY="-2" frameWidth="96" frameHeight="185"/>
-    <SubTexture name="idle2_leg" x="1201" y="255" width="78" height="52" frameX="-10" frameY="-133" frameWidth="96" frameHeight="185"/>
-    <SubTexture name="idle2_torso" x="1441" y="423" width="56" height="75" frameX="-16" frameY="-73" frameWidth="96" frameHeight="185"/>
+    <SubTexture name="head3_scream1" x="1449" y="1" rotated="true" width="99" height="88" frameX="-18" frameY="-1" frameWidth="106" frameHeight="115"/>
+    <SubTexture name="head3_scream2" x="839" y="1" width="126" height="72" frameX="-8" frameY="0" frameWidth="138" frameHeight="73"/>
+    <SubTexture name="head4_anim1" x="1218" y="181" width="87" height="91" frameX="-16" frameY="0" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head4_anim2" x="558" y="72" rotated="true" width="91" height="89" frameX="-12" frameY="0" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head4_anim3" x="1125" y="188" rotated="true" width="91" height="93" frameX="-6" frameY="0" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head4_scream1" x="839" y="162" rotated="true" width="100" height="89" frameX="-14" frameY="0" frameWidth="106" frameHeight="115"/>
+    <SubTexture name="head4_scream2" x="442" y="1" width="131" height="69" frameX="0" frameY="-2" frameWidth="138" frameHeight="73"/>
+    <SubTexture name="head5_anim1" x="216" y="148" width="88" height="108" frameX="-15" frameY="0" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head5_anim2" x="448" y="72" rotated="true" width="108" height="89" frameX="-12" frameY="0" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head5_anim3" x="121" y="148" width="93" height="108" frameX="-6" frameY="0" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head5_scream1" x="1208" y="1" rotated="true" width="115" height="89" frameX="-14" frameY="0" frameWidth="106" frameHeight="115"/>
+    <SubTexture name="head5_scream2" x="302" y="1" width="138" height="71" frameX="0" frameY="-2" frameWidth="138" frameHeight="73"/>
+    <SubTexture name="head6_anim1" x="939" y="342" width="98" height="87" frameX="0" frameY="-4" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head6_anim2" x="408" y="351" width="98" height="87" frameX="0" frameY="-4" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head6_anim3" x="1208" y="92" width="98" height="87" frameX="0" frameY="-4" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head6_scream1" x="308" y="252" width="100" height="96" frameX="-1" frameY="-4" frameWidth="106" frameHeight="115"/>
+    <SubTexture name="head6_scream2" x="575" y="1" width="130" height="67" frameX="-1" frameY="-6" frameWidth="138" frameHeight="73"/>
+    <SubTexture name="head7_anim1" x="665" y="261" width="99" height="87" frameX="0" frameY="-4" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head7_anim2" x="850" y="253" rotated="true" width="87" height="99" frameX="0" frameY="-4" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head7_anim3" x="939" y="253" width="99" height="87" frameX="0" frameY="-4" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head7_scream1" x="410" y="253" width="100" height="96" frameX="-1" frameY="-4" frameWidth="106" frameHeight="115"/>
+    <SubTexture name="head7_scream2" x="707" y="1" width="130" height="67" frameX="-1" frameY="-6" frameWidth="138" frameHeight="73"/>
+    <SubTexture name="head8_anim1" x="651" y="70" rotated="true" width="103" height="88" frameX="-15" frameY="-3" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head8_anim2" x="416" y="163" rotated="true" width="104" height="88" frameX="-15" frameY="-3" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head8_anim3" x="839" y="75" rotated="true" width="103" height="85" frameX="-15" frameY="-3" frameWidth="103" frameHeight="108"/>
+    <SubTexture name="head8_scream1" x="218" y="258" width="88" height="110" frameX="-18" frameY="-5" frameWidth="106" frameHeight="115"/>
+    <SubTexture name="head8_scream2" x="150" y="258" rotated="true" width="66" height="118" frameX="-20" frameY="-7" frameWidth="138" frameHeight="73"/>
+    <SubTexture name="idle1_hand" x="1308" y="146" width="95" height="49" frameX="-1" frameY="-79" frameWidth="96" frameHeight="185"/>
+    <SubTexture name="idle1_head1" x="1302" y="366" rotated="true" width="86" height="82" frameX="0" frameY="0" frameWidth="96" frameHeight="185"/>
+    <SubTexture name="idle1_leg" x="1027" y="433" rotated="true" width="62" height="78" frameX="-10" frameY="-123" frameWidth="96" frameHeight="185"/>
+    <SubTexture name="idle1_torso" x="348" y="435" width="56" height="75" frameX="-16" frameY="-67" frameWidth="96" frameHeight="185"/>
+    <SubTexture name="idle2_hand" x="1405" y="150" width="95" height="49" frameX="-1" frameY="-83" frameWidth="96" frameHeight="185"/>
+    <SubTexture name="idle2_head" x="1399" y="201" rotated="true" width="87" height="82" frameX="0" frameY="-2" frameWidth="96" frameHeight="185"/>
+    <SubTexture name="idle2_leg" x="507" y="451" width="78" height="52" frameX="-10" frameY="-133" frameWidth="96" frameHeight="185"/>
+    <SubTexture name="idle2_torso" x="348" y="435" width="56" height="75" frameX="-16" frameY="-73" frameWidth="96" frameHeight="185"/>
     <SubTexture name="jump_hand" x="1" y="260" rotated="true" width="75" height="151" frameX="0" frameY="-23" frameWidth="151" frameHeight="214"/>
-    <SubTexture name="jump_head1" x="1241" y="74" width="83" height="86" frameX="-30" frameY="0" frameWidth="151" frameHeight="214"/>
-    <SubTexture name="jump_leg" x="611" y="405" width="81" height="89" frameX="-33" frameY="-125" frameWidth="151" frameHeight="214"/>
-    <SubTexture name="jump_torso" x="1441" y="423" width="56" height="75" frameX="-47" frameY="-69" frameWidth="151" frameHeight="214"/>
-    <SubTexture name="jumpKick_hand" x="695" y="1" width="123" height="99" frameX="0" frameY="-23" frameWidth="153" frameHeight="212"/>
-    <SubTexture name="jumpKick_head1" x="1241" y="74" width="83" height="86" frameX="-32" frameY="0" frameWidth="153" frameHeight="212"/>
+    <SubTexture name="jump_head1" x="1040" y="256" width="83" height="86" frameX="-30" frameY="0" frameWidth="151" frameHeight="214"/>
+    <SubTexture name="jump_leg" x="756" y="70" width="81" height="89" frameX="-33" frameY="-125" frameWidth="151" frameHeight="214"/>
+    <SubTexture name="jump_torso" x="348" y="435" width="56" height="75" frameX="-47" frameY="-69" frameWidth="151" frameHeight="214"/>
+    <SubTexture name="jumpKick_hand" x="967" y="1" width="123" height="99" frameX="0" frameY="-23" frameWidth="153" frameHeight="212"/>
+    <SubTexture name="jumpKick_head1" x="1040" y="256" width="83" height="86" frameX="-32" frameY="0" frameWidth="153" frameHeight="212"/>
     <SubTexture name="jumpKick_leg" x="1" y="141" width="118" height="117" frameX="-35" frameY="-95" frameWidth="153" frameHeight="212"/>
-    <SubTexture name="jumpKick_torso" x="1441" y="423" width="56" height="75" frameX="-49" frameY="-69" frameWidth="153" frameHeight="212"/>
-    <SubTexture name="kick_hand" x="818" y="254" width="99" height="55" frameX="-9" frameY="-73" frameWidth="136" frameHeight="182"/>
-    <SubTexture name="kick_head1" x="866" y="375" width="82" height="86" frameX="0" frameY="0" frameWidth="136" frameHeight="182"/>
-    <SubTexture name="kick_leg" x="121" y="143" width="108" height="92" frameX="-28" frameY="-90" frameWidth="136" frameHeight="182"/>
-    <SubTexture name="kick_torso" x="1376" y="422" width="63" height="75" frameX="-26" frameY="-66" frameWidth="136" frameHeight="182"/>
-    <SubTexture name="standHit_hand" x="266" y="75" width="66" height="66" frameX="-11" frameY="-64" frameWidth="113" frameHeight="158"/>
-    <SubTexture name="standHit_head1" x="919" y="275" rotated="true" width="98" height="82" frameX="-31" frameY="0" frameWidth="113" frameHeight="158"/>
-    <SubTexture name="standHit_leg" x="1281" y="255" width="78" height="52" frameX="-5" frameY="-106" frameWidth="113" frameHeight="158"/>
-    <SubTexture name="standHit_torso" x="1164" y="82" rotated="true" width="75" height="71" frameX="-2" frameY="-54" frameWidth="113" frameHeight="158"/>
-    <SubTexture name="upHit_hand" x="1046" y="1" width="122" height="79" frameX="-64" frameY="-55" frameWidth="186" frameHeight="187"/>
-    <SubTexture name="upHit_head1" x="1295" y="1" width="121" height="70" frameX="0" frameY="0" frameWidth="186" frameHeight="187"/>
-    <SubTexture name="upHit_leg" x="297" y="158" rotated="true" width="99" height="80" frameX="-93" frameY="-88" frameWidth="186" frameHeight="187"/>
-    <SubTexture name="upHit_torso" x="1376" y="266" width="72" height="75" frameX="-80" frameY="-45" frameWidth="186" frameHeight="187"/>
+    <SubTexture name="jumpKick_torso" x="348" y="435" width="56" height="75" frameX="-49" frameY="-69" frameWidth="153" frameHeight="212"/>
+    <SubTexture name="kick_hand" x="406" y="440" width="99" height="55" frameX="-9" frameY="-73" frameWidth="136" frameHeight="182"/>
+    <SubTexture name="kick_head1" x="1302" y="366" rotated="true" width="86" height="82" frameX="0" frameY="0" frameWidth="136" frameHeight="182"/>
+    <SubTexture name="kick_leg" x="306" y="158" width="108" height="92" frameX="-28" frameY="-90" frameWidth="136" frameHeight="182"/>
+    <SubTexture name="kick_torso" x="1456" y="369" width="63" height="75" frameX="-26" frameY="-66" frameWidth="136" frameHeight="182"/>
+    <SubTexture name="standHit_hand" x="597" y="371" width="66" height="66" frameX="-11" frameY="-64" frameWidth="113" frameHeight="158"/>
+    <SubTexture name="standHit_head1" x="755" y="161" width="82" height="98" frameX="-31" frameY="0" frameWidth="113" frameHeight="158"/>
+    <SubTexture name="standHit_leg" x="1091" y="433" rotated="true" width="52" height="78" frameX="-5" frameY="-106" frameWidth="113" frameHeight="158"/>
+    <SubTexture name="standHit_torso" x="271" y="75" rotated="true" width="75" height="71" frameX="-2" frameY="-54" frameWidth="113" frameHeight="158"/>
+    <SubTexture name="upHit_hand" x="1325" y="1" width="122" height="79" frameX="-64" frameY="-55" frameWidth="186" frameHeight="187"/>
+    <SubTexture name="upHit_head1" x="78" y="260" rotated="true" width="70" height="121" frameX="0" frameY="0" frameWidth="186" frameHeight="187"/>
+    <SubTexture name="upHit_leg" x="673" y="160" width="80" height="99" frameX="-93" frameY="-88" frameWidth="186" frameHeight="187"/>
+    <SubTexture name="upHit_torso" x="597" y="439" rotated="true" width="75" height="72" frameX="-80" frameY="-45" frameWidth="186" frameHeight="187"/>
     <SubTexture name="upper_hand" x="1" y="1" width="143" height="138" frameX="0" frameY="-14" frameWidth="143" frameHeight="188"/>
-    <SubTexture name="upper_head1" x="357" y="413" width="83" height="98" frameX="-17" frameY="0" frameWidth="143" frameHeight="188"/>
-    <SubTexture name="upper_leg" x="131" y="349" width="87" height="62" frameX="-23" frameY="-126" frameWidth="143" frameHeight="188"/>
-    <SubTexture name="upper_torso" x="694" y="447" rotated="true" width="77" height="59" frameX="-33" frameY="-70" frameWidth="143" frameHeight="188"/>
-    <SubTexture name="walkAgainst1_hand" x="398" y="160" width="108" height="62" frameX="-4" frameY="-67" frameWidth="120" frameHeight="179"/>
-    <SubTexture name="walkAgainst1_head1" x="603" y="316" width="83" height="87" frameX="-30" frameY="-2" frameWidth="120" frameHeight="179"/>
-    <SubTexture name="walkAgainst1_leg" x="220" y="350" width="84" height="61" frameX="-1" frameY="-118" frameWidth="120" frameHeight="179"/>
-    <SubTexture name="walkAgainst1_torso" x="1376" y="343" width="65" height="77" frameX="-18" frameY="-63" frameWidth="120" frameHeight="179"/>
-    <SubTexture name="walkAgainst2_hand" x="78" y="260" rotated="true" width="51" height="120" frameX="0" frameY="-71" frameWidth="120" frameHeight="179"/>
-    <SubTexture name="walkAgainst2_head" x="1241" y="74" width="83" height="86" frameX="-27" frameY="0" frameWidth="120" frameHeight="179"/>
-    <SubTexture name="walkAgainst2_leg" x="306" y="350" width="84" height="61" frameX="-1" frameY="-118" frameWidth="120" frameHeight="179"/>
-    <SubTexture name="walkAgainst2_torso" x="1443" y="344" width="63" height="77" frameX="-17" frameY="-62" frameWidth="120" frameHeight="179"/>
-    <SubTexture name="walkWith1_hand" x="508" y="165" width="104" height="57" frameX="-7" frameY="-76" frameWidth="128" frameHeight="182"/>
-    <SubTexture name="walkWith1_head1" x="1019" y="409" rotated="true" width="86" height="83" frameX="-40" frameY="0" frameWidth="128" frameHeight="182"/>
-    <SubTexture name="walkWith1_leg" x="688" y="187" rotated="true" width="62" height="89" frameX="0" frameY="-120" frameWidth="128" frameHeight="182"/>
-    <SubTexture name="walkWith1_torso" x="752" y="270" width="64" height="75" frameX="-30" frameY="-63" frameWidth="128" frameHeight="182"/>
-    <SubTexture name="walkWith2_hand" x="1046" y="155" width="109" height="65" frameX="-6" frameY="-77" frameWidth="128" frameHeight="182"/>
-    <SubTexture name="walkWith2_head" x="694" y="358" width="82" height="87" frameX="-46" frameY="0" frameWidth="128" frameHeight="182"/>
-    <SubTexture name="walkWith2_leg" x="818" y="311" width="89" height="62" frameX="0" frameY="-120" frameWidth="128" frameHeight="182"/>
-    <SubTexture name="walkWith2_torso" x="950" y="359" width="67" height="76" frameX="-32" frameY="-65" frameWidth="128" frameHeight="182"/>
+    <SubTexture name="upper_head1" x="308" y="350" rotated="true" width="98" height="83" frameX="-17" frameY="0" frameWidth="143" frameHeight="188"/>
+    <SubTexture name="upper_leg" x="1144" y="99" rotated="true" width="62" height="87" frameX="-23" frameY="-126" frameWidth="143" frameHeight="188"/>
+    <SubTexture name="upper_torso" x="1125" y="283" rotated="true" width="77" height="59" frameX="-33" frameY="-70" frameWidth="143" frameHeight="188"/>
+    <SubTexture name="walkAgainst1_hand" x="1325" y="82" width="108" height="62" frameX="-4" frameY="-67" frameWidth="120" frameHeight="179"/>
+    <SubTexture name="walkAgainst1_head1" x="1126" y="344" width="83" height="87" frameX="-30" frameY="-2" frameWidth="120" frameHeight="179"/>
+    <SubTexture name="walkAgainst1_leg" x="1297" y="450" width="84" height="61" frameX="-1" frameY="-118" frameWidth="120" frameHeight="179"/>
+    <SubTexture name="walkAgainst1_torso" x="849" y="446" rotated="true" width="77" height="65" frameX="-18" frameY="-63" frameWidth="120" frameHeight="179"/>
+    <SubTexture name="walkAgainst2_hand" x="163" y="378" rotated="true" width="51" height="120" frameX="0" frameY="-71" frameWidth="120" frameHeight="179"/>
+    <SubTexture name="walkAgainst2_head" x="1040" y="256" width="83" height="86" frameX="-27" frameY="0" frameWidth="120" frameHeight="179"/>
+    <SubTexture name="walkAgainst2_leg" x="1383" y="450" width="84" height="61" frameX="-1" frameY="-118" frameWidth="120" frameHeight="179"/>
+    <SubTexture name="walkAgainst2_torso" x="218" y="370" rotated="true" width="77" height="63" frameX="-17" frameY="-62" frameWidth="120" frameHeight="179"/>
+    <SubTexture name="walkWith1_hand" x="1435" y="91" width="104" height="57" frameX="-7" frameY="-76" frameWidth="128" frameHeight="182"/>
+    <SubTexture name="walkWith1_head1" x="1212" y="422" width="83" height="86" frameX="-40" frameY="0" frameWidth="128" frameHeight="182"/>
+    <SubTexture name="walkWith1_leg" x="674" y="435" width="89" height="62" frameX="0" frameY="-120" frameWidth="128" frameHeight="182"/>
+    <SubTexture name="walkWith1_torso" x="1390" y="369" width="64" height="75" frameX="-30" frameY="-63" frameWidth="128" frameHeight="182"/>
+    <SubTexture name="walkWith2_hand" x="598" y="260" rotated="true" width="65" height="109" frameX="-6" frameY="-77" frameWidth="128" frameHeight="182"/>
+    <SubTexture name="walkWith2_head" x="1218" y="274" rotated="true" width="87" height="82" frameX="-46" frameY="0" frameWidth="128" frameHeight="182"/>
+    <SubTexture name="walkWith2_leg" x="1211" y="358" width="89" height="62" frameX="0" frameY="-120" frameWidth="128" frameHeight="182"/>
+    <SubTexture name="walkWith2_torso" x="216" y="435" width="67" height="76" frameX="-32" frameY="-65" frameWidth="128" frameHeight="182"/>
 </TextureAtlas>
