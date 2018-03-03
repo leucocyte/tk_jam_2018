@@ -142,7 +142,7 @@ import flash.net.XMLSocket;
                     ConnectionServer.onData(tab);
 					break;
                 case 1:
-
+                    ActionServer.onData(tab);
                     break;
 			}
 		}

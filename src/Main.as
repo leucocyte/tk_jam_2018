@@ -10,6 +10,7 @@ import flash.geom.Rectangle;
 import game.Game;
 import game.init.ConnectingLoginBox;
 import game.utils.DifficultyByMouseXCtrl;
+import game.utils.Settings;
 import game.utils.Stage2DAbuser;
 import game.utils.WorldTime;
 
@@ -36,10 +37,10 @@ public class Main extends Sprite {
 		instance = this;
 
 		//loadIntro();
-
-		//connect();
-
-		initStarling();
+		if (Settings.ONLINE)
+			connect();
+		else
+			initStarling();
 	}
 
 	private function connect():void {

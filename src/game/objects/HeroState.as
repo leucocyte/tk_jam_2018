@@ -9,5 +9,9 @@ public class HeroState {
 	public static const HANG:uint = 4;
 	public static const JUMP:uint = 5;
 
+	public static const STUN:uint = 6;
+	public static const STUN_JUMP:uint = 7;
+	public static const STUN_FALLING:uint = 8;
+
 }
 }

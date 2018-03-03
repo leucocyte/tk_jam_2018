@@ -5,7 +5,10 @@ package game
 {
 
 import game.load.GameAssetsManager;
+import game.objects.Hero;
 import game.objects.HeroView;
+import game.objects.ObjectController;
+import game.server.ConnectionServer;
 import game.ui.StartMenu;
 import game.utils.CursorManager;
 import game.utils.Settings;
@@ -82,9 +85,20 @@ public class Game extends Sprite
         _trainScene = new TrainScene();
         addChild(_trainScene);
 
-        var h:HeroView = new HeroView();
-        h.y=Settings.GROUND_Y;
-        _trainScene.addChild(h);
+        if (Settings.ONLINE){
+            ConnectionServer.joinRoomAuto();
+        }else {
+            var h:Hero = new Hero();
+            GameController.getInstance().init(h);
+            ObjectController.instance().demoData();
+            addEventListener(Event.ENTER_FRAME, onEnterFrame);
+        }
+    }
+
+
+    public function onInitPack(myId:String,heroes:String, obstacles:String):void {
+        ObjectController.instance().onInitPack(heroes,obstacles,myId);
+        var h:Hero = ObjectController.instance().findHero(ObjectController.instance().myHeroId);
         GameController.getInstance().init(h);
 
         addEventListener(Event.ENTER_FRAME, onEnterFrame);
@@ -109,20 +123,6 @@ public class Game extends Sprite
 
     private function entitySort(a:DisplayObject, b:DisplayObject):int
     {
-        /*
-        if (a==_aimer) {
-            if (b==backGround.floorQuad)
-                return 1;
-            else
-                return -1;
-        }
-        if (b==_aimer) {
-            if (a==backGround.floorQuad)
-                return -1;
-            else
-                return 1;
-        }
-*/
         var gleb1:Number=int((980*a.y+a.x)/10);
         var gleb2:Number=int((980*b.y+b.x)/10);
 
@@ -179,6 +179,11 @@ public class Game extends Sprite
     public function mouseUp():void {
         trace("mouse up");
 
+    }
+
+
+    public function get trainScene():TrainScene {
+        return _trainScene;
     }
 
 

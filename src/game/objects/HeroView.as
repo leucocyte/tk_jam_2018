@@ -3,7 +3,19 @@
  */
 package game.objects {
 
+import feathers.controls.Label;
+import feathers.controls.text.TextFieldTextRenderer;
+import feathers.core.ITextRenderer;
+
+import flash.filters.DropShadowFilter;
+import flash.geom.Rectangle;
+
+import flash.text.TextFormat;
+
+import game.Direction;
+import game.Game;
 import game.load.GameAssetsManager;
+import game.utils.Settings;
 
 import starling.core.Starling;
 import starling.display.MovieClip;
@@ -12,7 +24,7 @@ import starling.display.Sprite;
 import starling.events.Event;
 import starling.utils.RectangleUtil;
 
-public class HeroView extends Sprite {
+public class HeroView extends Sprite{
 
 	public static const HEIGHT:Number = 100;
 	public static const WIDTH:Number = 150;
@@ -27,15 +39,50 @@ public class HeroView extends Sprite {
 	protected var _currentState:uint = -1;
 	protected var _character:MovieClip;
 
-	public function HeroView() {
+	protected var _quad:Quad;
+	protected var _quadHead:Quad;
+	protected var _label:Label;
 
-		var sizeH:int = 100;
-		var sizeW:int = 50;
-		var q:Quad = new Quad(sizeW,sizeH,0xaa4477);
-		q.pivotX=int(sizeW/2);
-		q.pivotY=int(sizeH/2);
-//		q.y = -15-i*15;
-		addChild(q);
+	public function HeroView(hero:Hero) {
+
+		var sizeH:int = Settings.HERO_HEIGHT;
+		var sizeW:int = Settings.HERO_WIDTH;
+		_quad = new Quad(sizeW,sizeH,0xaa4477);
+		_quad.pivotX=int(sizeW/2);
+		_quad.pivotY=int(sizeH);
+		addChild(_quad);
+
+		_quadHead = new Quad(sizeW/2,sizeH/3,0xaa44ff);
+		_quadHead.pivotX=int(sizeW/4);
+		_quadHead.pivotY=int(sizeH/3);
+		_quadHead.y = -sizeW;
+		_quadHead.x = 10;
+		addChild(_quadHead);
+
+		_label = new Label();
+		_label.width=100;
+		_label.x = - 50;
+		_label.textRendererFactory = function():ITextRenderer
+		{
+			var textFormat:TextFormat = new TextFormat();
+//            textFormat.font = "Action Comics";
+			textFormat.font = Settings.FONT;
+			textFormat.size = 20;
+			textFormat.color = 0xFFFFFF;
+			textFormat.align = "center";
+
+			var textRenderer:TextFieldTextRenderer = new TextFieldTextRenderer();
+			textRenderer.textFormat = textFormat;
+			textRenderer.nativeFilters = [new DropShadowFilter()];
+
+			return textRenderer;
+		};
+		addChild(_label);
+
+		_label.text = hero.name;
+		_label.y = - Settings.HERO_HEIGHT *1.3;
+
+		stand();
 		/*
 		_walk = new MovieClip(GameAssetsManager.getInstance().getTexturesFromAtlas("man", "walk"));
 		_walk.fps = 2;
@@ -109,6 +156,73 @@ public class HeroView extends Sprite {
 			_currentState = state;
 		}
 	}
+
+	public function squat():void {
+		_quad.y = 0;
+		_quadHead.y = -Settings.HERO_HEIGHT_SQUAT *0.6;
+		_quad.height = Settings.HERO_HEIGHT_SQUAT;
+	}
+
+	public function stand():void {
+		_quad.y = 0;
+		_quadHead.y = -Settings.HERO_HEIGHT *0.6;
+		_quad.height = Settings.HERO_HEIGHT;
+	}
+
+	private function hang():void {
+		trace("HANG!!!!");
+		_quad.color = 0x00ff55;
+		_quad.y = Settings.HERO_HEIGHT;
+		_quadHead.y = 0;
+	}
+
+	public function setDirection(_direction:int):void {
+		if (_direction == Direction.LEFT)
+			_quadHead.x = -10;
+		else
+			if (_direction == Direction.RIGHT)
+				_quadHead.x = 10;
+	}
+
+	public function updateState(state:Number):void {
+		switch(state){
+			case HeroState.STAND:
+				stand();
+				break;
+			case HeroState.WALK:
+				stand();
+				_character = _walk;
+				break;
+			case HeroState.HANG:
+				hang();
+				break;
+			case HeroState.SQUAT:
+				stand();
+				squat();
+				break;
+			case HeroState.KICK:
+				stand();
+//				_character = _kick;
+				break;
+			case HeroState.JUMP:
+				stand();
+//				_character = _kick;
+				break;
+			case HeroState.STUN:
+				stun();
+				break;
+		}
+	}
+
+	private function stun():void {
+		_quad.color = 0x00ff00;
+	}
+
+
+	public function getRectangle():Rectangle{
+		return _quad.getBounds(Game.instance.trainScene.heroes);
+	}
+
 
 }
 }

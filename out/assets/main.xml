@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
-<!-- $TexturePacker:SmartUpdate:2b09c74537f451dcaaa28a8dcb5987e9:2e6df638ffade02bc0fac1071c32265a:f7afabebcd35587b8270ff90b311ebd0$ -->
-<TextureAtlas imagePath="main.png" width="620" height="1298">
-    <SubTexture name="train" x="465" y="1" rotated="true" width="139" height="363"/>
-    <SubTexture name="tree1" x="1" y="658" width="618" height="639" frameX="-13" frameY="-1" frameWidth="640" frameHeight="640"/>
-    <SubTexture name="tree2" x="1" y="1" width="462" height="655" frameX="-46" frameY="-33" frameWidth="554" frameHeight="720"/>
-</TextureAtlas>
