@@ -267,7 +267,9 @@ public class GameController
             state = HeroState.HANG;
 //            _hero.state = HeroState.HANG;
         }else {
-            if (_hero.y > Settings.GROUND_Y) {
+
+            //LECI
+            if (_hero.y < Settings.GROUND_Y) {
                 sx += Settings.WIND_SPEED;
                 if (isStunned()) {
                     state = HeroState.STUN_JUMP;
@@ -281,10 +283,12 @@ public class GameController
                     } else if (_isDucking) {
                         state = HeroState.SQUAT;
                     } else {
+                        trace("JUMPING!!!");
                         state = HeroState.JUMP;
                     }
                 }
             } else {
+                //NAZ ZIEMI
                 if (isStunned()) {
                     state = HeroState.STUN;
                 } else {
@@ -296,10 +300,13 @@ public class GameController
                     } else if (_isDucking) {
                         state = HeroState.SQUAT;
                     } else {
-                        if (_moveDir == Direction.LEFT)
-                            state = HeroState.WALK;
+                        if (_forceX==0)
+                            state = HeroState.STAND;
                         else
-                            state = HeroState.WALK;
+                            if (_moveDir == Direction.LEFT)
+                                state = HeroState.WALK;
+                            else
+                                state = HeroState.WALK;
                     }
                 }
 //            _heroView.setDirection(_moveDir);
