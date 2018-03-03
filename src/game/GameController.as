@@ -133,8 +133,8 @@ public class GameController
 
             case Keyboard.P:
 //                Game.instance.trainScene.pump.startMovingNext(1);
-                if (e.type == KeyboardEvent.KEY_DOWN)
-                    ObjectController.instance().onNewPumpKey();;
+//                if (e.type == KeyboardEvent.KEY_DOWN)
+//                    ObjectController.instance().onNewPumpKey();
                 break;
             case Keyboard.L:
 //                Game.instance.trainScene.pump.startMovingNext(1);
@@ -213,13 +213,13 @@ public class GameController
         if (_isStopped)
             _forceX = 0;
         else {
-            var moveForce:Number = 5;
+//            var moveForce:Number = 5;
             switch (_moveDir) {
                 case Direction.RIGHT:
-                    _forceX = moveForce;
+                    _forceX = Settings.WALK_SPEED;
                     break;
                 case Direction.LEFT:
-                    _forceX = -moveForce;
+                    _forceX = -Settings.WALK_SPEED;
                     break;
             }
         }
@@ -430,18 +430,23 @@ public class GameController
 
                 break;
             case AttackType.UPPERCUT:
-                _attackForceY =- Settings.UPPERCUT_FORCE;
-                _attackForceX =+ Settings.UPPERCUT_FORCE*0.3*direction;
+                _attackForceY =- Settings.UPPERCUT_FORCE_Y;
+                _attackForceX =+ Settings.UPPERCUT_FORCE_X*direction;
                 Actuate.tween(this, 0.5, {attackForceY: 0}, false).ease(Linear.easeNone);
                 Actuate.tween(this, 0.5, {attackForceX: 0}, false).ease(Linear.easeNone).onComplete(stunnedFinished,stun);
                 break;
             case AttackType.DROP:
-                _attackForceY =+ Settings.UPPERCUT_FORCE;
+                _attackForceY =+ Settings.DROP_FORCE_Y;
                 _attackForceX =-Settings.WIND_SPEED;
                 _isFalling = true;
-                Actuate.tween(this, 0.5, {attackForceY: 0}, false).ease(Linear.easeNone);
+                Actuate.tween(this, 0.5, {attackForceY: 0}, false).ease(Linear.easeNone).onComplete(killed);
                 break;
         }
+    }
+
+    private function killed():void {
+
+
     }
 
     private function stunnedFinished(stun:Stun):void {

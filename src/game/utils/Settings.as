@@ -14,8 +14,9 @@ public class Settings {
     public static var DIFFICULTY:Number = 1;
     public static var TREES_DENSITY:Number = 0.03;
 
-    public static const GRAVITY:Number = 6;
-    public static const JUMP_FORCE:Number = 40;
+    public static const GRAVITY:Number = 15;
+    public static const WALK_SPEED:Number = 8;
+    public static const JUMP_FORCE:Number = 80;
 
 
     public static const HERO_HEIGHT:Number = 180;
@@ -23,8 +24,12 @@ public class Settings {
     public static const HERO_HEIGHT_SQUAT:Number = 50;
     public static const HERO_HEIGHT_HANG:Number = 30;
     public static const HERO_WIDTH_HANG:Number = 120;
-    public static const KICK_FORCE:int = 20;
-    public static const UPPERCUT_FORCE:int = 20;
+    public static const KICK_FORCE:int = 30;
+    public static const UPPERCUT_FORCE_Y:int = 30;
+    public static const UPPERCUT_FORCE_X:int = 30;
+
+    public static const DROP_FORCE_Y:int = 30;
+
     public static var DEBUG_ATTACKS:Boolean = true;
     public static var ONLINE:Boolean = true;
 
