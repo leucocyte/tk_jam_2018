@@ -95,16 +95,16 @@ public class ObjectController {
         return null;
     }
 
-    public function onAttack(h:Hero,t:int):void {
-        trace("on atttack");
-        var a:Attack = AttacksManager.getAttack(h,t);
+    public function onAttack(myHero:Hero,t:int):void {
+        var a:Attack = AttacksManager.getAttack(myHero,t);
         for (var i:int = 0; i < _heroes.length; i++) {
             var hero:Hero = _heroes[i];
-            if (hero !=h){
+            trace("on atttack: "+hero.id+" vs my id:  "+myHero.id);
+            if (hero.id != myHero.id){
                 if (a.hit(hero)){
-                    trace("HIT!");
-//                    ActionServer.hit(hero.id,a.type,hero.id);
-                    GameController.getInstance().onHit(a.type,h.direction);
+                    trace("HIT: ",myHero.id,hero.id,a.type,myHero.direction);
+                    ActionServer.hit(myHero.id,hero.id,a.type,myHero.direction);
+//                    GameController.getInstance().onHit(a.type,h.direction);
                 }
             }
         }

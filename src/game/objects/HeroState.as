@@ -13,5 +13,7 @@ public class HeroState {
 	public static const STUN_JUMP:uint = 7;
 	public static const STUN_FALLING:uint = 8;
 
+	public static const UPPERCUT:uint = 9;
+
 }
 }

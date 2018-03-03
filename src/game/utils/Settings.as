@@ -20,7 +20,7 @@ public class Settings {
     public static const HERO_WIDTH:Number = 50;
     public static const HERO_HEIGHT_SQUAT:Number = 50;
     public static const KICK_FORCE:int = 20;
-    public static const UPPERCUT_FORCE:int = 50;
+    public static const UPPERCUT_FORCE:int = 20;
     public static var DEBUG_ATTACKS:Boolean = true;
     public static var ONLINE:Boolean = true;
 

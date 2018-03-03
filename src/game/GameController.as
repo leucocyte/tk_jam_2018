@@ -34,6 +34,7 @@ public class GameController
     private var _isDown:Boolean;
     private var _isUp:Boolean;
     private var _isSpace:Boolean;
+    private var _isEnter:Boolean;
 
     private var _forceX:Number = 0;
     private var _forceY:Number = 0;
@@ -43,6 +44,7 @@ public class GameController
 
     private var _isJumping:Boolean = false;
     private var _isKicking:Boolean = false;
+    private var _isUppercuting:Boolean=false;;
     private var _isDucking:Boolean = false;
     private var _isHanging:Boolean = false;
     private var _isStunned:Boolean = false;
@@ -53,6 +55,8 @@ public class GameController
     private var _hero:Hero;
     private var _downTime:Number=0;
     private var _stunnedVector:Vector.<Stun>;
+
+
 
 
 
@@ -112,6 +116,9 @@ public class GameController
             case Keyboard.SPACE:
                 _isSpace=e.type == KeyboardEvent.KEY_DOWN;
                 break;
+            case Keyboard.ENTER:
+                _isEnter=e.type == KeyboardEvent.KEY_DOWN;
+                break;
 
         }
 
@@ -121,6 +128,9 @@ public class GameController
                 _isKicking = true;
                 Actuate.tween(this, 0.5, {}, false).onComplete(kickFinished);
             }*/
+        }else
+        if (_isEnter){
+            uppercut();
         }
 
 //        _moveDir = Direction.STOP;
@@ -185,22 +195,32 @@ public class GameController
 
     }
 
+
+
     private function isAttacking(){
         if (_isKicking)
+            return true;
+        if (_isUppercuting)
             return true;
 
         return false;
     }
 
+    private function uppercut():void {
+        _isUppercuting = true;
+        Actuate.tween(this, 0.5, {}, false).onComplete(uppercutFinished);
+        ObjectController.instance().onAttack(_hero,AttackType.UPPERCUT);
+    }
+
+    private function uppercutFinished():void {
+        _isUppercuting = false;
+    }
+
     private function kick():void {
         if (!isAttacking()){
-//            _heroView.setState(HeroState.KICK);
             _isKicking = true;
-//            new KickAction();
-//            _heroView.onKick();
             Actuate.tween(this, 0.5, {}, false).onComplete(kickFinished);
             ObjectController.instance().onAttack(_hero,AttackType.KICK);
-//            ActionServer.kick();
         }
 
     }
@@ -239,6 +259,8 @@ public class GameController
                     if (isAttacking()) {
                         if (_isKicking)
                             state = HeroState.KICK;
+                        if (_isUppercuting)
+                            state = HeroState.UPPERCUT;
                     } else if (_isDucking) {
                         state = HeroState.SQUAT;
                     } else {
@@ -252,6 +274,8 @@ public class GameController
                     if (isAttacking()) {
                         if (_isKicking)
                             state = HeroState.KICK;
+                        if (_isUppercuting)
+                            state = HeroState.UPPERCUT;
                     } else if (_isDucking) {
                         state = HeroState.SQUAT;
                     } else {
@@ -282,7 +306,7 @@ public class GameController
             }
         }*/
 
-        if (_hero.y > Settings.GROUND_Y || sx!=0){
+        if (_hero.y < Settings.GROUND_Y || sx!=0){
             sx += Settings.WIND_SPEED;
         }
 
@@ -339,13 +363,15 @@ public class GameController
         switch(type){
             case AttackType.KICK:
                 _stunnedVector.push(stun);
-                _attackForceX=+Settings.KICK_FORCE*direction;
+                _attackForceX =+ Settings.KICK_FORCE*direction;
                 Actuate.tween(this, 0.5, {attackForceX: 0}, false).ease(Linear.easeNone).onComplete(stunnedFinished,stun);
 
                 break;
             case AttackType.UPPERCUT:
-                _attackForceY=-Settings.UPPERCUT_FORCE*direction;
-                Actuate.tween(this, 0.5, {forceY: 0}, false).ease(Linear.easeNone);
+                _attackForceY =- Settings.UPPERCUT_FORCE;
+                _attackForceX =+ Settings.UPPERCUT_FORCE*0.3*direction;
+                Actuate.tween(this, 0.5, {attackForceY: 0}, false).ease(Linear.easeNone);
+                Actuate.tween(this, 0.5, {attackForceX: 0}, false).ease(Linear.easeNone).onComplete(stunnedFinished,stun);
                 break;
         }
     }

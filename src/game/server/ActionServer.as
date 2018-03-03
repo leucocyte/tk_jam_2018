@@ -42,8 +42,8 @@ public class ActionServer {
         send("1;1;"+int(x)+";"+int(y)+";"+state+";"+direction);
     }
 
-    public static function hit(attackerId:Number,victimId:Number,attackType:int){
-        send("1;2;"+attackerId+","+victimId+","+attackType);
+    public static function hit(attackerId:Number,victimId:Number,attackType:int,direction:int){
+        send("1;2;"+attackerId+";"+victimId+";"+attackType+";"+direction);
     }
 
     private static function send(msg:String):void{

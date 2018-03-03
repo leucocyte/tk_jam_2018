@@ -165,6 +165,7 @@ public class HeroView extends Sprite{
 
 	public function stand():void {
 		_quad.y = 0;
+		_quad.color = 0xaa4477;
 		_quadHead.y = -Settings.HERO_HEIGHT *0.6;
 		_quad.height = Settings.HERO_HEIGHT;
 	}
@@ -202,6 +203,7 @@ public class HeroView extends Sprite{
 				break;
 			case HeroState.KICK:
 				stand();
+				kick();
 //				_character = _kick;
 				break;
 			case HeroState.JUMP:
@@ -212,6 +214,10 @@ public class HeroView extends Sprite{
 				stun();
 				break;
 		}
+	}
+
+	private function kick():void {
+		_quad.color = 0x00ffff;
 	}
 
 	private function stun():void {
