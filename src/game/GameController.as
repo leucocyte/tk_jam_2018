@@ -191,7 +191,8 @@ public class GameController
         {
 //            trace("diff: "+(TimeUtils.getCurrentTime() - _downTime)+" / "+_isHanging);
             if (!_isHanging) {
-                if (TimeUtils.getCurrentTime() - _downTime < 1000) {
+                if (TimeUtils.getCurrentTime() - _downTime < 1000 && _hero.y==0) {
+
                     _isDucking = false;
                     _isHanging = true;
 //                    trace("hanging: " + _isHanging);
@@ -263,7 +264,7 @@ public class GameController
     }
 
     private function dropFinished():void {
-        _isUppercuting = false;
+        _isDropping = false;
     }
 
     private function kickFinished():void {

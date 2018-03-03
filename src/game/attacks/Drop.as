@@ -21,14 +21,14 @@ public class Drop extends Attack {
         type = AttackType.UPPERCUT;
 
         _width = 50;
-        _height = 10;
+        _height = 20;
         _y = h.y;
         _x = h.x;
 
         if (Settings.DEBUG_ATTACKS){
             _quad = new Quad(_width,_height,0x555599);
             _quad.x = _x;
-            _quad.y = _y;
+            _quad.y = _y+20;
             Game.instance.trainScene.heroes.addChild(_quad);
             Actuate.tween(_quad,0.5,{alpha:0.5}).onComplete(function(){Game.instance.trainScene.heroes.removeChild(_quad)});
         }

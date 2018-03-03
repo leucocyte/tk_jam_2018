@@ -114,10 +114,14 @@ public class HeroView extends Sprite {
 		_quad.height = height;
 		_quad.width = width;
 
-		if (width==Settings.HERO_WIDTH_HANG)
-			_quad.x= 30;
-		else
-			_quad.x= 0;
+		if (width==Settings.HERO_WIDTH_HANG) {
+			_quad.x = 30;
+			_quad.y= 40;
+		}
+		else {
+			_quad.x = 0;
+			_quad.y=0;
+		}
 
 		//_quad.pivotX = width/2;
 //		trace(width+" / "+Settings.HERO_HEIGHT_HANG+" / "+_quad.x);
@@ -146,6 +150,12 @@ public class HeroView extends Sprite {
 			case HeroState.JUMP:
 				break;
 			case HeroState.STUN:
+				break;
+			case HeroState.DROP:
+				_display.y += 56;
+				if(dir == -1) {
+					flipLeft();
+				}
 				break;
 		}
 	}

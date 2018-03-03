@@ -20,7 +20,7 @@ public class Settings {
     public static const HERO_HEIGHT:Number = 180;
     public static const HERO_WIDTH:Number = 70;
     public static const HERO_HEIGHT_SQUAT:Number = 50;
-    public static const HERO_HEIGHT_HANG:Number = 5;
+    public static const HERO_HEIGHT_HANG:Number = 30;
     public static const HERO_WIDTH_HANG:Number = 120;
     public static const KICK_FORCE:int = 20;
     public static const UPPERCUT_FORCE:int = 20;
