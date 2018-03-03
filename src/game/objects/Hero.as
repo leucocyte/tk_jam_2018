@@ -70,7 +70,7 @@ public class Hero extends CollisionObject{
 
     public function updateView():void {
         _view.setDirection(_direction);
-        _view.updateState(_state);
+        _view.updateState(_state,_direction);
         _view.x = _x;
         _view.y = _y;
     }

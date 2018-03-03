@@ -16,6 +16,7 @@ import game.Direction;
 import game.Game;
 import game.load.GameAssetsManager;
 import game.utils.Settings;
+import game.view.hero.HeroStatesDisplay;
 
 import starling.core.Starling;
 import starling.display.MovieClip;
@@ -42,21 +43,32 @@ public class HeroView extends Sprite{
 	protected var _quad:Quad;
 	protected var _quadHead:Quad;
 	protected var _label:Label;
+	private var _display:HeroStatesDisplay;
 
 	public function HeroView(hero:Hero) {
+
+
 
 		var sizeH:int = Settings.HERO_HEIGHT;
 		var sizeW:int = Settings.HERO_WIDTH;
 		_quad = new Quad(sizeW,sizeH,0xaa4477);
 		_quad.pivotX=int(sizeW/2);
 		_quad.pivotY=int(sizeH);
+		_quad.visible = true;
 		addChild(_quad);
+
+
+		_display = new HeroStatesDisplay();
+		_display.setState(HeroState.STAND);
+		addChild(_display);
+
 
 		_quadHead = new Quad(sizeW/2,sizeH/3,0xaa44ff);
 		_quadHead.pivotX=int(sizeW/4);
 		_quadHead.pivotY=int(sizeH/3);
 		_quadHead.y = -sizeW;
 		_quadHead.x = 10;
+		_quadHead.visible = false;
 		addChild(_quadHead);
 
 		_label = new Label();
@@ -120,62 +132,8 @@ public class HeroView extends Sprite{
 		setState(HeroState.STAND);*/
 	}
 
-	public function setState(state:uint):void {
-		if(_currentState != state) {
-			_character.stop();
-			Starling.juggler.remove(_character);
-			removeChild(_character);
 
-			switch(state) {
-				case HeroState.STAND:
-					_character = _stand;
-					break;
-				case HeroState.WALK:
-					_character = _walk;
-					break;
-				case HeroState.HANG:
-					_character = _hang;
-					break;
-				case HeroState.SQUAT:
-					_character = _squat;
-					break;
-				case HeroState.KICK:
-					_character = _kick;
-					break;
-				case HeroState.JUMP:
-					_character = _kick;
-					break;
-				default :
-					throw new ArgumentError("State " + state + " is not supported");
-			}
 
-			_character.play();
-			addChild(_character);
-
-			Starling.juggler.add(_character);
-			_currentState = state;
-		}
-	}
-
-	public function squat():void {
-		_quad.y = 0;
-		_quadHead.y = -Settings.HERO_HEIGHT_SQUAT *0.6;
-		_quad.height = Settings.HERO_HEIGHT_SQUAT;
-	}
-
-	public function stand():void {
-		_quad.y = 0;
-		_quad.color = 0xaa4477;
-		_quadHead.y = -Settings.HERO_HEIGHT *0.6;
-		_quad.height = Settings.HERO_HEIGHT;
-	}
-
-	private function hang():void {
-		trace("HANG!!!!");
-		_quad.color = 0x00ff55;
-		_quad.y = Settings.HERO_HEIGHT;
-		_quadHead.y = 0;
-	}
 
 	public function setDirection(_direction:int):void {
 		if (_direction == Direction.LEFT)
@@ -185,9 +143,12 @@ public class HeroView extends Sprite{
 				_quadHead.x = 10;
 	}
 
-	public function updateState(state:Number):void {
-		switch(state){
+	public function updateState(state:Number,dir:int):void {
+
+		_display.setState(state,dir);
+	/*	switch(state){
 			case HeroState.STAND:
+
 				stand();
 				break;
 			case HeroState.WALK:
@@ -213,7 +174,7 @@ public class HeroView extends Sprite{
 			case HeroState.STUN:
 				stun();
 				break;
-		}
+		}*/
 	}
 
 	private function kick():void {
@@ -222,6 +183,26 @@ public class HeroView extends Sprite{
 
 	private function stun():void {
 		_quad.color = 0x00ff00;
+	}
+
+	public function squat():void {
+		_quad.y = 0;
+		_quadHead.y = -Settings.HERO_HEIGHT_SQUAT *0.6;
+		_quad.height = Settings.HERO_HEIGHT_SQUAT;
+	}
+
+	public function stand():void {
+		_quad.y = 0;
+		_quad.color = 0xaa4477;
+		_quadHead.y = -Settings.HERO_HEIGHT *0.6;
+		_quad.height = Settings.HERO_HEIGHT;
+	}
+
+	private function hang():void {
+		trace("HANG!!!!");
+		_quad.color = 0x00ff55;
+		_quad.y = Settings.HERO_HEIGHT;
+		_quadHead.y = 0;
 	}
 
 

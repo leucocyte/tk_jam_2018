@@ -1,5 +1,6 @@
 /** Created by Marek Brun on 03 marzec 2018 */
 package game.view.hero {
+import game.Direction;
 import game.objects.HeroState;
 
 import starling.display.Sprite;
@@ -117,14 +118,17 @@ public class HeroStatesDisplay extends Sprite {
 		_all = [_squat, _hangHit, _stand, _jump, _jumpKick, _kick, _standHit, _upHit, _uppercut, _walkRight, _walkLeft, _squatPunch, _hang];
 	}
 
-	public function setState(heroState:uint):void {
+	public function setState(heroState:uint,direction:int=-1):void {
 		var newState:HeroStateDisplay;
 		switch(heroState) {
 			case HeroState.STAND:
 				newState = _stand;
 				break;
 			case HeroState.WALK:
-				newState = _stand;
+				if (direction==Direction.LEFT)
+					newState = _walkLeft;
+				else
+					newState = _walkRight;
 				break;
 			case HeroState.SQUAT:
 				newState = _squat;
