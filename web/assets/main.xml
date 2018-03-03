@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
-<!-- $TexturePacker:SmartUpdate:2b09c74537f451dcaaa28a8dcb5987e9:2e6df638ffade02bc0fac1071c32265a:f7afabebcd35587b8270ff90b311ebd0$ -->
-<TextureAtlas imagePath="main.png" width="620" height="1298">
-    <SubTexture name="train" x="465" y="1" rotated="true" width="139" height="363"/>
-    <SubTexture name="tree1" x="1" y="658" width="618" height="639" frameX="-13" frameY="-1" frameWidth="640" frameHeight="640"/>
-    <SubTexture name="tree2" x="1" y="1" width="462" height="655" frameX="-46" frameY="-33" frameWidth="554" frameHeight="720"/>
+<!-- $TexturePacker:SmartUpdate:1f9585e46efb0b3e41871548bd33318d:7165ca2de2cf4cfbaf35b8adcac4166a:f7afabebcd35587b8270ff90b311ebd0$ -->
+<TextureAtlas imagePath="main.png" width="794" height="1284">
+    <SubTexture name="traction1" x="621" y="1" width="172" height="500" frameX="0" frameY="0" frameWidth="184" frameHeight="500"/>
+    <SubTexture name="traction_blur" x="1" y="1106" rotated="true" width="500" height="177" frameX="0" frameY="0" frameWidth="184" frameHeight="500"/>
+    <SubTexture name="train" x="658" y="503" rotated="true" width="99" height="331"/>
+    <SubTexture name="tree1" x="1" y="1" width="618" height="639" frameX="-13" frameY="-1" frameWidth="640" frameHeight="640"/>
+    <SubTexture name="tree2" x="1" y="642" rotated="true" width="655" height="462" frameX="-46" frameY="-33" frameWidth="554" frameHeight="720"/>
 </TextureAtlas>

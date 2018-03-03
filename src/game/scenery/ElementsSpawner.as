@@ -6,10 +6,8 @@ import flash.utils.Timer;
 
 import game.load.GameAssetsManager;
 import game.utils.Settings;
-import game.utils.Settings;
 
 import starling.display.DisplayObject;
-
 import starling.display.Image;
 import starling.display.Sprite;
 
@@ -17,10 +15,10 @@ public class ElementsSpawner extends Sprite {
 
 	private var _minTime:uint; //ms
 	private var _maxTime:uint; //ms
-	private var _movementDuration:uint; //ms
 	private var _newElementTimer:Timer;
 	private const _movements:Vector.<ElementMovement> = new <ElementMovement>[];
 	private const _pool:Vector.<DisplayObject> = new <DisplayObject>[];
+	private var _speed:uint;
 
 	/**
 	 * @param minTime
@@ -30,8 +28,7 @@ public class ElementsSpawner extends Sprite {
 	public function ElementsSpawner(minTime:uint, maxTime:uint, speed:uint) {
 		_minTime = minTime;
 		_maxTime = maxTime;
-		_movementDuration = (Settings.SCENE_WIDTH / speed) * 1000;
-		trace("_movementDuration:" + (_movementDuration));
+		_speed = speed;
 
 		_newElementTimer = new Timer(1, 1);
 		_newElementTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onNewTreeTimer_Complete);
@@ -57,7 +54,9 @@ public class ElementsSpawner extends Sprite {
 		var element:DisplayObject = getElement();
 		element.x = Settings.SCENE_WIDTH + 1;
 		addChild(element);
-		var movement:ElementMovement = new ElementMovement(element, _movementDuration);
+
+		var movementDuration:Number = ((Settings.SCENE_WIDTH + element.width) / _speed) * 1000;
+		var movement:ElementMovement = new ElementMovement(element, movementDuration);
 		movement.completedSignal.add(onMovement_Completed);
 		_movements.push(movement);
 	}

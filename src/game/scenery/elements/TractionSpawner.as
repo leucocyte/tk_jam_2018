@@ -6,23 +6,24 @@ import game.scenery.ElementsSpawner;
 import starling.display.DisplayObject;
 import starling.display.Image;
 
-public class Tree2Spawner extends ElementsSpawner {
+public class TractionSpawner extends ElementsSpawner {
 
-	public function Tree2Spawner() {
-		super(100, 2000, 400);
+	public function TractionSpawner() {
+		super(1000, 1000, 4200);
 	}
 
 	override protected function createNewElement():DisplayObject {
-		var element:Image = GameAssetsManager.getImageFromMainAtlas('tree2');
+		var element:Image = GameAssetsManager.getImageFromMainAtlas('traction1');
+		element.height = 800;
+		element.scaleX = element.scaleY;
 		return element;
 	}
 
 	override protected function getElement():DisplayObject {
 		var element:DisplayObject = super.getElement();
-		element.height = 400 + Math.random() * 200;
-		element.scaleX = element.scaleY;
 		element.y = -element.height;
 		return element;
 	}
+
 }
 }

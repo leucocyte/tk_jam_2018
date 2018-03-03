@@ -9,7 +9,7 @@ import starling.display.Image;
 public class Tree1Spawner extends ElementsSpawner {
 
 	public function Tree1Spawner() {
-		super(1000, 10000, 100);
+		super(100, 1000, 500);
 
 	}
 
@@ -17,6 +17,12 @@ public class Tree1Spawner extends ElementsSpawner {
 		var element:Image = GameAssetsManager.getImageFromMainAtlas('tree1');
 		element.height = 400;
 		element.scaleX = element.scaleY;
+		return element;
+	}
+
+	override protected function getElement():DisplayObject {
+		var element:DisplayObject = super.getElement();
+		element.y = -element.height;
 		return element;
 	}
 }

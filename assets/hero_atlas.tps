@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>4.6.2</string>
         <key>fileName</key>
-        <string>C:/m/projects/TK_JAM_2018/assets/main_tps.tps</string>
+        <string>C:/m/projects/TK_JAM_2018/assets/hero_atlas.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -150,7 +150,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename></filename>
+                <filename>../web/assets/main.xml</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -199,7 +199,7 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">main_atlas/train.png</key>
+            <key type="filename">main/train.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -212,10 +212,36 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">main/tree1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>160,160,320,320</rect>
+                <key>scale9Paddings</key>
+                <rect>160,160,320,320</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">main/tree2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>139,180,277,360</rect>
+                <key>scale9Paddings</key>
+                <rect>139,180,277,360</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>main_atlas</filename>
+            <filename>main</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
