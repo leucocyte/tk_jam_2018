@@ -10,7 +10,7 @@ public class DifficultyByMouseXCtrl {
 
 	private function onWorldTime_Time(frameTime:Number):void {
 		var stage:Stage = Stage2DAbuser.getStage();
-		Settings.DIFFICULTY = 4 * (stage.mouseX / stage.stageWidth);
+		Settings.DIFFICULTY = 1 + 4 * (stage.mouseX / stage.stageWidth);
 	}
 
 }

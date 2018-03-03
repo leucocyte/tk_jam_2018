@@ -54,13 +54,13 @@ public class StartMenu extends Sprite{
         textFormat.font = Settings.FONT;
         textFormat.size = 40;
         textFormat.color = 0xFF0000;
-        textFormat.align = TextAlign.CENTER;
+        textFormat.align = 'center';
 
         var textFormat2:TextFormat = new TextFormat();
         textFormat2.font = Settings.FONT;
         textFormat2.size = 40;
         textFormat2.color = 0xFF0055;
-        textFormat2.align = TextAlign.CENTER;
+        textFormat2.align = 'center';
 
 
 

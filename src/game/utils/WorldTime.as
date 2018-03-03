@@ -23,7 +23,7 @@ public class WorldTime {
 		dispatchFrame(frameTime);
 	}
 
-	private function dispatchFrame(frameTime:int):void {
+	public function dispatchFrame(frameTime:int):void {
 		frameSignal.dispatch(frameTime);
 	}
 

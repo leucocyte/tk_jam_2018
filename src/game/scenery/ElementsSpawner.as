@@ -19,6 +19,8 @@ public class ElementsSpawner extends Sprite {
 	private const _movements:Vector.<ElementMovement> = new <ElementMovement>[];
 	private const _pool:Vector.<DisplayObject> = new <DisplayObject>[];
 	private var _speed:uint;
+	private var _newElementCount:int;
+	private static var _newElement:int;
 
 	/**
 	 * @param minTime
@@ -40,7 +42,11 @@ public class ElementsSpawner extends Sprite {
 		if(_newElementTimer.running) {
 			throw new IllegalOperationError("newTreeTimer is already running");
 		}
-		_newElementTimer.delay = (_minTime + Math.random() * (_maxTime - _minTime)) / Settings.DIFFICULTY;
+		var delay:Number = (_minTime + Math.random() * (_maxTime - _minTime)) / Settings.DIFFICULTY;
+		if(delay > 10000) {
+			delay = 10000;
+		}
+		_newElementTimer.delay = delay;
 		_newElementTimer.reset();
 		_newElementTimer.start();
 	}
@@ -68,10 +74,12 @@ public class ElementsSpawner extends Sprite {
 		if(_pool.length) {
 			return _pool.pop();
 		}
+		_newElement++;
 		return createNewElement();
 	}
 
 	protected function createNewElement():DisplayObject {
+		_newElementCount++;
 		var element:Image = GameAssetsManager.getImageFromMainAtlas('tree1');
 		return element;
 	}
@@ -84,5 +92,6 @@ public class ElementsSpawner extends Sprite {
 	public function get speed():uint {
 		return _speed;
 	}
+
 }
 }

@@ -40,7 +40,7 @@ public class TrainScene extends Sprite {
 		_scenery = new Sprite();
 		_scenery.y = 550;
 
-		var groundHeight:int = 100;
+		var groundHeight:int = 200;
 		var groundY:int = 300;
 		_treesFar = new TreesFarSpawner();
 		_scenery.addChild(_treesFar);
@@ -50,13 +50,13 @@ public class TrainScene extends Sprite {
 
 		_trees2 = new Tree2Spawner();
 		_scenery.addChild(_trees2);
-		_forest2Bg = new SeamlessBackground(_trees2.speed, 'forest_ground_fade', groundHeight * 1.7);
+		_forest2Bg = new SeamlessBackground(_trees2.speed, 'forest_ground_fade', groundHeight);
 		_forest2Bg.y = groundY + 50;
 		addChild(_forest2Bg);
 
 		_trees1 = new Tree1Spawner();
 		_scenery.addChild(_trees1);
-		_forest1Bg = new SeamlessBackground(_trees1.speed, 'forest_ground_fade', groundHeight * 2.7);
+		_forest1Bg = new SeamlessBackground(_trees1.speed, 'forest_ground_fade', groundHeight * 1.7);
 		_forest1Bg.y = groundY + 100;
 		addChild(_forest1Bg);
 
@@ -77,12 +77,6 @@ public class TrainScene extends Sprite {
 		_traction = new TractionSpawner();
 		_traction.y = 1000;
 		addChild(_traction);
-
-
-		var rectt:Canvas = new Canvas();
-		rectt.beginFill(0xFF0000, 0.5);
-		rectt.drawRectangle(0, 0, 100, 200);
-		_heroes.addChild(rectt);
 	}
 
 	public function get heroes():Sprite {

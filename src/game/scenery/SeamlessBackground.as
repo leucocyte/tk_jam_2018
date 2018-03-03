@@ -14,6 +14,8 @@ public class SeamlessBackground extends Sprite {
 	private var _lastImage:Image;
 	private var _textureName:String;
 	private var _height:Number;
+	private var _imagePool:Vector.<Image> = new <Image>[];
+	private var _countNew:int;
 
 	public function SeamlessBackground(speed:Number, textureName:String, height:Number) {
 		_textureName = textureName;
@@ -22,17 +24,16 @@ public class SeamlessBackground extends Sprite {
 		addImage();
 		check();
 		WorldTime.frameSignal.add(onWorldTime_Time);
-
 	}
 
 	private function check():void {
-		while(_lastImage.x + _lastImage.width < Settings.SCENE_WIDTH) {
+		while(_lastImage.x < Settings.SCENE_WIDTH) {
 			addImage();
 		}
-		for each (var image:Image in _images) {
-			if(image.x + image.width < 0) {
-				_images.removeAt(_images.indexOf(image));
-			}
+		while(_images.length > 1 && _images[0].x < -_images[0].width) {
+			var img:Image = _images.shift();
+			removeChild(img);
+			_imagePool.push(img);
 		}
 	}
 
@@ -46,7 +47,11 @@ public class SeamlessBackground extends Sprite {
 		_images.push(_lastImage);
 	}
 
-	public function createImage():Image {
+	private function createImage():Image {
+		if(_imagePool.length) {
+			return _imagePool.pop();
+		}
+		_countNew++;
 		var img:Image = GameAssetsManager.getImageFromMainAtlas(_textureName);
 		img.height = _height;
 		img.scaleX = img.scaleY;
@@ -54,8 +59,8 @@ public class SeamlessBackground extends Sprite {
 	}
 
 	private function onWorldTime_Time(frameTime:Number):void {
-		check();
 		move(frameTime);
+		check();
 	}
 
 	private function move(frameTime:Number):void {
