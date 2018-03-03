@@ -9,6 +9,7 @@ import game.objects.Hero;
 import game.objects.HeroView;
 import game.objects.ObjectController;
 import game.server.ConnectionServer;
+import game.ui.FontSettings;
 import game.ui.StartMenu;
 import game.utils.CursorManager;
 import game.utils.Settings;
@@ -55,6 +56,7 @@ public class Game extends Sprite
 
     private function init():void
     {
+        FontSettings.init();
         GameAssetsManager.getInstance().coreAssetsLoadedSignal.addOnce(coreAssetsLoaded);
         GameAssetsManager.getInstance().loadCoreAssets();
     }

@@ -18,7 +18,7 @@ public class Drop extends Attack {
 
     public function Drop(h:Hero) {
         super(h);
-        type = AttackType.UPPERCUT;
+        type = AttackType.DROP;
 
         _width = 50;
         _height = 20;

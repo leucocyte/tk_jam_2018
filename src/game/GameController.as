@@ -34,9 +34,9 @@ public class GameController
     private var _isRight:Boolean;
     private var _isDown:Boolean;
     private var _isUp:Boolean;
-    private var _isSpace:Boolean;
-    private var _isEnter:Boolean;
-    private var _isF:Boolean;
+    private var _isJumpKey:Boolean;
+    private var _isAttackKey:Boolean;
+//    private var _isF:Boolean;
 
     private var _forceX:Number = 0;
     private var _forceY:Number = 0;
@@ -121,21 +121,13 @@ public class GameController
             case Keyboard.DOWN :
                 _isDown=e.type == KeyboardEvent.KEY_DOWN;
                 break;
-            case Keyboard.SPACE:
-                _isSpace=e.type == KeyboardEvent.KEY_DOWN;
+            case Keyboard.O:
+                _isJumpKey=e.type == KeyboardEvent.KEY_DOWN;
                 break;
-            case Keyboard.ENTER:
-                _isEnter=e.type == KeyboardEvent.KEY_DOWN;
-                break;
-            case Keyboard.F:
-                _isF=e.type == KeyboardEvent.KEY_DOWN;
+            case Keyboard.P:
+                _isAttackKey=e.type == KeyboardEvent.KEY_DOWN;
                 break;
 
-            case Keyboard.P:
-//                Game.instance.trainScene.pump.startMovingNext(1);
-//                if (e.type == KeyboardEvent.KEY_DOWN)
-//                    ObjectController.instance().onNewPumpKey();
-                break;
             case Keyboard.L:
 //                Game.instance.trainScene.pump.startMovingNext(1);
                 if (e.type == KeyboardEvent.KEY_DOWN)
@@ -149,23 +141,17 @@ public class GameController
 
         }
 
-        if (_isSpace){
+        if (_isAttackKey && !_isDown && !_isUp){
             kick();
-           /* if (_isKicking){
-                _isKicking = true;
-                Actuate.tween(this, 0.5, {}, false).onComplete(kickFinished);
-            }*/
         }else
-        if (_isEnter){
-            uppercut();
-        }else
-        if (_isF){
-            drop();
-        }
+            if (_isAttackKey && _isUp){
+                uppercut();
+            }else
+                if (_isAttackKey && _isDown){
+                    drop();
+                }
 
-//        _moveDir = Direction.STOP;
-
-        if(_isUp) {
+        if(_isJumpKey && !_isDown) {
             if (!_isJumping) {
                 _isJumping = true;
                 _forceY = -Settings.JUMP_FORCE;
@@ -187,28 +173,17 @@ public class GameController
                 _isStopped = true;
 //                _moveDir = Direction.STOP;
 
-        if(_isDown)
-        {
-//            trace("diff: "+(TimeUtils.getCurrentTime() - _downTime)+" / "+_isHanging);
-            if (!_isHanging) {
-                if (TimeUtils.getCurrentTime() - _downTime < 1000 && _hero.y==0) {
-
-                    _isDucking = false;
-                    _isHanging = true;
-//                    trace("hanging: " + _isHanging);
-                } else {
-                    _downTime = TimeUtils.getCurrentTime();
-                    _isDucking = true;
-                    _isHanging = false;
-//                    trace("hanging: " + _isHanging);
-                }
-            }
-        }else {
+        if (_isDown && _isJumpKey){
             _isDucking = false;
-            _isHanging = false;
-//            trace("hanging: "+false);
-//            trace("ducking: "+false);
-        }
+            _isHanging = true;
+        }else
+            if (_isDown){
+                _isDucking = true;
+                _isHanging = false;
+            }else{
+                _isDucking = false;
+                _isHanging = false;
+            }
 
         if (_isStopped)
             _forceX = 0;
@@ -288,7 +263,7 @@ public class GameController
             sx = _attackForceX;
             sy = _attackForceY + Settings.GRAVITY;
             state = HeroState.STUN_JUMP;
-        }
+        }else
         if (_isStunned){
             sx = _attackForceX;
             sy = _attackForceY + Settings.GRAVITY;
@@ -323,7 +298,7 @@ public class GameController
                     }
                 }
             } else {
-                //NAZ ZIEMI
+                //NA ZIEMI
                 if (_isStunned) {
                     state = HeroState.STUN;
                 } else {
@@ -350,39 +325,29 @@ public class GameController
             }
         }
 
-
-  /*      if (isAttacking()) {
-            if (_isKicking)
-                state = HeroState.KICK;
-        }else{
-            if (_isDucking) {
-//            _hero.state = HeroState.SQUAT;
-                state = HeroState.SQUAT;
-//                _heroView.squat();
-//            if (!_isJumping)
-//                sx = 0;
-            } else {
-                state = HeroState.STAND;
-//                _heroView.stand();
-            }
-        }*/
-
         if (_hero.y < Settings.GROUND_Y || sx!=0){
             sx += Settings.WIND_SPEED;
         }
-
+        trace("speedY: "+sy+" / "+_isFalling);
         _hero.x+= sx;
         _hero.y+= sy;
 
         _hero.direction = _moveDir;
 
-        if (!_isFalling)
-            if (_hero.y >=Settings.GROUND_Y)
-            {
+        if (!_isFalling) {
+            if (_hero.y >= Settings.GROUND_Y) {
                 if (_isJumping)
                     jumpFinished();
                 _hero.y = Settings.GROUND_Y;
             }
+            if(_hero.x<0)
+                _hero.x=0;
+            if (_hero.x>Settings.SCENE_WIDTH)
+                _hero.x = Settings.SCENE_WIDTH;
+        }
+
+
+
         _hero.state = state;
         _hero.updateView();
 
@@ -437,7 +402,7 @@ public class GameController
                 break;
             case AttackType.DROP:
                 _attackForceY =+ Settings.DROP_FORCE_Y;
-                _attackForceX =-Settings.WIND_SPEED;
+//                _attackForceX =-Settings.WIND_SPEED;
                 _isFalling = true;
                 Actuate.tween(this, 0.5, {attackForceY: 0}, false).ease(Linear.easeNone).onComplete(killed);
                 break;
