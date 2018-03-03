@@ -8,6 +8,8 @@ import game.scenery.elements.TractionSpawner;
 import game.scenery.elements.Tree1Spawner;
 import game.scenery.elements.Tree2Spawner;
 
+import starling.display.Canvas;
+
 import starling.display.Image;
 
 import starling.display.Sprite;
@@ -23,6 +25,7 @@ public class TrainScene extends Sprite {
 	private var _trainImage:Image;
 
 	public function TrainScene() {
+		_trees1 = new Tree1Spawner();
 
 		_scenery = new Sprite();
 		addChild(_scenery);
@@ -35,7 +38,6 @@ public class TrainScene extends Sprite {
 		_train = new Sprite();
 		_train.y = 300;
 		_trainImage = GameAssetsManager.getImageFromMainAtlas('train');
-		_trainImage.y = _trainImage.height;
 		_trainImage.x = 150;
 		_trainImage.width = 1500;
 		_trainImage.scaleY = _trainImage.scaleX;
@@ -50,6 +52,12 @@ public class TrainScene extends Sprite {
 		_traction = new TractionSpawner();
 		_traction.y = 1000;
 		addChild(_traction);
+
+
+		var rectt:Canvas = new Canvas();
+		rectt.beginFill(0xFF0000, 0.5);
+		rectt.drawRectangle(0, 0, 100, 200);
+		_heroes.addChild(rectt);
 	}
 
 	public function get heroes():Sprite {
