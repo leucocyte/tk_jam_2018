@@ -40,7 +40,7 @@ public class ElementsSpawner extends Sprite {
 		if(_newElementTimer.running) {
 			throw new IllegalOperationError("newTreeTimer is already running");
 		}
-		_newElementTimer.delay = _minTime + Math.random() * (_maxTime - _minTime);
+		_newElementTimer.delay = (_minTime + Math.random() * (_maxTime - _minTime)) / Settings.DIFFICULTY;
 		_newElementTimer.reset();
 		_newElementTimer.start();
 	}
@@ -55,10 +55,13 @@ public class ElementsSpawner extends Sprite {
 		element.x = Settings.SCENE_WIDTH + 1;
 		addChild(element);
 
-		var movementDuration:Number = ((Settings.SCENE_WIDTH + element.width) / _speed) * 1000;
-		var movement:ElementMovement = new ElementMovement(element, movementDuration);
+		var movement:ElementMovement = new ElementMovement(element, getSpeed(element));
 		movement.completedSignal.add(onMovement_Completed);
 		_movements.push(movement);
+	}
+
+	protected function getSpeed(element:DisplayObject):Number {
+		return _speed;
 	}
 
 	protected function getElement():DisplayObject {
@@ -78,5 +81,8 @@ public class ElementsSpawner extends Sprite {
 		_movements.removeAt(_movements.indexOf(movement));
 	}
 
+	public function get speed():uint {
+		return _speed;
+	}
 }
 }

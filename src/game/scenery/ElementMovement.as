@@ -1,7 +1,7 @@
 /** Created by Marek Brun on 03 marzec 2018 */
 package game.scenery {
-import com.eclecticdesignstudio.motion.Actuate;
-import com.eclecticdesignstudio.motion.easing.Linear;
+import game.utils.Settings;
+import game.utils.WorldTime;
 
 import org.osflash.signals.Signal;
 
@@ -11,16 +11,21 @@ public class ElementMovement {
 
 	private var _display:DisplayObject;
 	public const completedSignal:Signal = new Signal(ElementMovement);
+	private var _speed:Number;
 
-	public function ElementMovement(display:DisplayObject, duration:Number) {
+	public function ElementMovement(display:DisplayObject, speed:Number) {
 		_display = display;
-		Actuate.tween(display, duration / 1000, {x: -display.width})
-				.onComplete(onAnimation_Complete)
-				.ease(Linear.easeNone);
+		_speed = speed;
+
+		WorldTime.frameSignal.add(onWorldTime_Time);
 	}
 
-	private function onAnimation_Complete():void {
-		completedSignal.dispatch(this);
+	private function onWorldTime_Time(frameTime:Number):void {
+		_display.x -= (frameTime / 1000) * _speed * Settings.DIFFICULTY;
+		if(_display.x < -_display.width) {
+			WorldTime.frameSignal.remove(onWorldTime_Time);
+			completedSignal.dispatch(this);
+		}
 	}
 
 	public function get display():DisplayObject {

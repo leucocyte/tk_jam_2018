@@ -4,14 +4,15 @@ import com.eclecticdesignstudio.motion.easing.Sine;
 
 import game.load.GameAssetsManager;
 import game.scenery.ElementsSpawner;
+import game.scenery.SeamlessBackground;
 import game.scenery.elements.TractionSpawner;
 import game.scenery.elements.Tree1Spawner;
 import game.scenery.elements.Tree2Spawner;
+import game.scenery.elements.TreesFarSpawner;
+import game.utils.Settings;
 
 import starling.display.Canvas;
-
 import starling.display.Image;
-
 import starling.display.Sprite;
 
 public class TrainScene extends Sprite {
@@ -23,20 +24,44 @@ public class TrainScene extends Sprite {
 	private var _heroes:Sprite;
 	private var _train:Sprite;
 	private var _trainImage:Image;
+	private var _bg:SeamlessBackground;
+	private var _treesFar:TreesFarSpawner;
+	private var _forestFarBg:SeamlessBackground;
+	private var _forest2Bg:SeamlessBackground;
+	private var _forest1Bg:SeamlessBackground;
 
 	public function TrainScene() {
-		_trees1 = new Tree1Spawner();
+		_train = new Sprite();
+		_train.y = 400;
+
+		_bg = new SeamlessBackground(Settings.TRAIN_SPEED * 0.018, 'mountains1', 500);
+		addChild(_bg);
 
 		_scenery = new Sprite();
-		addChild(_scenery);
 		_scenery.y = 550;
-		_trees1 = new Tree1Spawner();
+
+		var groundHeight:int = 100;
+		var groundY:int = 300;
+		_treesFar = new TreesFarSpawner();
+		_scenery.addChild(_treesFar);
+		_forestFarBg = new SeamlessBackground(_treesFar.speed, 'forest_ground_fade', groundHeight);
+		_forestFarBg.y = groundY;
+		addChild(_forestFarBg);
+
 		_trees2 = new Tree2Spawner();
 		_scenery.addChild(_trees2);
-		_scenery.addChild(_trees1);
+		_forest2Bg = new SeamlessBackground(_trees2.speed, 'forest_ground_fade', groundHeight * 1.7);
+		_forest2Bg.y = groundY + 50;
+		addChild(_forest2Bg);
 
-		_train = new Sprite();
-		_train.y = 300;
+		_trees1 = new Tree1Spawner();
+		_scenery.addChild(_trees1);
+		_forest1Bg = new SeamlessBackground(_trees1.speed, 'forest_ground_fade', groundHeight * 2.7);
+		_forest1Bg.y = groundY + 100;
+		addChild(_forest1Bg);
+
+		addChild(_scenery);
+
 		_trainImage = GameAssetsManager.getImageFromMainAtlas('train');
 		_trainImage.x = 150;
 		_trainImage.width = 1500;
@@ -44,7 +69,7 @@ public class TrainScene extends Sprite {
 		_train.addChild(_trainImage);
 		addChild(_train);
 
-		Actuate.tween(_train, 0.5, {y: 310}).reflect().repeat().ease(Sine.easeInOut);
+		Actuate.tween(_train, 0.5, {y: _train.y + 10}).reflect().repeat().ease(Sine.easeInOut);
 
 		_heroes = new Sprite();
 		_train.addChild(_heroes);

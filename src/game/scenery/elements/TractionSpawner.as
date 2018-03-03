@@ -2,6 +2,7 @@
 package game.scenery.elements {
 import game.load.GameAssetsManager;
 import game.scenery.ElementsSpawner;
+import game.utils.Settings;
 
 import starling.display.DisplayObject;
 import starling.display.Image;
@@ -9,7 +10,7 @@ import starling.display.Image;
 public class TractionSpawner extends ElementsSpawner {
 
 	public function TractionSpawner() {
-		super(1000, 1000, 4200);
+		super(1000, 1000, Settings.TRAIN_SPEED * 1.5);
 	}
 
 	override protected function createNewElement():DisplayObject {
