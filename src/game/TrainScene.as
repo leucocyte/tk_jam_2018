@@ -6,10 +6,12 @@ import flash.events.KeyboardEvent;
 import flash.ui.Keyboard;
 
 import game.load.GameAssetsManager;
+import game.objects.HeroState;
+import game.utils.ArrayUtils;
 import game.utils.Settings;
 import game.utils.Stage2DAbuser;
 import game.view.hero.HeroStateDisplay;
-import game.view.hero.HeroStatesCreator;
+import game.view.hero.HeroStatesDisplay;
 import game.view.scenery.ElementsSpawner;
 import game.view.scenery.SeamlessBackground;
 import game.view.scenery.elements.TractionSpawner;
@@ -34,7 +36,7 @@ public class TrainScene extends Sprite {
 	private var _forestFarBg:SeamlessBackground;
 	private var _forest2Bg:SeamlessBackground;
 	private var _forest1Bg:SeamlessBackground;
-	private var _heroStates:HeroStatesCreator;
+	private var _heroStates:HeroStatesDisplay;
 	private var _allStates:Array;
 	private var _currentState:HeroStateDisplay;
 
@@ -48,7 +50,7 @@ public class TrainScene extends Sprite {
 		_scenery = new Sprite();
 		_scenery.y = 550;
 
-		var groundHeight:int = 200;
+		var groundHeight:int = 150;
 		var groundY:int = 300;
 		_treesFar = new TreesFarSpawner();
 		_scenery.addChild(_treesFar);
@@ -86,7 +88,8 @@ public class TrainScene extends Sprite {
 		_traction.y = 1000;
 		addChild(_traction);
 
-		_heroStates = new HeroStatesCreator();
+		_heroStates = new HeroStatesDisplay();
+		addChild(_heroStates);
 		Stage2DAbuser.getStage().addEventListener(KeyboardEvent.KEY_DOWN, onStage_KeyDown);
 		_allStates = _heroStates.all.concat();
 	}
@@ -102,6 +105,18 @@ public class TrainScene extends Sprite {
 			_currentState = _allStates.shift();
 			trace('state: ' + _currentState.stateName);
 			addChild(_currentState);
+		}
+		if(event.keyCode == Keyboard.S) {
+			_heroStates.setState(ArrayUtils.getRandom([
+				HeroState.STAND,
+				HeroState.WALK,
+				HeroState.SQUAT,
+				HeroState.KICK,
+				HeroState.HANG,
+				HeroState.JUMP,
+				HeroState.UPPERCUT,
+			]));
+			trace('state: ' + _heroStates.currentState.stateName);
 		}
 	}
 

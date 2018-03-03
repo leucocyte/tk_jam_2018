@@ -5,27 +5,64 @@ import game.load.GameAssetsManager;
 import starling.core.Starling;
 
 import starling.display.Sprite;
+import starling.filters.ColorMatrixFilter;
+import starling.filters.FragmentFilter;
 import starling.textures.Texture;
 import starling.textures.TextureAtlas;
 
 public class HeroStateDisplay extends Sprite {
 
 	private var _bodyAtlas:TextureAtlas;
-	private var _timelines:Vector.<Timeline> = new <Timeline>[];
-	private var _frame:uint;
 	private var _stateName:String;
 	private var _leg:Timeline;
 	private var _torso:Timeline;
 	private var _hand:Timeline;
 	private var _head:Timeline;
+	private var _fps:uint = 4;
 
-	public function HeroStateDisplay(stateName:String, leg:Array, torso:Array, hand:Array, head:Array) {
+	/**
+	 * @param headType:
+	 * 1 - normal
+	 * 2 - scream
+	 * 3 - uppercut punch
+	 */
+	public function HeroStateDisplay(stateName:String, leg:Array, torso:Array, hand:Array,
+			headID:uint, headType:uint, hue:Number) {
 		_stateName = stateName;
 		_bodyAtlas = GameAssetsManager.assetManager.getTextureAtlas('body');
-		_timelines.push(_leg = createTimeline(leg));
-		_timelines.push(_torso = createTimeline(torso));
-		_timelines.push(_hand = createTimeline(hand));
-		_timelines.push(_head = createTimeline(head));
+
+		_leg = createTimeline(leg);
+		_torso = createTimeline(torso);
+		_hand = createTimeline(hand);
+
+		if(headType == 1) {
+			_head = createTimeline([
+				'head' + headID + '_anim1',
+				'head' + headID + '_anim2',
+				'head' + headID + '_anim3',
+				'head' + headID + '_anim2',
+				'head' + headID + '_anim1',
+			]);
+		} else if(headType == 2) {
+			_head = createTimeline([
+				'head' + headID + '_scream1',
+			]);
+		} else if(headType == 3) {
+			_head = createTimeline([
+				'head' + headID + '_scream2',
+			]);
+		}
+
+		setHUE(hue);
+	}
+
+	/**
+	 * @param value from 0 to 1
+	 */
+	public function setHUE(value:Number):void {
+		var hueFilter:ColorMatrixFilter = new ColorMatrixFilter();
+		hueFilter.adjustHue(-1 + value * 2);
+		_torso.filter = hueFilter;
 	}
 
 	public function createTimeline(arr:Array):Timeline {
@@ -37,25 +74,12 @@ public class HeroStateDisplay extends Sprite {
 			}
 			frames.push(texture);
 		}
-		var timeline:Timeline = new Timeline(frames, 4);
+		var timeline:Timeline = new Timeline(frames, _fps);
 		timeline.play();
 		Starling.juggler.add(timeline);
 		addChild(timeline);
 		return timeline;
 	}
-
-	//public function get frame():uint {
-	//	return _frame;
-	//}
-	//
-	//public function set frame(value:uint):void {
-	//	if(_frame != value) {
-	//		_frame = value;
-	//		for each (var timeline:Timeline in _timelines) {
-	//			timeline.frame = _frame;
-	//		}
-	//	}
-	//}
 
 	public function get stateName():String {
 		return _stateName;
@@ -69,35 +93,8 @@ import starling.textures.Texture;
 
 class Timeline extends MovieClip {
 
-	//private var _frames:Vector.<DisplayObject>;
-	//private var _frame:uint;
-	//private var _currentDisplay:DisplayObject;
-
 	public function Timeline(frames:Vector.<Texture>, fps:uint) {
 		super(frames, fps);
 	}
 
-	//public function set frame(frame:uint):void {
-	//	if(_frame != frame) {
-	//		_frame = frame;
-	//	}
-	//	if(_currentDisplay) {
-	//		removeChild(_currentDisplay);
-	//		_currentDisplay = null;
-	//	}
-	//	_currentDisplay = _frames[_frame - 1];
-	//	addChild(_currentDisplay);
-	//}
-	//
-	//public function get frame():uint {
-	//	return _frame;
-	//}
-	//
-	//public function nextFrame():void {
-	//	if(_frame >= _frames.length) {
-	//		frame = 1;
-	//	} else {
-	//		frame++;
-	//	}
-	//}
 }
