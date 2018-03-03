@@ -141,6 +141,9 @@ import flash.net.XMLSocket;
 				case 0: //connections
                     ConnectionServer.onData(tab);
 					break;
+                case 1:
+
+                    break;
 			}
 		}
 

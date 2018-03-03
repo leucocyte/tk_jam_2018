@@ -30,12 +30,17 @@ public class Main extends Sprite
         stage.align = StageAlign.TOP_LEFT;
 //        stage.displayState = StageDisplayState.FULL_SCREEN;
 
-        _connectingBox = new ConnectingLoginBox();
-        addChild(_connectingBox);
 
         instance= this;
 //        loadIntro();
-//        initStarling();
+
+//        connect();
+        initStarling();
+    }
+
+    private function connect():void {
+        _connectingBox = new ConnectingLoginBox();
+        addChild(_connectingBox);
     }
 
 

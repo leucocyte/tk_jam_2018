@@ -4,7 +4,12 @@
 package game
 {
 
+import com.eclecticdesignstudio.motion.Actuate;
+
 import flash.ui.Keyboard;
+
+import game.objects.HeroView;
+import game.utils.Settings;
 
 import starling.events.KeyboardEvent;
 
@@ -21,8 +26,13 @@ public class GameController
     private var _speedX:Number = 0;
     private var _speedY:Number = 0;
 
+    private var _isJumping:Boolean = false;
+    private var _isKicking:Boolean = false;
+    private var _isDucking:Boolean = false;
+
 
     private var _moveDir:String;
+    private var _heroView:HeroView;
 
     public function GameController()
     {
@@ -36,8 +46,9 @@ public class GameController
         return _instance;
     }
 
-    public function init():void
+    public function init(heroView:HeroView):void
     {
+        _heroView = heroView;
         Game.instance.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyEventHandler);
         Game.instance.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyEventHandler);
     }
@@ -71,44 +82,34 @@ public class GameController
 
         _moveDir = Direction.STOP;
 
-        if(_isUp)
-        {
-            _moveDir = Direction.UP;
-
-            if(_isLeft) _moveDir = Direction.UP_LEFT;
-            else if(_isRight) _moveDir = Direction.UP_RIGHT;
+        if(_isUp) {
+            if (!_isJumping) {
+                _isJumping = true;
+                Actuate.tween(this, 0.5, {speedY: -5}, false);
+                Actuate.tween(this, 0.5, {speedY: 5}, false).onComplete(jumpFinished).delay(0.5);
+            }
         }
+
+        if(_isLeft)
+            _moveDir = Direction.LEFT;
         else
+            if(_isRight)
+                _moveDir = Direction.RIGHT;
+            else
+                _moveDir = Direction.STOP;
+
         if(_isDown)
         {
-            _moveDir = Direction.DOWN;
-
-            if(_isLeft) _moveDir = Direction.DOWN_LEFT;
-            else if(_isRight) _moveDir = Direction.DOWN_RIGHT;
-        }
-        else
-        {
-            if(_isLeft) _moveDir = Direction.LEFT;
-            else if(_isRight) _moveDir = Direction.RIGHT;
+            if (!_isJumping){
+                _isDucking = true;
+            }
         }
 
         var speed:Number = 5;
         switch (_moveDir)
         {
-
             case Direction.STOP:
-                _speedY = 0;
                 _speedX = 0;
-                break;
-
-            case Direction.UP:
-                _speedY = -speed;
-                _speedX = 0;
-                break;
-
-            case Direction.UP_RIGHT:
-                _speedY = -speed;
-                _speedX = speed;
                 break;
 
             case Direction.RIGHT:
@@ -116,33 +117,45 @@ public class GameController
                 _speedX = speed;
                 break;
 
-            case Direction.DOWN_RIGHT:
-                _speedY = speed;
-                _speedX = speed;
-                break;
-
-            case Direction.DOWN:
-                _speedY = speed;
-                _speedX = 0;
-                break;
-
-            case Direction.DOWN_LEFT:
-                _speedY = speed;
-                _speedX = -speed;
-                break;
-
             case Direction.LEFT:
-                _speedY = 0;
-                _speedX = -speed;
-                break;
-
-            case Direction.UP_LEFT:
-                _speedY = -speed;
                 _speedX = -speed;
                 break;
         }
 
     }
+
+    private function jumpFinished():void {
+        trace("jump finished");
+        _isJumping = false;
+        _speedY=0;
+    }
+
+
+    public function onEnterFrame():void {
+
+        var sx:Number = _speedX;
+        var sy:Number = _speedY;
+        if (_isJumping || sx!=0)
+            sx += Settings.WIND_SPEED;
+
+
+
+        if (_isDucking)
+            sx = 0;
+
+        _heroView.x += sx;
+        _heroView.y += sy;
+
+        if (_heroView.x <=10)
+            _heroView.x =10;
+
+        if (_heroView.x >=1280)
+            _heroView.x =1280;
+
+        if (_heroView.y >= Settings.GROUND_Y)
+            _heroView.y = Settings.GROUND_Y;
+    }
+
 
 
     public function get speedX():Number

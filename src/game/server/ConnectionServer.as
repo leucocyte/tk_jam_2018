@@ -54,14 +54,14 @@ public class ConnectionServer {
         onConnectionProblemSignal.dispatch();
     }
 
-    public static function loginRequest():void {
-        //send ("0;0;"+heroNazwa+";"+email+";"+haslo+";"+user_id+";"+_level0.cookieOwn+";"+_level0.cookieUrl+";"+getCookieNameSWF()+";"+getVersion()+";"+escape(tab[0])+";"+escape(tab[1])+";"+new Date().getTime()+";");
-        send ("-1;");
-    }
 
     public static function login(name:String,pass:String=""):void {
         //send ("0;0;"+heroNazwa+";"+email+";"+haslo+";"+user_id+";"+_level0.cookieOwn+";"+_level0.cookieUrl+";"+getCookieNameSWF()+";"+getVersion()+";"+escape(tab[0])+";"+escape(tab[1])+";"+new Date().getTime()+";");
         send ("0;0;"+name+";"+pass+";");
+    }
+
+    public static function joinRoomAuto():void{
+        send ("0;2;");
     }
 
 

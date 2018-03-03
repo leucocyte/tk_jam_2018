@@ -4,23 +4,8 @@
 package game
 {
 
-import feathers.controls.Button;
-import feathers.controls.Label;
-import feathers.controls.text.TextFieldTextRenderer;
-import feathers.core.ITextRenderer;
-
-import flash.filters.DropShadowFilter;
-
-import flash.text.TextFormat;
-
-import flashx.textLayout.formats.TextAlign;
-
-import game.init.ConnectingBox;
-
-import game.init.ConnectingLoginBox;
-
-
 import game.load.GameAssetsManager;
+import game.objects.HeroView;
 import game.ui.StartMenu;
 import game.utils.CursorManager;
 import game.utils.Settings;
@@ -29,8 +14,6 @@ import starling.display.DisplayObject;
 import starling.display.Image;
 import starling.display.Sprite;
 import starling.events.Event;
-
-
 
 public class Game extends Sprite
 {
@@ -78,9 +61,9 @@ public class Game extends Sprite
         CursorManager.init();
         Background.getInstance().init();
 //        aimerTest();
-        initMenu();
+//        initMenu();
+        startGame();
 
-        addEventListener(Event.ENTER_FRAME, onEnterFrame);
 
     }
 
@@ -94,13 +77,31 @@ public class Game extends Sprite
     }
 
     public function startGame():void {
-        removeChild(_startMenu);
+        if(_startMenu!=null)
+            removeChild(_startMenu);
         _trainScene = new TrainScene();
         addChild(_trainScene);
+
+        var h:HeroView = new HeroView();
+        h.y=Settings.GROUND_Y;
+        _trainScene.addChild(h);
+        GameController.getInstance().init(h);
+
+        addEventListener(Event.ENTER_FRAME, onEnterFrame);
     }
 
     private function joinClicked(event:Event):void {
         trace("JOIN!");
+
+    }
+
+
+    private function onEnterFrame(e:Event):void
+    {
+//        HeroController.instance.onEnterFrame();
+        GameController.getInstance().onEnterFrame();
+
+
     }
 
 
@@ -166,10 +167,7 @@ public class Game extends Sprite
     }
 
 
-    private function onEnterFrame(e:Event):void
-    {
 
-    }
 
 
 
