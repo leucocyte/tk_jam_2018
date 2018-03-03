@@ -78,7 +78,9 @@ public class HeroView extends Sprite {
 		_label.textRendererFactory = function ():ITextRenderer {
 			var textFormat:TextFormat = new TextFormat();
 //            textFormat.font = "Action Comics";
-			textFormat.font = Settings.FONT;
+//			textFormat.font = Settings.FONT;
+//			textFormat.font = "Onky";
+			textFormat.font = "Krona";
 			textFormat.size = 20;
 			textFormat.color = 0xFFFFFF;
 			textFormat.align = "center";
@@ -86,6 +88,7 @@ public class HeroView extends Sprite {
 			var textRenderer:TextFieldTextRenderer = new TextFieldTextRenderer();
 			textRenderer.textFormat = textFormat;
 			textRenderer.nativeFilters = [new DropShadowFilter()];
+			textRenderer.embedFonts = true;
 
 			return textRenderer;
 		};

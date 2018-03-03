@@ -39,6 +39,7 @@ public class Main extends Sprite {
 
 		instance = this;
 
+		new FontEmbeedMC();
 		//loadIntro();
 		if (Settings.ONLINE)
 			connect();

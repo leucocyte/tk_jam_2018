@@ -10,6 +10,13 @@ public class FontSettings {
             advancedAntiAliasing="true",
             embedAsCFF="false")]
     public static const font:Class;
+/*
+    [Embed(source="../../../embed/fonts/KronaOne-Regular.ttf",
+            fontName="Krona",
+            mimeType="application/x-font",
+            advancedAntiAliasing="true",
+            embedAsCFF="false")]
+    public static const font2:Class;*/
 
     public function FontSettings() {
     }
