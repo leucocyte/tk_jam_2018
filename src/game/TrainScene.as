@@ -2,16 +2,21 @@ package game {
 import com.eclecticdesignstudio.motion.Actuate;
 import com.eclecticdesignstudio.motion.easing.Sine;
 
-import game.load.GameAssetsManager;
-import game.scenery.ElementsSpawner;
-import game.scenery.SeamlessBackground;
-import game.scenery.elements.TractionSpawner;
-import game.scenery.elements.Tree1Spawner;
-import game.scenery.elements.Tree2Spawner;
-import game.scenery.elements.TreesFarSpawner;
-import game.utils.Settings;
+import flash.events.KeyboardEvent;
+import flash.ui.Keyboard;
 
-import starling.display.Canvas;
+import game.load.GameAssetsManager;
+import game.utils.Settings;
+import game.utils.Stage2DAbuser;
+import game.view.hero.HeroStateDisplay;
+import game.view.hero.HeroStatesCreator;
+import game.view.scenery.ElementsSpawner;
+import game.view.scenery.SeamlessBackground;
+import game.view.scenery.elements.TractionSpawner;
+import game.view.scenery.elements.Tree1Spawner;
+import game.view.scenery.elements.Tree2Spawner;
+import game.view.scenery.elements.TreesFarSpawner;
+
 import starling.display.Image;
 import starling.display.Sprite;
 
@@ -29,6 +34,9 @@ public class TrainScene extends Sprite {
 	private var _forestFarBg:SeamlessBackground;
 	private var _forest2Bg:SeamlessBackground;
 	private var _forest1Bg:SeamlessBackground;
+	private var _heroStates:HeroStatesCreator;
+	private var _allStates:Array;
+	private var _currentState:HeroStateDisplay;
 
 	public function TrainScene() {
 		_train = new Sprite();
@@ -77,6 +85,24 @@ public class TrainScene extends Sprite {
 		_traction = new TractionSpawner();
 		_traction.y = 1000;
 		addChild(_traction);
+
+		_heroStates = new HeroStatesCreator();
+		Stage2DAbuser.getStage().addEventListener(KeyboardEvent.KEY_DOWN, onStage_KeyDown);
+		_allStates = _heroStates.all.concat();
+	}
+
+	private function onStage_KeyDown(event:KeyboardEvent):void {
+		if(event.keyCode == Keyboard.H) {
+			if(_currentState) {
+				removeChild(_currentState);
+			}
+			if(!_allStates.length) {
+				_allStates = _heroStates.all.concat();
+			}
+			_currentState = _allStates.shift();
+			trace('state: ' + _currentState.stateName);
+			addChild(_currentState);
+		}
 	}
 
 	public function get heroes():Sprite {

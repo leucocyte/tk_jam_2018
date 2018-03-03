@@ -60,6 +60,7 @@ public class GameAssetsManager {
 				[
 
 					Settings.ASSETS_DIR + "main",
+					Settings.ASSETS_DIR + "body",
 				];
 
 		var normalAssets:Array =
