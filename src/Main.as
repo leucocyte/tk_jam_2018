@@ -15,6 +15,8 @@ import game.utils.Stage2DAbuser;
 import game.utils.WorldTime;
 
 import starling.core.Starling;
+import starling.utils.RectangleUtil;
+import starling.utils.ScaleMode;
 
 [SWF(width='1280', height='720', backgroundColor='#333333', frameRate='60')]
 public class Main extends Sprite {
@@ -32,15 +34,15 @@ public class Main extends Sprite {
 		Stage2DAbuser.init(stage);
 		WorldTime.getInstance();
 
-		_diffX = new DifficultyByMouseXCtrl();
+		//_diffX = new DifficultyByMouseXCtrl();
 
 		instance = this;
 
 		//loadIntro();
-		if (Settings.ONLINE)
-			connect();
-		else
-			initStarling();
+
+		//connect();
+
+		initStarling();
 	}
 
 	private function connect():void {
@@ -59,29 +61,27 @@ public class Main extends Sprite {
 		_starling.start();
 		_starling.showStats = true;
 
-		// set rectangle dimensions for viewPort:
-		var viewPortRectangle:Rectangle = new Rectangle();
-		viewPortRectangle.width = stage.stageWidth;
-		viewPortRectangle.height = stage.stageHeight;
-
-		// resize the viewport:
-		Starling.current.viewPort = viewPortRectangle;
-
-		_starling.stage.stageWidth = stage.stageWidth;
-		_starling.stage.stageHeight = stage.stageHeight;
-
+		onResize(null);
 		stage.addEventListener(Event.RESIZE, onResize);
 	}
 
 	public function onResize(e:Event):void {
-		var viewPortRectangle:Rectangle = new Rectangle();
-		viewPortRectangle.width = stage.stageWidth;
-		viewPortRectangle.height = stage.stageHeight;
+		var playerWidth:int = Starling.current.nativeStage.stageWidth;
+		var playerHeight:int = Starling.current.nativeStage.stageHeight;
 
-		Starling.current.viewPort = viewPortRectangle;
+		Starling.current.viewPort = RectangleUtil.fit(
+				new Rectangle(0, 0, Settings.SCENE_WIDTH, Settings.SCENE_HEIGHT),
+				new Rectangle(0, 0, playerWidth, playerHeight),
+				ScaleMode.NONE);
 
-		_starling.stage.stageWidth = stage.stageWidth;
-		_starling.stage.stageHeight = stage.stageHeight;
+		//var viewPortRectangle:Rectangle = new Rectangle();
+		//viewPortRectangle.width = stage.stageWidth;
+		//viewPortRectangle.height = stage.stageHeight;
+		//
+		//Starling.current.viewPort = viewPortRectangle;
+		//
+		//_starling.stage.stageWidth = stage.stageWidth;
+		//_starling.stage.stageHeight = stage.stageHeight;
 	}
 }
 }
