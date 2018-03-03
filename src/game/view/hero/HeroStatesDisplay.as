@@ -151,6 +151,8 @@ public class HeroStatesDisplay extends Sprite {
 			case HeroState.UPPERCUT:
 				newState = _uppercut;
 				break;
+			case HeroState.DROP:
+				break;
 			//case HeroState.STUN:
 			//		newState = _stun;
 			//	break;

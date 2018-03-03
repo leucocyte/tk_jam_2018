@@ -30,6 +30,8 @@ public class AttacksManager {
                 return new Kick(h);
             case AttackType.UPPERCUT:
                 return new Uppercut(h);
+            case AttackType.DROP:
+                return new Drop(h);
             default:
                 return null;
         }

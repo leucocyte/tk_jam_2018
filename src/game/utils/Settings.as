@@ -17,9 +17,11 @@ public class Settings {
     public static const JUMP_FORCE:Number = 40;
 
 
-    public static const HERO_HEIGHT:Number = 140;
+    public static const HERO_HEIGHT:Number = 180;
     public static const HERO_WIDTH:Number = 70;
     public static const HERO_HEIGHT_SQUAT:Number = 50;
+    public static const HERO_HEIGHT_HANG:Number = 5;
+    public static const HERO_WIDTH_HANG:Number = 120;
     public static const KICK_FORCE:int = 20;
     public static const UPPERCUT_FORCE:int = 20;
     public static var DEBUG_ATTACKS:Boolean = true;

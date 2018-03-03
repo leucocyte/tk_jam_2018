@@ -6,7 +6,7 @@ public class AttackType {
 
     public static const KICK:int=0;
     public static const UPPERCUT:int=1;
-    public static const DOWN:int=2;
+    public static const DROP:int=2;
     public static const PUNCH:int=3;
 
 }

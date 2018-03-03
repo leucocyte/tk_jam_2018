@@ -51,8 +51,8 @@ public class HeroView extends Sprite {
 
 		var sizeH:int = Settings.HERO_HEIGHT;
 		var sizeW:int = Settings.HERO_WIDTH;
-		_quad = new Quad(sizeW, sizeH, 0xaa4477);
-		_quad.pivotX = int(sizeW / 2);
+		_quad = new Quad(sizeW, sizeH, 0xff0000);
+		_quad.pivotX = int(_quad.width / 2);
 		_quad.pivotY = int(sizeH);
 		_quad.visible = true;
 		addChild(_quad);
@@ -94,7 +94,7 @@ public class HeroView extends Sprite {
 		_label.text = hero.name;
 		_label.y = -Settings.HERO_HEIGHT * 1.3;
 
-		stand();
+//		stand();
 	}
 
 	public function setDirection(_direction:int):void {
@@ -104,11 +104,25 @@ public class HeroView extends Sprite {
 			_quadHead.x = 10;
 	}
 
-	public function updateState(state:Number, dir:int):void {
+	public function updateState(state:Number, dir:int,width:int,height:int):void {
 		_display.setState(state, dir);
 		addChild(_display);
 		alignDisplay();
 		_display.scaleX = 1;
+
+
+		_quad.height = height;
+		_quad.width = width;
+
+		if (width==Settings.HERO_WIDTH_HANG)
+			_quad.x= 30;
+		else
+			_quad.x= 0;
+
+		//_quad.pivotX = width/2;
+//		trace(width+" / "+Settings.HERO_HEIGHT_HANG+" / "+_quad.x);
+
+//		trace(_quad.pivotX+" / "+_quad.width+" / "+int(_quad.width / 2));
 
 		switch(state) {
 			case HeroState.STAND:
@@ -124,6 +138,7 @@ public class HeroView extends Sprite {
 			case HeroState.SQUAT:
 				break;
 			case HeroState.KICK:
+			case HeroState.UPPERCUT:
 				if(dir == -1) {
 					flipLeft();
 				}
@@ -142,7 +157,7 @@ public class HeroView extends Sprite {
 	}
 
 	private function alignDisplay():void {
-		_display.x = _quad.x + _quad.width / 2 - 80;
+		_display.x = Settings.HERO_WIDTH/2 - 80;
 		_display.y = -_display.height;
 	}
 
@@ -159,20 +174,20 @@ public class HeroView extends Sprite {
 		_quadHead.y = -Settings.HERO_HEIGHT_SQUAT * 0.6;
 		_quad.height = Settings.HERO_HEIGHT_SQUAT;
 	}
-
+/*
 	public function stand():void {
 		_quad.y = 0;
 		_quad.color = 0xaa4477;
 		_quadHead.y = -Settings.HERO_HEIGHT * 0.6;
 		_quad.height = Settings.HERO_HEIGHT;
-	}
-
+	}*/
+/*
 	private function hang():void {
 		trace("HANG!!!!");
 		_quad.color = 0x00ff55;
 		_quad.y = Settings.HERO_HEIGHT;
 		_quadHead.y = 0;
-	}
+	}*/
 
 
 	public function getRectangle():Rectangle {

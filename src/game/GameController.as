@@ -36,6 +36,7 @@ public class GameController
     private var _isUp:Boolean;
     private var _isSpace:Boolean;
     private var _isEnter:Boolean;
+    private var _isF:Boolean;
 
     private var _forceX:Number = 0;
     private var _forceY:Number = 0;
@@ -45,17 +46,23 @@ public class GameController
 
     private var _isJumping:Boolean = false;
     private var _isKicking:Boolean = false;
-    private var _isUppercuting:Boolean=false;;
+    private var _isUppercuting:Boolean=false;
     private var _isDucking:Boolean = false;
     private var _isHanging:Boolean = false;
     private var _isStunned:Boolean = false;
     private var _isStopped:Boolean = true;
+    private var _isFalling:Boolean=false;
+    private var _isDying:Boolean=false;
+    private var _isDropping:Boolean=false;
 
     private var _moveDir:int;
 //    private var _heroView:HeroView;
     private var _hero:Hero;
     private var _downTime:Number=0;
     private var _stunnedVector:Vector.<Stun>;
+
+
+
 
 
 
@@ -120,6 +127,9 @@ public class GameController
             case Keyboard.ENTER:
                 _isEnter=e.type == KeyboardEvent.KEY_DOWN;
                 break;
+            case Keyboard.F:
+                _isF=e.type == KeyboardEvent.KEY_DOWN;
+                break;
 
             case Keyboard.P:
 //                Game.instance.trainScene.pump.startMovingNext(1);
@@ -148,6 +158,9 @@ public class GameController
         }else
         if (_isEnter){
             uppercut();
+        }else
+        if (_isF){
+            drop();
         }
 
 //        _moveDir = Direction.STOP;
@@ -219,6 +232,8 @@ public class GameController
             return true;
         if (_isUppercuting)
             return true;
+        if (_isDropping)
+            return true;
 
         return false;
     }
@@ -239,7 +254,16 @@ public class GameController
             Actuate.tween(this, 0.5, {}, false).onComplete(kickFinished);
             ObjectController.instance().onAttack(_hero,AttackType.KICK);
         }
+    }
 
+    private function drop():void {
+        _isDropping = true;
+        Actuate.tween(this, 0.5, {}, false).onComplete(dropFinished);
+        ObjectController.instance().onAttack(_hero,AttackType.DROP);
+    }
+
+    private function dropFinished():void {
+        _isUppercuting = false;
     }
 
     private function kickFinished():void {
@@ -259,9 +283,19 @@ public class GameController
         var sy:Number = _forceY + Settings.GRAVITY;
 
         var state:Number=HeroState.STAND;
+        if (_isFalling){
+            sx = _attackForceX;
+            sy = _attackForceY + Settings.GRAVITY;
+            state = HeroState.STUN_JUMP;
+        }
         if (_isStunned){
             sx = _attackForceX;
             sy = _attackForceY + Settings.GRAVITY;
+//            state = HeroState.STUN;
+            if(_hero.y == Settings.GROUND_Y)
+                state = HeroState.STUN;
+            else
+                state = HeroState.STUN_JUMP;
         }else
         if (_isHanging){
             state = HeroState.HANG;
@@ -289,7 +323,7 @@ public class GameController
                 }
             } else {
                 //NAZ ZIEMI
-                if (isStunned()) {
+                if (_isStunned) {
                     state = HeroState.STUN;
                 } else {
                     if (isAttacking()) {
@@ -297,6 +331,8 @@ public class GameController
                             state = HeroState.KICK;
                         if (_isUppercuting)
                             state = HeroState.UPPERCUT;
+                        if (_isDropping)
+                            state = HeroState.DROP;
                     } else if (_isDucking) {
                         state = HeroState.SQUAT;
                     } else {
@@ -339,12 +375,13 @@ public class GameController
 
         _hero.direction = _moveDir;
 
-        if (_hero.y >=Settings.GROUND_Y)
-        {
-            if (_isJumping)
-                jumpFinished();
-            _hero.y = Settings.GROUND_Y;
-        }
+        if (!_isFalling)
+            if (_hero.y >=Settings.GROUND_Y)
+            {
+                if (_isJumping)
+                    jumpFinished();
+                _hero.y = Settings.GROUND_Y;
+            }
         _hero.state = state;
         _hero.updateView();
 
@@ -396,6 +433,12 @@ public class GameController
                 _attackForceX =+ Settings.UPPERCUT_FORCE*0.3*direction;
                 Actuate.tween(this, 0.5, {attackForceY: 0}, false).ease(Linear.easeNone);
                 Actuate.tween(this, 0.5, {attackForceX: 0}, false).ease(Linear.easeNone).onComplete(stunnedFinished,stun);
+                break;
+            case AttackType.DROP:
+                _attackForceY =+ Settings.UPPERCUT_FORCE;
+                _attackForceX =-Settings.WIND_SPEED;
+                _isFalling = true;
+                Actuate.tween(this, 0.5, {attackForceY: 0}, false).ease(Linear.easeNone);
                 break;
         }
     }

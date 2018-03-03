@@ -69,8 +69,25 @@ public class Hero extends CollisionObject{
     }
 
     public function updateView():void {
+
+        switch(_state){
+            case HeroState.SQUAT:
+                _height = Settings.HERO_HEIGHT_SQUAT;
+                _width = Settings.HERO_WIDTH;
+                break;
+            case HeroState.HANG:
+                _height = Settings.HERO_HEIGHT_HANG;
+                _width =  Settings.HERO_WIDTH_HANG;
+                break;
+            default :
+                _height = Settings.HERO_HEIGHT;
+                _width = Settings.HERO_WIDTH;
+                break;
+
+        }
+
         _view.setDirection(_direction);
-        _view.updateState(_state,_direction);
+        _view.updateState(_state,_direction,_width,_height);
         _view.x = _x;
         _view.y = _y;
     }
