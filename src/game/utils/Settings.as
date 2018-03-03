@@ -7,10 +7,10 @@ public class Settings {
     public static var ASSETS_DIR:String = "assets/";
     public static var FONT:String = "BadaBoom BB";
     public static var GROUND_Y:Number = 0;
-    public static var SCENE_WIDTH:Number = 1280;
+    public static var SCENE_WIDTH:Number = 1920;
     public static var SCENE_HEIGHT:Number = 720;
     public static var WIND_SPEED:Number = -2;
-    public static var TRAIN_SPEED:Number = 1000;
+    public static var TRAIN_SPEED:Number = 700;
     public static var DIFFICULTY:Number = 1;
     
     public static const GRAVITY:Number = 6;

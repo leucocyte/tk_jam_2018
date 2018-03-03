@@ -5,7 +5,7 @@ package game.objects {
 import starling.display.Sprite;
 
 public class ObstacleView extends Sprite{
-    public function ObstacleView(obstacle:Obstacle) {
+    public function ObstacleView(obstacle:Pump) {
     }
 }
 }

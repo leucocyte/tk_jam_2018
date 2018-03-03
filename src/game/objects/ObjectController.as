@@ -11,13 +11,14 @@ import game.server.ActionServer;
 public class ObjectController {
 
     private var _heroes:Vector.<Hero>;
-    private var _obstacles:Vector.<Obstacle>;
+    private var _pumps:Vector.<Pump>;
     private static var _instance:ObjectController;
     private var _myHeroId:int=-1;
 
+
     public function ObjectController() {
         _heroes = new Vector.<Hero>();
-        _obstacles = new Vector.<Obstacle>();
+        _pumps = new Vector.<Pump>();
     }
 
     public static function instance():ObjectController {
@@ -38,7 +39,7 @@ public class ObjectController {
 
         arr = obstacles.split("[--]");
         for (var i:int = 0; i < arr.length-1; i++) {
-            onNewObstacle(arr[i]);
+            onNewPump(arr[i]);
         }
 
         findHero(_myHeroId);
@@ -69,10 +70,7 @@ public class ObjectController {
         }
     }
 
-    public function onNewObstacle(msg:String):void {
-        var ob:Obstacle = new Obstacle(msg);
-        _obstacles.push(ob);
-    }
+
 
     public function onFramePack(heroes:String):void {
         var arr:Array = heroes.split("[--]");
@@ -110,6 +108,34 @@ public class ObjectController {
         }
     }
 
+
+    public function onEnterFrame():void {
+        for (var i:int = 0; i < _pumps.length; i++) {
+            var pump:Pump = _pumps[i];
+            if (pump.hit(GameController.getInstance().hero))
+            {
+                trace("KILLED BY PUMP!");
+                ActionServer.killedPump();
+            }
+        }
+    }
+
+    public function onNewPump(msg:String):void {
+        var ob:Pump = new Pump(msg);
+        ob.completedSignal.add(onPumpRemoved);
+        _pumps.push(ob);
+    }
+
+    public function onNewPumpKey():void {
+        trace("new pump!");
+        var p:Pump = new Pump("1,2000,0,1");
+        p.completedSignal.add(onPumpRemoved);
+        _pumps.push(p);
+    }
+
+    private function onPumpRemoved(pump:Pump):void {
+        _pumps.splice(_pumps.indexOf(pump),1);
+    }
 
 
 

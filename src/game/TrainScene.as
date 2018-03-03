@@ -36,6 +36,7 @@ public class TrainScene extends Sprite {
 	private var _forestFarBg:SeamlessBackground;
 	private var _forest2Bg:SeamlessBackground;
 	private var _forest1Bg:SeamlessBackground;
+	private var _pump:Sprite;
 	private var _heroStates:HeroStatesDisplay;
 	private var _allStates:Array;
 	private var _currentState:HeroStateDisplay;
@@ -70,7 +71,11 @@ public class TrainScene extends Sprite {
 		_forest1Bg.y = groundY + 100;
 		addChild(_forest1Bg);
 
+
 		addChild(_scenery);
+
+		_pump = new Sprite();
+		addChild(_pump);
 
 		_trainImage = GameAssetsManager.getImageFromMainAtlas('train');
 		_trainImage.x = 150;
@@ -122,6 +127,10 @@ public class TrainScene extends Sprite {
 
 	public function get heroes():Sprite {
 		return _heroes;
+	}
+
+	public function get pump():Sprite {
+		return _pump;
 	}
 }
 }

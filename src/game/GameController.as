@@ -18,6 +18,7 @@ import game.objects.HeroState;
 import game.objects.HeroView;
 import game.objects.KickAction;
 import game.objects.ObjectController;
+import game.objects.ObjectController;
 import game.server.ActionServer;
 import game.utils.Settings;
 import game.utils.TimeUtils;
@@ -118,6 +119,22 @@ public class GameController
                 break;
             case Keyboard.ENTER:
                 _isEnter=e.type == KeyboardEvent.KEY_DOWN;
+                break;
+
+            case Keyboard.P:
+//                Game.instance.trainScene.pump.startMovingNext(1);
+                if (e.type == KeyboardEvent.KEY_DOWN)
+                    ObjectController.instance().onNewPumpKey();;
+                break;
+            case Keyboard.L:
+//                Game.instance.trainScene.pump.startMovingNext(1);
+                if (e.type == KeyboardEvent.KEY_DOWN)
+                    Settings.DIFFICULTY+=0.1;
+                break;
+            case Keyboard.K:
+//                Game.instance.trainScene.pump.startMovingNext(1);
+                if (e.type == KeyboardEvent.KEY_DOWN)
+                    Settings.DIFFICULTY-=0.1;
                 break;
 
         }
@@ -493,6 +510,10 @@ public class GameController
 
     public function set attackForceX(value:Number):void {
         _attackForceX = value;
+    }
+
+    public function get hero():Hero {
+        return _hero;
     }
 }
 }

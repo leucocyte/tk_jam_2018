@@ -28,7 +28,7 @@ public class ActionServer {
                 ObjectController.instance().onHeroRemoved(tab[2]);
                 break;
             case 4:
-                ObjectController.instance().onNewObstacle(tab[2]);
+                ObjectController.instance().onNewPump(tab[2]);
                 break;
             case 5:
                 GameController.getInstance().onHit(tab[2],tab[3]);
@@ -46,8 +46,14 @@ public class ActionServer {
         send("1;2;"+attackerId+";"+victimId+";"+attackType+";"+direction);
     }
 
+    public static function killedPump():void {
+        send("1;3;")
+    }
+
     private static function send(msg:String):void{
         GameServer.getInstance().send(msg);
     }
+
+
 }
 }

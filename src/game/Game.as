@@ -114,7 +114,7 @@ public class Game extends Sprite
     {
 //        HeroController.instance.onEnterFrame();
         GameController.getInstance().onEnterFrame();
-
+        ObjectController.instance().onEnterFrame();
 
     }
 
