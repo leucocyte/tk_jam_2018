@@ -19,6 +19,7 @@ import game.utils.Settings;
 import game.view.hero.HeroStatesDisplay;
 
 import starling.core.Starling;
+import starling.display.DisplayObject;
 import starling.display.MovieClip;
 import starling.display.Quad;
 import starling.display.Sprite;
@@ -105,10 +106,15 @@ public class HeroView extends Sprite {
 
 	public function updateState(state:Number, dir:int):void {
 		_display.setState(state, dir);
+		addChild(_display);
 		alignDisplay();
+		_display.scaleX = 1;
 
 		switch(state) {
 			case HeroState.STAND:
+				if(dir == -1) {
+					flipLeft();
+				}
 				break;
 			case HeroState.WALK:
 				break;
@@ -118,12 +124,21 @@ public class HeroView extends Sprite {
 			case HeroState.SQUAT:
 				break;
 			case HeroState.KICK:
+				if(dir == -1) {
+					flipLeft();
+				}
 				break;
 			case HeroState.JUMP:
 				break;
 			case HeroState.STUN:
 				break;
 		}
+	}
+
+	private function flipLeft():void {
+		var flip:DisplayObject = flipHorizontally(_display);
+		flip.x -= 60;
+		addChild(flip);
 	}
 
 	private function alignDisplay():void {
@@ -162,6 +177,14 @@ public class HeroView extends Sprite {
 
 	public function getRectangle():Rectangle {
 		return _quad.getBounds(Game.instance.trainScene.heroes);
+	}
+
+	public static function flipHorizontally(display:DisplayObject):DisplayObject {
+		display.x = display.width;
+		display.scaleX = -display.scaleX;
+		var box:Sprite = new Sprite();
+		box.addChild(display);
+		return box;
 	}
 
 
