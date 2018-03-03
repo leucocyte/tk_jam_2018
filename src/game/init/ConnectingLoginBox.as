@@ -54,7 +54,7 @@ public class ConnectingLoginBox extends ConnectingBox{
         }
         else
         {
-            login.text="PanMamut";
+            login.text=TestUtils.getRandomName();
             server.selectedIndex=1;
         }
 

@@ -73,7 +73,7 @@ public class Main extends Sprite {
 		Starling.current.viewPort = RectangleUtil.fit(
 				new Rectangle(0, 0, Settings.SCENE_WIDTH, Settings.SCENE_HEIGHT),
 				new Rectangle(0, 0, playerWidth, playerHeight),
-				ScaleMode.NONE);
+				ScaleMode.SHOW_ALL);
 
 		//var viewPortRectangle:Rectangle = new Rectangle();
 		//viewPortRectangle.width = stage.stageWidth;
