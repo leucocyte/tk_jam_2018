@@ -91,6 +91,7 @@ public class TrainScene extends Sprite {
 		_pump = new Sprite();
 		addChild(_pump);
 
+		trainWindows=GameAssetsManager.getImageFromMainAtlas('train_middle');
 		_trainImage = GameAssetsManager.getImageFromMainAtlas('train_middle');
 		_trainImage.x = 0;
 		_train.addChild(_trainImage);
