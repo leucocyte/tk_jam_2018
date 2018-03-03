@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
-<!-- $TexturePacker:SmartUpdate:1961f92110a0a2316922cdf6f7aa6e46:183b2a516ae50017de8549020cefad97:f7afabebcd35587b8270ff90b311ebd0$ -->
-<TextureAtlas imagePath="main.png" width="1782" height="1502">
-    <SubTexture name="forest_ground_fade" x="963" y="1085" width="551" height="409"/>
-    <SubTexture name="mountains1" x="1" y="1" rotated="true" width="960" height="1500"/>
-    <SubTexture name="traction1" x="1604" y="967" width="172" height="500" frameX="0" frameY="0" frameWidth="184" frameHeight="500"/>
-    <SubTexture name="traction_blur" x="1604" y="465" width="177" height="500" frameX="0" frameY="0" frameWidth="184" frameHeight="500"/>
-    <SubTexture name="train" x="1620" y="1" rotated="true" width="99" height="331"/>
-    <SubTexture name="tree1" x="963" y="465" rotated="true" width="639" height="618" frameX="-13" frameY="-1" frameWidth="640" frameHeight="640"/>
-    <SubTexture name="tree2" x="963" y="1" rotated="true" width="655" height="462" frameX="-46" frameY="-33" frameWidth="554" frameHeight="720"/>
+<!-- $TexturePacker:SmartUpdate:5a9844e5fc22bda5f2a51cc15060abda:0da4850535e039e23cf311e9b23ad05b:f7afabebcd35587b8270ff90b311ebd0$ -->
+<TextureAtlas imagePath="main.png" width="3494" height="2380">
+    <SubTexture name="arrow" x="3209" y="1022" width="201" height="201"/>
+    <SubTexture name="back1" x="1" y="1" width="2700" height="543"/>
+    <SubTexture name="back2" x="1" y="546" width="2490" height="257"/>
+    <SubTexture name="back3" x="1" y="1272" width="2151" height="178"/>
+    <SubTexture name="back4" x="2485" y="1003" width="169" height="1080"/>
+    <SubTexture name="bush1" x="2656" y="1433" rotated="true" width="249" height="650"/>
+    <SubTexture name="bush2" x="2493" y="546" rotated="true" width="208" height="455"/>
+    <SubTexture name="forest_ground_fade" x="2656" y="1022" width="551" height="409"/>
+    <SubTexture name="konduktor" x="3209" y="1225" width="154" height="184"/>
+    <SubTexture name="konduktor_scream" x="3071" y="1897" rotated="true" width="422" height="438"/>
+    <SubTexture name="konduktor_windows" x="2193" y="805" width="85" height="163"/>
+    <SubTexture name="pump" x="2047" y="1452" width="270" height="883"/>
+    <SubTexture name="pump_alarm1" x="2907" y="1897" rotated="true" width="162" height="186"/>
+    <SubTexture name="pump_alarm2" x="1007" y="2235" rotated="true" width="279" height="141"/>
+    <SubTexture name="traction_blur" x="2485" y="2085" rotated="true" width="500" height="177" frameX="0" frameY="0" frameWidth="184" frameHeight="500"/>
+    <SubTexture name="train" x="3341" y="1" rotated="true" width="99" height="331"/>
+    <SubTexture name="train_back" x="2907" y="1433" width="283" height="462"/>
+    <SubTexture name="train_front" x="1885" y="805" width="306" height="465"/>
+    <SubTexture name="train_middle" x="1" y="805" width="1882" height="465"/>
+    <SubTexture name="train_middle_windows" x="2319" y="805" rotated="true" width="164" height="1574" frameX="-190" frameY="-98" frameWidth="1882" frameHeight="465"/>
+    <SubTexture name="tree1" x="1" y="1452" rotated="true" width="1004" height="925"/>
+    <SubTexture name="tree2" x="2703" y="1" width="636" height="1019"/>
+    <SubTexture name="tree3" x="1007" y="1452" rotated="true" width="1038" height="781"/>
 </TextureAtlas>

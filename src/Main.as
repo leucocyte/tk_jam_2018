@@ -67,22 +67,22 @@ public class Main extends Sprite {
 	}
 
 	public function onResize(e:Event):void {
-		var playerWidth:int = Starling.current.nativeStage.stageWidth;
-		var playerHeight:int = Starling.current.nativeStage.stageHeight;
-
-		Starling.current.viewPort = RectangleUtil.fit(
-				new Rectangle(0, 0, Settings.SCENE_WIDTH, Settings.SCENE_HEIGHT),
-				new Rectangle(0, 0, playerWidth, playerHeight),
-				ScaleMode.SHOW_ALL);
-
-		//var viewPortRectangle:Rectangle = new Rectangle();
-		//viewPortRectangle.width = stage.stageWidth;
-		//viewPortRectangle.height = stage.stageHeight;
+		//var playerWidth:int = Starling.current.nativeStage.stageWidth;
+		//var playerHeight:int = Starling.current.nativeStage.stageHeight;
 		//
-		//Starling.current.viewPort = viewPortRectangle;
-		//
-		//_starling.stage.stageWidth = stage.stageWidth;
-		//_starling.stage.stageHeight = stage.stageHeight;
+		//Starling.current.viewPort = RectangleUtil.fit(
+		//		new Rectangle(0, 0, Settings.SCENE_WIDTH, Settings.SCENE_HEIGHT),
+		//		new Rectangle(0, 0, playerWidth, playerHeight),
+		//		ScaleMode.SHOW_ALL, true);
+
+		var viewPortRectangle:Rectangle = new Rectangle();
+		viewPortRectangle.width = stage.stageWidth;
+		viewPortRectangle.height = stage.stageHeight;
+
+		Starling.current.viewPort = viewPortRectangle;
+
+		_starling.stage.stageWidth = stage.stageWidth;
+		_starling.stage.stageHeight = stage.stageHeight;
 	}
 }
 }

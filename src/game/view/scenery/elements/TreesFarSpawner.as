@@ -10,7 +10,7 @@ import starling.display.Image;
 public class TreesFarSpawner extends ElementsSpawner {
 
 	public function TreesFarSpawner() {
-		super(10, 80, Settings.TRAIN_SPEED * 0.3);
+		super(50, 180, Settings.TRAIN_SPEED * 0.3);
 	}
 
 	override protected function createNewElement():DisplayObject {
@@ -25,7 +25,7 @@ public class TreesFarSpawner extends ElementsSpawner {
 		element.scaleX = element.scaleY;
 		element.y = -element.height - extra * 1.3;
 		element.y -= Math.random() * 40;
-		element.y += 40;
+		element.y += 1;
 		sortChildren(sortChildrenFunc);
 		return element;
 	}
@@ -40,6 +40,10 @@ public class TreesFarSpawner extends ElementsSpawner {
 	override protected function getSpeed(element:DisplayObject):Number {
 		var extraPerc:Number = (400 - element.height) / 200;
 		return speed - speed * (extraPerc * 0.4);
+	}
+
+	override protected function getDelay(delay:Number):Number {
+		return super.getDelay(delay) / Settings.TREES_DENSITY;
 	}
 }
 }

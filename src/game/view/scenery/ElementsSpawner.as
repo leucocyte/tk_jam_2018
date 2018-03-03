@@ -6,6 +6,7 @@ import flash.utils.Timer;
 
 import game.load.GameAssetsManager;
 import game.utils.Settings;
+import game.utils.Settings;
 
 import starling.display.DisplayObject;
 import starling.display.Image;
@@ -46,9 +47,13 @@ public class ElementsSpawner extends Sprite {
 		if(delay > 10000) {
 			delay = 10000;
 		}
-		_newElementTimer.delay = delay;
+		_newElementTimer.delay = getDelay(delay);
 		_newElementTimer.reset();
 		_newElementTimer.start();
+	}
+
+	protected function getDelay(delay:Number):Number {
+		return delay;
 	}
 
 	private function onNewTreeTimer_Complete(event:TimerEvent):void {

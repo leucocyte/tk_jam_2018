@@ -17,7 +17,7 @@ public class SeamlessBackground extends Sprite {
 	private var _imagePool:Vector.<Image> = new <Image>[];
 	private var _countNew:int;
 
-	public function SeamlessBackground(speed:Number, textureName:String, height:Number) {
+	public function SeamlessBackground(speed:Number, textureName:String, height:Number = -1) {
 		_textureName = textureName;
 		_speed = speed;
 		_height = height;
@@ -53,8 +53,10 @@ public class SeamlessBackground extends Sprite {
 		}
 		_countNew++;
 		var img:Image = GameAssetsManager.getImageFromMainAtlas(_textureName);
-		img.height = _height;
-		img.scaleX = img.scaleY;
+		if(_height > 0) {
+			img.height = _height;
+			img.scaleX = img.scaleY;
+		}
 		return img;
 	}
 

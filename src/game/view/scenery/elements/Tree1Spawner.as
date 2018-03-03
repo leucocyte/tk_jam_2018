@@ -15,7 +15,7 @@ public class Tree1Spawner extends ElementsSpawner {
 
 	override protected function createNewElement():DisplayObject {
 		var element:Image = GameAssetsManager.getImageFromMainAtlas('tree1');
-		element.height = 400 + Math.random() * 100;
+		element.height = 700 + Math.random() * 100;
 		element.scaleX = element.scaleY;
 		return element;
 	}
@@ -24,6 +24,10 @@ public class Tree1Spawner extends ElementsSpawner {
 		var element:DisplayObject = super.getElement();
 		element.y = -element.height;
 		return element;
+	}
+
+	override protected function getDelay(delay:Number):Number {
+		return super.getDelay(delay) / Settings.TREES_DENSITY;
 	}
 }
 }

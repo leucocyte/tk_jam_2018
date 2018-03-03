@@ -14,14 +14,7 @@ public class TractionSpawner extends ElementsSpawner {
 	}
 
 	override protected function createNewElement():DisplayObject {
-		var element:Image = GameAssetsManager.getImageFromMainAtlas('traction1');
-		element.height = 800;
-		element.scaleX = element.scaleY;
-		return element;
-	}
-
-	override protected function getElement():DisplayObject {
-		var element:DisplayObject = super.getElement();
+		var element:Image = GameAssetsManager.getImageFromMainAtlas('traction_blur');
 		element.y = -element.height;
 		return element;
 	}

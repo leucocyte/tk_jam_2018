@@ -12,7 +12,8 @@ public class Settings {
     public static var WIND_SPEED:Number = -2;
     public static var TRAIN_SPEED:Number = 700;
     public static var DIFFICULTY:Number = 1;
-    
+    public static var TREES_DENSITY:Number = 0.03;
+
     public static const GRAVITY:Number = 6;
     public static const JUMP_FORCE:Number = 40;
 

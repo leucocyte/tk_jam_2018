@@ -124,14 +124,14 @@ public class HeroStatesDisplay extends Sprite {
 		_all = [_squat, _hangHit, _stand, _jump, _jumpKick, _kick, _standHit, _upHit, _uppercut, _walkRight, _walkLeft, _squatPunch, _hang];
 	}
 
-	public function setState(heroState:uint,direction:int=-1):void {
+	public function setState(heroState:uint, direction:int = -1):void {
 		var newState:HeroStateDisplay;
 		switch(heroState) {
 			case HeroState.STAND:
 				newState = _stand;
 				break;
 			case HeroState.WALK:
-				if (direction==Direction.LEFT)
+				if(direction == Direction.LEFT)
 					newState = _walkLeft;
 				else
 					newState = _walkRight;
@@ -155,7 +155,7 @@ public class HeroStatesDisplay extends Sprite {
 				newState = _squatPunch;
 				break;
 			case HeroState.STUN:
-//				newState = _stun;
+				newState = _standHit;
 				break;
 			case HeroState.STUN_JUMP:
 			//		newState = _stun_jump;
@@ -166,11 +166,13 @@ public class HeroStatesDisplay extends Sprite {
 			//default :
 			//	throw new ArgumentError("Unsupported hero state:" + heroState);
 		}
-		if(_currentState) {
-			removeChild(_currentState);
+		if(newState) {
+			if(_currentState) {
+				removeChild(_currentState);
+			}
+			_currentState = newState;
+			addChild(_currentState);
 		}
-		_currentState = newState;
-		addChild(_currentState);
 	}
 
 	private function createState(stateName:String, leg:Array, torso:Array, hand:Array, headType:uint):HeroStateDisplay {

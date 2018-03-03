@@ -25,5 +25,9 @@ public class Tree2Spawner extends ElementsSpawner {
 		element.y = -element.height;
 		return element;
 	}
+
+	override protected function getDelay(delay:Number):Number {
+		return super.getDelay(delay) / Settings.TREES_DENSITY;
+	}
 }
 }
