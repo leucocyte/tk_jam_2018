@@ -93,37 +93,37 @@ public class TrainScene extends Sprite {
 		_traction.y = 1000;
 		addChild(_traction);
 
-		_heroStates = new HeroStatesDisplay();
-		addChild(_heroStates);
-		Stage2DAbuser.getStage().addEventListener(KeyboardEvent.KEY_DOWN, onStage_KeyDown);
-		_allStates = _heroStates.all.concat();
+		//_heroStates = new HeroStatesDisplay();
+		//addChild(_heroStates);
+		//Stage2DAbuser.getStage().addEventListener(KeyboardEvent.KEY_DOWN, onStage_KeyDown);
+		//_allStates = _heroStates.all.concat();
 	}
 
-	private function onStage_KeyDown(event:KeyboardEvent):void {
-		if(event.keyCode == Keyboard.H) {
-			if(_currentState) {
-				removeChild(_currentState);
-			}
-			if(!_allStates.length) {
-				_allStates = _heroStates.all.concat();
-			}
-			_currentState = _allStates.shift();
-			trace('state: ' + _currentState.stateName);
-			addChild(_currentState);
-		}
-		if(event.keyCode == Keyboard.S) {
-			_heroStates.setState(ArrayUtils.getRandom([
-				HeroState.STAND,
-				HeroState.WALK,
-				HeroState.SQUAT,
-				HeroState.KICK,
-				HeroState.HANG,
-				HeroState.JUMP,
-				HeroState.UPPERCUT,
-			]));
-			trace('state: ' + _heroStates.currentState.stateName);
-		}
-	}
+	//private function onStage_KeyDown(event:KeyboardEvent):void {
+	//	if(event.keyCode == Keyboard.H) {
+	//		if(_currentState) {
+	//			removeChild(_currentState);
+	//		}
+	//		if(!_allStates.length) {
+	//			_allStates = _heroStates.all.concat();
+	//		}
+	//		_currentState = _allStates.shift();
+	//		trace('state: ' + _currentState.stateName);
+	//		addChild(_currentState);
+	//	}
+	//	if(event.keyCode == Keyboard.S) {
+	//		_heroStates.setState(ArrayUtils.getRandom([
+	//			HeroState.STAND,
+	//			HeroState.WALK,
+	//			HeroState.SQUAT,
+	//			HeroState.KICK,
+	//			HeroState.HANG,
+	//			HeroState.JUMP,
+	//			HeroState.UPPERCUT,
+	//		]));
+	//		trace('state: ' + _heroStates.currentState.stateName);
+	//	}
+	//}
 
 	public function get heroes():Sprite {
 		return _heroes;
