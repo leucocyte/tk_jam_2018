@@ -24,10 +24,12 @@ public class HeroStatesDisplay extends Sprite {
 	private var _currentState:HeroStateDisplay;
 	private var _headID:uint;
 	private var _hue:Number;
+	private var _legs:Number;
 
-	public function HeroStatesDisplay(headID:uint, hue:Number) {
+	public function HeroStatesDisplay(headID:uint, hue:Number, legs:Number) {
 		_headID = headID;
 		_hue = hue;
+		_legs = legs;
 		_squat = createState(
 				'crouch',
 				['crouch_leg'],
