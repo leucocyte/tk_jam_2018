@@ -58,8 +58,9 @@ public class HeroView extends Sprite{
 		addChild(_quad);
 
 
-		_display = new HeroStatesDisplay();
+		_display = new HeroStatesDisplay(hero.head,hero.body/100,hero.legs);
 		_display.setState(HeroState.STAND);
+
 		addChild(_display);
 
 

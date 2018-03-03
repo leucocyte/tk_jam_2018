@@ -114,5 +114,16 @@ public class Hero extends CollisionObject{
     }
 
 
+    public function get head():int {
+        return _head;
+    }
+
+    public function get body():int {
+        return _body;
+    }
+
+    public function get legs():int {
+        return _legs;
+    }
 }
 }
