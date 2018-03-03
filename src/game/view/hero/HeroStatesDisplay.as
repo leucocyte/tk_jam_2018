@@ -160,6 +160,9 @@ public class HeroStatesDisplay extends Sprite {
 			case HeroState.STUN_JUMP:
 				newState = _upHit;
 				break;
+			case HeroState.KILLED:
+				newState = _upHit;
+				break;
 			//case HeroState.STUN_FALLING:
 			//		newState = _stun_falling;
 			//	break;

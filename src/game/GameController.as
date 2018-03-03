@@ -54,12 +54,14 @@ public class GameController
     private var _isFalling:Boolean=false;
     private var _isDying:Boolean=false;
     private var _isDropping:Boolean=false;
+    private var _isKilled:Boolean;
 
     private var _moveDir:int;
 //    private var _heroView:HeroView;
     private var _hero:Hero;
     private var _downTime:Number=0;
     private var _stunnedVector:Vector.<Stun>;
+
 
 
 
@@ -259,6 +261,9 @@ public class GameController
         var sy:Number = _forceY + Settings.GRAVITY;
 
         var state:Number=HeroState.STAND;
+        if (_isKilled){
+            state=HeroState.KILLED;
+        }else
         if (_isFalling){
             sx = _attackForceX;
             sy = _attackForceY + Settings.GRAVITY;
@@ -334,7 +339,7 @@ public class GameController
 
         _hero.direction = _moveDir;
 
-        if (!_isFalling) {
+        if (!_isFalling && !_isKilled) {
             if (_hero.y >= Settings.GROUND_Y) {
                 if (_isJumping)
                     jumpFinished();
@@ -391,28 +396,26 @@ public class GameController
             case AttackType.KICK:
                 _stunnedVector.push(stun);
                 _attackForceX =+ Settings.KICK_FORCE*direction;
-                Actuate.tween(this, 0.5, {attackForceX: 0}, false).ease(Linear.easeNone).onComplete(stunnedFinished,stun);
-
+                Actuate.tween(this, 0.5, {attackForceX: 0}, false).ease(Linear.easeNone);
+                Actuate.tween(this, 1, {}, false).ease(Linear.easeNone).onComplete(stunnedFinished,stun);
                 break;
             case AttackType.UPPERCUT:
                 _attackForceY =- Settings.UPPERCUT_FORCE_Y;
                 _attackForceX =+ Settings.UPPERCUT_FORCE_X*direction;
                 Actuate.tween(this, 0.5, {attackForceY: 0}, false).ease(Linear.easeNone);
-                Actuate.tween(this, 0.5, {attackForceX: 0}, false).ease(Linear.easeNone).onComplete(stunnedFinished,stun);
+                Actuate.tween(this, 0.5, {attackForceX: 0}, false).ease(Linear.easeNone);
+                Actuate.tween(this, 1, {}, false).ease(Linear.easeNone).onComplete(stunnedFinished,stun);
                 break;
             case AttackType.DROP:
                 _attackForceY =+ Settings.DROP_FORCE_Y;
 //                _attackForceX =-Settings.WIND_SPEED;
                 _isFalling = true;
-                Actuate.tween(this, 0.5, {attackForceY: 0}, false).ease(Linear.easeNone).onComplete(killed);
+                Actuate.tween(this, 0.5, {attackForceY: 0}, false).ease(Linear.easeNone).onComplete(killedByDrop);
                 break;
         }
     }
 
-    private function killed():void {
 
-
-    }
 
     private function stunnedFinished(stun:Stun):void {
         _stunnedVector.splice(_stunnedVector.indexOf(stun),1);
@@ -423,55 +426,7 @@ public class GameController
     public function updateServerPositions(){
 
     }
-/*
 
-    public function onEnterFrame():void {
-
-        var sx:Number = _forceX;
-        var sy:Number = _forceY + Settings.GRAVITY;
-
-        var state:Number=HeroState.STAND;
-        if (isAttacking()) {
-            if (_isKicking)
-                state = HeroState.KICK;
-        }else{
-            if (_isDucking) {
-//            _hero.state = HeroState.SQUAT;
-                state = HeroState.SQUAT;
-//                _heroView.squat();
-//            if (!_isJumping)
-//                sx = 0;
-            } else {
-                state = HeroState.STAND;
-//                _heroView.stand();
-            }
-        }
-        if (_hero.y >= Settings.GROUND_Y){
-            sx += Settings.WIND_SPEED;
-        }
-
-        if (_isJumping || sx != 0)
-            sx += Settings.WIND_SPEED;
-
-
-        _heroView.setDirection(_moveDir);
-
-        _heroView.x += sx;
-        _heroView.y += sy;
-
-        if (_heroView.x <=10)
-            _heroView.x =10;
-
-        if (_heroView.x >=1280)
-            _heroView.x =1280;
-
-        if (_heroView.y >= Settings.GROUND_Y) {
-            if (_isJumping)
-                jumpFinished();
-            _heroView.y = Settings.GROUND_Y;
-        }
-    }
-*/
 
 
     public function get forceX():Number
@@ -509,7 +464,25 @@ public class GameController
         _forceX = _forceY = 0;
         _isDown = _isLeft = _isRight = _isUp = false;
 //        Game.instance.myHero.updateHeroBehavior();
+    }
 
+    public function onKilledByPump():void {
+        _isKilled = true;
+        _forceX = -Settings.TRAIN_SPEED/10;
+
+        Actuate.tween(this,5,{}).onComplete(respawn);
+    }
+
+    private function killedByDrop():void {
+        Actuate.tween(this,5,{}).onComplete(respawn);
+    }
+
+    private function respawn():void {
+        _hero.x = 500;
+        _hero.y = 0;
+
+        _isKilled = false;
+        _isFalling = false;
     }
 
     public function reset():void{

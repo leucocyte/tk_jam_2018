@@ -115,6 +115,7 @@ public class ObjectController {
             if (pump.hit(GameController.getInstance().hero))
             {
                 trace("KILLED BY PUMP!");
+                GameController.getInstance().onKilledByPump();
                 ActionServer.killedPump();
             }
         }

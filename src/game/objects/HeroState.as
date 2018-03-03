@@ -15,6 +15,7 @@ public class HeroState {
 
 	public static const UPPERCUT:uint = 9;
 	public static const DROP:uint = 10;
+	public static const KILLED:uint=11;
 
 }
 }
