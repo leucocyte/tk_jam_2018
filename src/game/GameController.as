@@ -439,6 +439,12 @@ public class GameController
         jump();
     }
 
+    public function onResetRound(msg:String):void {
+        _blocked = true;
+        _hero.updateHero(msg);
+//        jump();
+    }
+
     private function stunnedFinished(stun:Stun):void {
         _stunnedVector.splice(_stunnedVector.indexOf(stun),1);
         if (_stunnedVector.length==0)

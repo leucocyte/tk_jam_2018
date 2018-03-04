@@ -47,10 +47,13 @@ public class ActionServer {
                 Game.instance.startRound();
                 break;
             case 10:
-                Game.instance.finishRound();
+                Game.instance.resetRound(tab[2]);
                 break;
             case 11:
                 Game.instance.trainScene.conductor.play();
+                break;
+            case 12:
+
                 break;
         }
     }

@@ -122,7 +122,8 @@ public class Game extends Sprite
         GameController.getInstance().onStartRound();
     }
 
-    public function finishRound():void {
+    public function resetRound(msg:String):void {
+        GameController.getInstance().onResetRound(msg);
 //        GameController.getInstance().onStartRound();
     }
 
