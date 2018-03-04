@@ -136,11 +136,12 @@ public class ObjectController {
 
     public function onHitEffect(idHero:int,attackType:int,direction:int):void {
         var hero:Hero = findHero(idHero);
+		Game.instance.trainScene.showHitEffect(hero.view);
     }
 
     public function onKillEffectPump(idHero:int):void {
         var hero:Hero = findHero(idHero);
-
+		Game.instance.trainScene.showKillEffectPump(hero.view);
     }
 
     private function onPumpRemoved(pump:Pump):void {

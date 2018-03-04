@@ -51,7 +51,7 @@ public class ConductorAnim extends Sprite {
 		_dude.alpha = 1;
 		_dude.x = _shadow.x;
 		_dude.y = _shadow.y - 40;
-		Actuate.tween(_dude, 0.5, {y: _dude.y - 400}).ease(Sine.easeOut).onComplete(
+		Actuate.tween(_dude, 1.5, {y: _dude.y - 400}).ease(Sine.easeOut).onComplete(
 				function ():void {
 					GameController.getInstance().onConductor();
 					Actuate.tween(_dude, 0.5, {y: _dude.y + 10}).reflect().repeat(4).ease(Sine.easeInOut)
@@ -62,7 +62,7 @@ public class ConductorAnim extends Sprite {
 		_scream.alpha = 0;
 		_scream.x = _dude.x + 126;
 		_scream.y = _dude.y - 407;
-		Actuate.tween(_scream, 0.2, {y: _scream.y - 440, alpha: 1}).delay(0.3).ease(Back.easeOut).onComplete(
+		Actuate.tween(_scream, 0.5, {y: _scream.y - 440, alpha: 1}).delay(1.1).ease(Back.easeOut).onComplete(
 				function ():void {
 					Actuate.tween(_scream, 0.5, {y: _scream.y + 30}).reflect().repeat(4).ease(Sine.easeInOut);
 				}

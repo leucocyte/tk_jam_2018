@@ -2,7 +2,6 @@
 package game.view {
 
 import game.load.GameAssetsManager;
-import game.utils.DisplayUtils;
 
 import starling.core.Starling;
 import starling.display.MovieClip;
@@ -14,7 +13,7 @@ public class BloodAnim extends Sprite {
 
 	private var _anim:MovieClip;
 
-	public function BloodAnim(right:Boolean) {
+	public function BloodAnim() {
 		_anim = new MovieClip(new <Texture>[
 			GameAssetsManager.getInstance().getTextureFromAtlas('main', "blood_exp1"),
 			GameAssetsManager.getInstance().getTextureFromAtlas('main', "blood_exp2"),
@@ -23,14 +22,10 @@ public class BloodAnim extends Sprite {
 			GameAssetsManager.getInstance().getTextureFromAtlas('main', "blood_exp5"),
 			GameAssetsManager.getInstance().getTextureFromAtlas('main', "blood_exp6"),
 			GameAssetsManager.getInstance().getTextureFromAtlas('main', "blood_exp7"),
-		]);
+		], 24);
 		_anim.x = -193;
 		_anim.y = -186;
-		if(right) {
-			addChild(_anim);
-		} else {
-			addChild(DisplayUtils.flipHorizontally(_anim));
-		}
+		addChild(_anim);
 		_anim.play();
 		_anim.addEventListener(Event.COMPLETE, onAnim_Complete);
 		Starling.current.juggler.add(_anim);
@@ -41,6 +36,9 @@ public class BloodAnim extends Sprite {
 		_anim.parent.removeChild(_anim);
 		_anim.stop();
 		Starling.current.juggler.remove(_anim);
+		if(parent) {
+			parent.removeChild(this);
+		}
 	}
 
 }

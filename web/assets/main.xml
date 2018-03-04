@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
-<!-- $TexturePacker:SmartUpdate:31b6c18186753e0736ea0a073bc9e89f:0cef408d5796379aa42a3890d7552cf5:f7afabebcd35587b8270ff90b311ebd0$ -->
-<TextureAtlas imagePath="main.png" width="4034" height="2429">
-    <SubTexture name="arrow" x="3658" y="1719" width="201" height="201"/>
+<!-- $TexturePacker:SmartUpdate:dd0f801f9f1c0fa951956e2cd7e1a949:de95e10e4b22cf00114e6579810ee0fb:f7afabebcd35587b8270ff90b311ebd0$ -->
+<TextureAtlas imagePath="main.png" width="4089" height="2446">
+    <SubTexture name="arrow" x="2490" y="546" width="201" height="201"/>
     <SubTexture name="back1" x="1" y="1" width="2700" height="543"/>
-    <SubTexture name="back2" x="468" y="546" width="2487" height="257"/>
-    <SubTexture name="back3" x="468" y="1767" width="2151" height="178"/>
-    <SubTexture name="back4" x="3789" y="637" width="169" height="1080"/>
-    <SubTexture name="bush1" x="3006" y="1705" width="650" height="249"/>
-    <SubTexture name="bush2" x="3657" y="1956" rotated="true" width="208" height="455"/>
-    <SubTexture name="forest_ground_fade" x="2796" y="1956" width="551" height="409"/>
-    <SubTexture name="konduktor" x="3867" y="1907" width="154" height="184"/>
-    <SubTexture name="konduktor_scream" x="2372" y="1947" rotated="true" width="422" height="438"/>
-    <SubTexture name="konduktor_windows" x="2621" y="1832" rotated="true" width="163" height="85"/>
-    <SubTexture name="mountains1" x="468" y="805" width="1500" height="960"/>
-    <SubTexture name="pole" x="468" y="2113" rotated="true" width="1017" height="260"/>
-    <SubTexture name="pump" x="1487" y="2113" rotated="true" width="883" height="270"/>
-    <SubTexture name="pump_alarm1" x="3861" y="1719" rotated="true" width="162" height="186"/>
-    <SubTexture name="pump_alarm2" x="2044" y="1947" rotated="true" width="279" height="141"/>
-    <SubTexture name="train" x="2621" y="1731" width="331" height="99"/>
-    <SubTexture name="train_back" x="2703" y="1" width="283" height="462"/>
-    <SubTexture name="train_front" x="3349" y="1956" width="306" height="465"/>
-    <SubTexture name="train_middle" x="1" y="546" rotated="true" width="465" height="1882"/>
-    <SubTexture name="train_middle_windows" x="468" y="1947" width="1574" height="164" frameX="-190" frameY="-98" frameWidth="1882" frameHeight="465"/>
-    <SubTexture name="tree1" x="1970" y="805" rotated="true" width="1034" height="924"/>
-    <SubTexture name="tree2" x="3006" y="1" rotated="true" width="1027" height="634"/>
-    <SubTexture name="tree3" x="3006" y="637" width="781" height="1066"/>
+    <SubTexture name="back2" x="1" y="546" width="2487" height="257"/>
+    <SubTexture name="back3" x="1" y="2234" width="2151" height="178"/>
+    <SubTexture name="back4" x="2539" y="1682" rotated="true" width="1080" height="169"/>
+    <SubTexture name="blood_exp1" x="3711" y="2291" rotated="true" width="185" height="141" frameX="-74" frameY="-85" frameWidth="220" frameHeight="305"/>
+    <SubTexture name="blood_exp2" x="2435" y="2270" rotated="true" width="217" height="170" frameX="-48" frameY="-66" frameWidth="220" frameHeight="305"/>
+    <SubTexture name="blood_exp3" x="3907" y="2026" width="181" height="239" frameX="-38" frameY="-57" frameWidth="220" frameHeight="305"/>
+    <SubTexture name="blood_exp4" x="3711" y="2026" width="194" height="263" frameX="-21" frameY="-39" frameWidth="220" frameHeight="305"/>
+    <SubTexture name="blood_exp5" x="1885" y="2019" rotated="true" width="262" height="197" frameX="-23" frameY="-39" frameWidth="220" frameHeight="305"/>
+    <SubTexture name="blood_exp6" x="3273" y="2019" width="220" height="293" frameX="0" frameY="-12" frameWidth="220" frameHeight="305"/>
+    <SubTexture name="blood_exp7" x="3495" y="2026" width="214" height="282" frameX="-5" frameY="-10" frameWidth="220" frameHeight="305"/>
+    <SubTexture name="blood_exp8" x="3621" y="1805" rotated="true" width="292" height="219" frameX="0" frameY="0" frameWidth="220" frameHeight="305"/>
+    <SubTexture name="bush1" x="2154" y="2019" width="650" height="249"/>
+    <SubTexture name="bush2" x="3568" y="1310" width="455" height="208"/>
+    <SubTexture name="hit1" x="1885" y="1731" width="76" height="94" frameX="0" frameY="-10" frameWidth="76" frameHeight="115"/>
+    <SubTexture name="hit2" x="2654" y="2270" width="73" height="111" frameX="-3" frameY="-4" frameWidth="76" frameHeight="115"/>
+    <SubTexture name="hit3" x="3461" y="1853" width="76" height="106" frameX="0" frameY="-9" frameWidth="76" frameHeight="115"/>
+    <SubTexture name="hit4" x="3539" y="1853" width="76" height="105" frameX="0" frameY="-10" frameWidth="76" frameHeight="115"/>
+    <SubTexture name="konduktor" x="3898" y="2291" rotated="true" width="184" height="154"/>
+    <SubTexture name="konduktor_scream" x="3568" y="886" width="438" height="422"/>
+    <SubTexture name="konduktor_windows" x="3568" y="784" rotated="true" width="163" height="85"/>
+    <SubTexture name="mountains1" x="1" y="805" width="1500" height="960"/>
+    <SubTexture name="pole" x="2539" y="1420" rotated="true" width="1017" height="260"/>
+    <SubTexture name="pump" x="3771" y="1" width="270" height="883"/>
+    <SubTexture name="pump_alarm1" x="3915" y="1805" rotated="true" width="162" height="186"/>
+    <SubTexture name="pump_alarm2" x="2154" y="2270" rotated="true" width="279" height="141"/>
+    <SubTexture name="train_back" x="3621" y="1520" rotated="true" width="462" height="283"/>
+    <SubTexture name="train_front" x="2806" y="2019" rotated="true" width="465" height="306"/>
+    <SubTexture name="train_middle" x="1" y="1767" width="1882" height="465"/>
+    <SubTexture name="train_middle_windows" x="1885" y="1853" width="1574" height="164" frameX="-190" frameY="-98" frameWidth="1882" frameHeight="465"/>
+    <SubTexture name="tree1" x="1503" y="805" rotated="true" width="1034" height="924"/>
+    <SubTexture name="tree2" x="2539" y="784" rotated="true" width="1027" height="634"/>
+    <SubTexture name="tree3" x="2703" y="1" rotated="true" width="1066" height="781"/>
 </TextureAtlas>

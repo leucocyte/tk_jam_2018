@@ -1,18 +1,26 @@
 package game {
 import com.eclecticdesignstudio.motion.Actuate;
+import com.eclecticdesignstudio.motion.Actuate;
+import com.eclecticdesignstudio.motion.easing.Expo;
 import com.eclecticdesignstudio.motion.easing.Sine;
 
 import flash.events.KeyboardEvent;
+import flash.geom.Point;
+import flash.geom.Rectangle;
 import flash.ui.Keyboard;
 import flash.utils.setInterval;
 import flash.utils.setTimeout;
 
 import game.load.GameAssetsManager;
 import game.objects.HeroState;
+import game.objects.HeroView;
 import game.utils.ArrayUtils;
+import game.utils.DisplayUtils;
 import game.utils.Settings;
 import game.utils.Stage2DAbuser;
+import game.view.BloodAnim;
 import game.view.ConductorAnim;
+import game.view.HitAnim;
 import game.view.hero.HeroStateDisplay;
 import game.view.hero.HeroStatesDisplay;
 import game.view.scenery.ElementsSpawner;
@@ -22,6 +30,8 @@ import game.view.scenery.elements.TractionSpawner;
 import game.view.scenery.elements.Tree1Spawner;
 import game.view.scenery.elements.Tree2Spawner;
 import game.view.scenery.elements.TreesFarSpawner;
+
+import starling.display.Canvas;
 
 import starling.display.Image;
 import starling.display.Sprite;
@@ -124,5 +134,29 @@ public class TrainScene extends Sprite {
 	public function get conductor():ConductorAnim {
 		return _conductor;
 	}
+
+	public function showKillEffectPump(view:HeroView):void {
+		var point:Point = new Point();
+		view.localToGlobal(point, point);
+		globalToLocal(point, point);
+		var bloodAnim:BloodAnim = new BloodAnim();
+		bloodAnim.x = point.x;
+		bloodAnim.y = point.y - 50;
+		addChild(bloodAnim);
+		DisplayUtils.drawDebugCircle(this, point.x, point.y);
+		Actuate.tween(bloodAnim, 0.2, {x: bloodAnim.x - 200, y: bloodAnim.y - 200}).ease(Expo.easeIn);
+	}
+
+	public function showHitEffect(view:HeroView):void {
+		var point:Point = new Point();
+		view.localToGlobal(point, point);
+		globalToLocal(point, point);
+		var hitAnim:HitAnim = new HitAnim();
+		hitAnim.x = point.x;
+		hitAnim.y = point.y - 60;
+		addChild(hitAnim);
+		DisplayUtils.drawDebugCircle(this, point.x, point.y);
+	}
+
 }
 }
