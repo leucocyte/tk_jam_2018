@@ -441,8 +441,15 @@ public class GameController
     }
 
     public function onStartRound():void {
+        _isKilled = false;
+        _isFalling = false;
+        _isDown = false;
+        _isDying = false;
+        _isStunned = false;
+        _isUppercuting = false;
+
         _blocked = false;
-        jump();
+//        jump();
     }
 
     public function onResetRound(msg:String):void {
@@ -505,12 +512,12 @@ public class GameController
         _isKilled = true;
         _forceX = -Settings.DIFFICULTY * Settings.TRAIN_SPEED/20;
 
-        Actuate.tween(this,5,{}).onComplete(respawn);
+        Actuate.tween(this,2,{}).onComplete(respawn);
     }
 
     private function killedByDrop():void {
         SoundManager.getInstance().killedByDrop();
-        Actuate.tween(this,5,{}).onComplete(respawn);
+        Actuate.tween(this,2,{}).onComplete(respawn);
     }
 
     private function killedByConductor():void {
@@ -519,7 +526,7 @@ public class GameController
         jump();
         _isFalling = true;
         SoundManager.getInstance().killedByConductor();
-        Actuate.tween(this,5,{}).onComplete(respawn);
+        Actuate.tween(this,2,{}).onComplete(respawn);
     }
 
     public function onConductor():void {
@@ -531,11 +538,12 @@ public class GameController
     }
 
     private function respawn():void {
-        _hero.x = 500;
+        Game.instance.showBigText("You've been killed!");
+     /*   _hero.x = 500;
         _hero.y = 0;
 
         _isKilled = false;
-        _isFalling = false;
+        _isFalling = false;*/
     }
 
     public function reset():void{

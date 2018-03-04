@@ -71,7 +71,7 @@ public class HeroView extends Sprite {
 			textFormat.font = Settings.FONT;
 //			textFormat.font = "Onky";
 //			textFormat.font = "Krona";
-			textFormat.size = 20;
+			textFormat.size = 28;
 			textFormat.color = 0xFFFFFF;
 			textFormat.align = "center";
 

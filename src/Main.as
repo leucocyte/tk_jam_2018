@@ -20,8 +20,8 @@ import starling.utils.RectangleUtil;
 import starling.utils.ScaleMode;
 
 //[SWF(width='1280', height='720', backgroundColor='#333333', frameRate='60')]
-[SWF(width='1920', height='600', backgroundColor='#333333', frameRate='60')]
-//[SWF(width='1920', height='1080', backgroundColor='#333333', frameRate='60')]
+//[SWF(width='1920', height='600', backgroundColor='#333333', frameRate='60')]
+[SWF(width='1920', height='1080', backgroundColor='#333333', frameRate='60')]
 public class Main extends Sprite {
 
 	private var _starling:Starling;
