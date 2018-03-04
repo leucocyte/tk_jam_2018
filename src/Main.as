@@ -28,6 +28,14 @@ public class Main extends Sprite {
 	private var _diffX:DifficultyByMouseXCtrl;
 
 	public function Main() {
+		addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
+	}
+
+
+	private function onAddedToStage(event:Event):void {
+		removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
+
+		//MP3Manager.play(new URLRequest('http://btccharts.com/sounds/double_click_mouse_over.mp3'), 99999);
 
 		stage.scaleMode = StageScaleMode.NO_SCALE;
 		stage.align = StageAlign.TOP_LEFT;
@@ -39,12 +47,12 @@ public class Main extends Sprite {
 
 		instance = this;
 
-		new FontEmbeedMC();
 		//loadIntro();
-		if (Settings.ONLINE)
+		if(Settings.ONLINE)
 			connect();
 		else
 			initStarling();
+
 	}
 
 	private function connect():void {
@@ -68,22 +76,22 @@ public class Main extends Sprite {
 	}
 
 	public function onResize(e:Event):void {
-		//var playerWidth:int = Starling.current.nativeStage.stageWidth;
-		//var playerHeight:int = Starling.current.nativeStage.stageHeight;
+		var playerWidth:int = Starling.current.nativeStage.stageWidth;
+		var playerHeight:int = Starling.current.nativeStage.stageHeight;
+
+		Starling.current.viewPort = RectangleUtil.fit(
+				new Rectangle(0, 0, Settings.SCENE_WIDTH, Settings.SCENE_HEIGHT),
+				new Rectangle(0, 0, playerWidth, playerHeight),
+				ScaleMode.SHOW_ALL, false);
+
+		//var viewPortRectangle:Rectangle = new Rectangle();
+		//viewPortRectangle.width = stage.stageWidth;
+		//viewPortRectangle.height = stage.stageHeight;
 		//
-		//Starling.current.viewPort = RectangleUtil.fit(
-		//		new Rectangle(0, 0, Settings.SCENE_WIDTH, Settings.SCENE_HEIGHT),
-		//		new Rectangle(0, 0, playerWidth, playerHeight),
-		//		ScaleMode.SHOW_ALL, true);
-
-		var viewPortRectangle:Rectangle = new Rectangle();
-		viewPortRectangle.width = stage.stageWidth;
-		viewPortRectangle.height = stage.stageHeight;
-
-		Starling.current.viewPort = viewPortRectangle;
-
-		_starling.stage.stageWidth = stage.stageWidth;
-		_starling.stage.stageHeight = stage.stageHeight;
+		//Starling.current.viewPort = viewPortRectangle;
+		//
+		//_starling.stage.stageWidth = stage.stageWidth;
+		//_starling.stage.stageHeight = stage.stageHeight;
 	}
 }
 }

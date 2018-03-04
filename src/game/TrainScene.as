@@ -4,12 +4,15 @@ import com.eclecticdesignstudio.motion.easing.Sine;
 
 import flash.events.KeyboardEvent;
 import flash.ui.Keyboard;
+import flash.utils.setInterval;
+import flash.utils.setTimeout;
 
 import game.load.GameAssetsManager;
 import game.objects.HeroState;
 import game.utils.ArrayUtils;
 import game.utils.Settings;
 import game.utils.Stage2DAbuser;
+import game.view.ConductorAnim;
 import game.view.hero.HeroStateDisplay;
 import game.view.hero.HeroStatesDisplay;
 import game.view.scenery.ElementsSpawner;
@@ -35,12 +38,10 @@ public class TrainScene extends Sprite {
 	private var _back3Clouds:SeamlessBackground;
 	private var _back2Mountains:SeamlessBackground;
 	private var _treesFar:TreesFarSpawner;
-	private var _forestFarBg:SeamlessBackground;
-	private var _forest2Bg:SeamlessBackground;
-	private var _forest1Bg:SeamlessBackground;
 	private var _pump:Sprite;
 	private var _back1Ground:SeamlessBackground;
 	private var _bushes:BushesSpawner;
+	private var _conductor:ConductorAnim;
 
 	public function TrainScene() {
 		_train = new Sprite();
@@ -55,33 +56,22 @@ public class TrainScene extends Sprite {
 		_back3Clouds.y = 243;
 		addChild(_back3Clouds);
 
-		_back2Mountains = new SeamlessBackground(Settings.TRAIN_SPEED * 0.08, 'back2');
+		_back2Mountains = new SeamlessBackground(Settings.TRAIN_SPEED * 0.04, 'back2');
 		_back2Mountains.y = 300;
 
 		_scenery = new Sprite();
 		_scenery.y = 1000;
 
-		var groundHeight:int = 150;
-		var groundY:int = 300;
 		_treesFar = new TreesFarSpawner();
 		_scenery.addChild(_treesFar);
-		//_forestFarBg = new SeamlessBackground(_treesFar.speed, 'forest_ground_fade', groundHeight);
-		//_forestFarBg.y = groundY;
-		//addChild(_forestFarBg);
 
 		_trees2 = new Tree2Spawner();
 		_scenery.addChild(_trees2);
-		//_forest2Bg = new SeamlessBackground(_trees2.speed, 'forest_ground_fade', groundHeight);
-		//_forest2Bg.y = groundY + 50;
-		//addChild(_forest2Bg);
 
 		_trees1 = new Tree1Spawner();
 		_scenery.addChild(_trees1);
-		//_forest1Bg = new SeamlessBackground(_trees1.speed, 'forest_ground_fade', groundHeight * 1.7);
-		//_forest1Bg.y = groundY + 100;
-		//addChild(_forest1Bg);
 
-		_back1Ground = new SeamlessBackground(_trees1.speed, 'back1');
+		_back1Ground = new SeamlessBackground(_treesFar.speed / 2, 'back1');
 		_back1Ground.y = _back2Mountains.y + _back2Mountains.height - 1;
 		addChild(_back1Ground);
 		addChild(_back2Mountains);
@@ -91,16 +81,21 @@ public class TrainScene extends Sprite {
 		_pump = new Sprite();
 		addChild(_pump);
 
-		//trainWindows=GameAssetsManager.getImageFromMainAtlas('train_middle');
+		_conductor = new ConductorAnim();
+		_train.addChild(_conductor);
+		setTimeout(_conductor.play, 5000);
+		setInterval(_conductor.play, 25000);
+
 		_trainImage = GameAssetsManager.getImageFromMainAtlas('train_middle');
-		_trainImage.x = 0;
 		_train.addChild(_trainImage);
+
 		var trainImageLeft:Image = GameAssetsManager.getImageFromMainAtlas('train_back');
 		trainImageLeft.x = -164;
 		_train.addChild(trainImageLeft);
 		var trainImageRight:Image = GameAssetsManager.getImageFromMainAtlas('train_front');
 		trainImageRight.x = 1870;
 		_train.addChild(trainImageRight);
+		trainImageLeft.y = trainImageRight.y = _trainImage.y = -9;
 
 		addChild(_train);
 
@@ -118,38 +113,7 @@ public class TrainScene extends Sprite {
 		_traction = new TractionSpawner();
 		_traction.y = Settings.SCENE_HEIGHT;
 		addChild(_traction);
-
-		//_heroStates = new HeroStatesDisplay();
-		//addChild(_heroStates);
-		//Stage2DAbuser.getStage().addEventListener(KeyboardEvent.KEY_DOWN, onStage_KeyDown);
-		//_allStates = _heroStates.all.concat();
 	}
-
-	//private function onStage_KeyDown(event:KeyboardEvent):void {
-	//	if(event.keyCode == Keyboard.H) {
-	//		if(_currentState) {
-	//			removeChild(_currentState);
-	//		}
-	//		if(!_allStates.length) {
-	//			_allStates = _heroStates.all.concat();
-	//		}
-	//		_currentState = _allStates.shift();
-	//		trace('state: ' + _currentState.stateName);
-	//		addChild(_currentState);
-	//	}
-	//	if(event.keyCode == Keyboard.S) {
-	//		_heroStates.setState(ArrayUtils.getRandom([
-	//			HeroState.STAND,
-	//			HeroState.WALK,
-	//			HeroState.SQUAT,
-	//			HeroState.KICK,
-	//			HeroState.HANG,
-	//			HeroState.JUMP,
-	//			HeroState.UPPERCUT,
-	//		]));
-	//		trace('state: ' + _heroStates.currentState.stateName);
-	//	}
-	//}
 
 	public function get heroes():Sprite {
 		return _heroes;

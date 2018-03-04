@@ -10,11 +10,11 @@ import starling.display.Image;
 public class TractionSpawner extends ElementsSpawner {
 
 	public function TractionSpawner() {
-		super(1000, 1000, Settings.TRAIN_SPEED * 1.5);
+		super(3000, 3000, Settings.TRAIN_SPEED * 1.5);
 	}
 
 	override protected function createNewElement():DisplayObject {
-		var element:Image = GameAssetsManager.getImageFromMainAtlas('traction_blur');
+		var element:Image = GameAssetsManager.getImageFromMainAtlas('pole');
 		element.y = -element.height;
 		return element;
 	}

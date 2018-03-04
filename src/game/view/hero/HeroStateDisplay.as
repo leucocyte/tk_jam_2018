@@ -3,10 +3,8 @@ package game.view.hero {
 import game.load.GameAssetsManager;
 
 import starling.core.Starling;
-
 import starling.display.Sprite;
 import starling.filters.ColorMatrixFilter;
-import starling.filters.FragmentFilter;
 import starling.textures.Texture;
 import starling.textures.TextureAtlas;
 
@@ -83,6 +81,10 @@ public class HeroStateDisplay extends Sprite {
 
 	public function get stateName():String {
 		return _stateName;
+	}
+
+	public function get head():Timeline {
+		return _head;
 	}
 }
 }

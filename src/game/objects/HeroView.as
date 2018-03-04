@@ -15,7 +15,9 @@ import flash.text.TextFormat;
 import game.Direction;
 import game.Game;
 import game.load.GameAssetsManager;
+import game.utils.DisplayUtils;
 import game.utils.Settings;
+import game.view.PointerAnim;
 import game.view.hero.HeroStatesDisplay;
 
 import starling.core.Starling;
@@ -100,6 +102,12 @@ public class HeroView extends Sprite {
 //		stand();
 	}
 
+	public function showPointer():void {
+		var pointer:PointerAnim = new PointerAnim();
+		pointer.y = -450;
+		addChild(pointer);
+	}
+
 	public function setDirection(_direction:int):void {
 		if(_direction == Direction.LEFT)
 			_quadHead.x = -10;
@@ -107,7 +115,7 @@ public class HeroView extends Sprite {
 			_quadHead.x = 10;
 	}
 
-	public function updateState(state:Number, dir:int,width:int,height:int):void {
+	public function updateState(state:Number, dir:int, width:int, height:int):void {
 		_display.setState(state, dir);
 		addChild(_display);
 		alignDisplay();
@@ -117,13 +125,12 @@ public class HeroView extends Sprite {
 		_quad.height = height;
 		_quad.width = width;
 
-		if (width==Settings.HERO_WIDTH_HANG) {
+		if(width == Settings.HERO_WIDTH_HANG) {
 			_quad.x = 30;
-			_quad.y= 40;
-		}
-		else {
+			_quad.y = 40;
+		} else {
 			_quad.x = 0;
-			_quad.y=0;
+			_quad.y = 0;
 		}
 
 		//_quad.pivotX = width/2;
@@ -143,16 +150,32 @@ public class HeroView extends Sprite {
 				_display.y = 0;
 				break;
 			case HeroState.SQUAT:
+				if(dir == -1) {
+					flipLeft();
+				}
+				_display.y += 5;
 				break;
 			case HeroState.KICK:
+				if(dir == -1) {
+					flipLeft();
+				}
+				_display.x -= 17;
+				break;
 			case HeroState.UPPERCUT:
+				if(dir == -1) {
+					flipLeft();
+				} else {
+					_display.x -= 10;
+				}
+				break;
+			case HeroState.JUMP:
 				if(dir == -1) {
 					flipLeft();
 				}
 				break;
-			case HeroState.JUMP:
-				break;
 			case HeroState.STUN:
+				break;
+			case HeroState.STUN_JUMP:
 				break;
 			case HeroState.DROP:
 				_display.y += 56;
@@ -164,13 +187,13 @@ public class HeroView extends Sprite {
 	}
 
 	private function flipLeft():void {
-		var flip:DisplayObject = flipHorizontally(_display);
+		var flip:DisplayObject = DisplayUtils.flipHorizontally(_display);
 		flip.x -= 60;
 		addChild(flip);
 	}
 
 	private function alignDisplay():void {
-		_display.x = Settings.HERO_WIDTH/2 - 80;
+		_display.x = Settings.HERO_WIDTH / 2 - 80;
 		_display.y = -_display.height;
 	}
 
@@ -187,32 +210,25 @@ public class HeroView extends Sprite {
 		_quadHead.y = -Settings.HERO_HEIGHT_SQUAT * 0.6;
 		_quad.height = Settings.HERO_HEIGHT_SQUAT;
 	}
-/*
-	public function stand():void {
-		_quad.y = 0;
-		_quad.color = 0xaa4477;
-		_quadHead.y = -Settings.HERO_HEIGHT * 0.6;
-		_quad.height = Settings.HERO_HEIGHT;
-	}*/
-/*
-	private function hang():void {
-		trace("HANG!!!!");
-		_quad.color = 0x00ff55;
-		_quad.y = Settings.HERO_HEIGHT;
-		_quadHead.y = 0;
-	}*/
+
+	/*
+	 public function stand():void {
+	 _quad.y = 0;
+	 _quad.color = 0xaa4477;
+	 _quadHead.y = -Settings.HERO_HEIGHT * 0.6;
+	 _quad.height = Settings.HERO_HEIGHT;
+	 }*/
+	/*
+	 private function hang():void {
+	 trace("HANG!!!!");
+	 _quad.color = 0x00ff55;
+	 _quad.y = Settings.HERO_HEIGHT;
+	 _quadHead.y = 0;
+	 }*/
 
 
 	public function getRectangle():Rectangle {
 		return _quad.getBounds(Game.instance.trainScene.heroes);
-	}
-
-	public static function flipHorizontally(display:DisplayObject):DisplayObject {
-		display.x = display.width;
-		display.scaleX = -display.scaleX;
-		var box:Sprite = new Sprite();
-		box.addChild(display);
-		return box;
 	}
 
 

@@ -14,7 +14,9 @@ public class Tree1Spawner extends ElementsSpawner {
 	}
 
 	override protected function createNewElement():DisplayObject {
-		var element:Image = GameAssetsManager.getImageFromMainAtlas('tree1');
+		var element:Image = GameAssetsManager.getImageFromMainAtlas(
+				Math.random() > 0.5 ? 'tree1' : 'tree3'
+		);
 		element.height = 700 + Math.random() * 100;
 		element.scaleX = element.scaleY;
 		return element;

@@ -2,6 +2,7 @@
 package game.view.hero {
 import game.Direction;
 import game.objects.HeroState;
+import game.utils.DisplayUtils;
 
 import starling.display.Sprite;
 
@@ -107,6 +108,7 @@ public class HeroStatesDisplay extends Sprite {
 				['walkWith1_hand', 'walkWith2_hand'],
 				1//['walkWith1_head1', 'walkWith2_head']
 		);
+		_walkLeft.addChild(DisplayUtils.flipHorizontally(_walkLeft.head));
 		_squatPunch = createState(
 				'crouchPunch',
 				['crouchPunch_leg'],

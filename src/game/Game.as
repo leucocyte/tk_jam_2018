@@ -100,8 +100,10 @@ public class Game extends Sprite
 
     public function onInitPack(myId:String,heroes:String, obstacles:String):void {
         ObjectController.instance().onInitPack(heroes,obstacles,myId);
-        var h:Hero = ObjectController.instance().findHero(ObjectController.instance().myHeroId);
-        GameController.getInstance().init(h);
+        var myHero:Hero = ObjectController.instance().findHero(ObjectController.instance().myHeroId);
+        GameController.getInstance().init(myHero);
+
+		myHero.view.showPointer();
 
         addEventListener(Event.ENTER_FRAME, onEnterFrame);
     }
