@@ -123,9 +123,10 @@ public class Game extends Sprite
         //}
 
         //TRWA WALKA
-        if (status==2){
+     //   if (status==2){
             //TODO komunikat - Waiting to join the game
-        }
+            showBigText("Waiting for next round to join! ");
+      //  }
     }
 
     public function startRound():void {
@@ -191,9 +192,9 @@ public class Game extends Sprite
 
         if (stage.stageWidth<1920){
             var ratio:Number = stage.stageWidth/1920;
-            _backGround.scale = ratio;
+            trainScene.scale = ratio;
         }else
-            _backGround.scale =1;
+            trainScene.scale =1;
 
     }
 
