@@ -9,6 +9,7 @@ import game.objects.Hero;
 import game.objects.HeroView;
 import game.objects.ObjectController;
 import game.server.ConnectionServer;
+import game.sound.SoundManager;
 import game.ui.FontSettings;
 import game.ui.StartMenu;
 import game.utils.CursorManager;
@@ -26,6 +27,7 @@ public class Game extends Sprite
    private var _backGround:Background;
     private var _startMenu:StartMenu;
     private var _trainScene:TrainScene;
+    private var _adminControlPanel:AdminControlPanel;
     /*     private var _hero:Hero;
 
     private var _trees:Vector.<Tree>;
@@ -98,7 +100,7 @@ public class Game extends Sprite
     }
 
 
-    public function onInitPack(myId:String,heroes:String, obstacles:String):void {
+    public function onInitPack(myId:String,heroes:String, obstacles:String,status:Number):void {
         ObjectController.instance().onInitPack(heroes,obstacles,myId);
         var myHero:Hero = ObjectController.instance().findHero(ObjectController.instance().myHeroId);
         GameController.getInstance().init(myHero);
@@ -106,6 +108,19 @@ public class Game extends Sprite
 		myHero.view.showPointer();
 
         addEventListener(Event.ENTER_FRAME, onEnterFrame);
+
+
+        SoundManager.getInstance().playAmbient();
+        SoundManager.getInstance().playRandomTxt(true);
+
+        if (h.name == "admin"){
+           _adminControlPanel = new AdminControlPanel();
+        }
+    }
+
+    public function startRound():void {
+        GameController.getInstance().onStartRound();
+
     }
 
     private function joinClicked(event:Event):void {
@@ -189,6 +204,7 @@ public class Game extends Sprite
     public function get trainScene():TrainScene {
         return _trainScene;
     }
+
 
 
 }

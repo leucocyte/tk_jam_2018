@@ -112,7 +112,7 @@ public class ObjectController {
     public function onEnterFrame():void {
         for (var i:int = 0; i < _pumps.length; i++) {
             var pump:Pump = _pumps[i];
-            if (pump.hit(GameController.getInstance().hero))
+            if (GameController.getInstance().isAlive() && pump.hit(GameController.getInstance().hero))
             {
                 trace("KILLED BY PUMP!");
                 GameController.getInstance().onKilledByPump();
@@ -132,6 +132,15 @@ public class ObjectController {
         var p:Pump = new Pump("1,2000,0,1");
         p.completedSignal.add(onPumpRemoved);
         _pumps.push(p);
+    }
+
+    public function onHitEffect(idHero:int):void {
+        var hero:Hero = findHero(idHero);
+    }
+
+    public function onKillEffectPump(idHero:int):void {
+        var hero:Hero = findHero(idHero);
+
     }
 
     private function onPumpRemoved(pump:Pump):void {

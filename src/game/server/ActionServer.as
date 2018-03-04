@@ -6,6 +6,7 @@ import game.Game;
 import game.GameController;
 import game.objects.Hero;
 import game.objects.ObjectController;
+import game.utils.Settings;
 
 public class ActionServer {
     public function ActionServer() {
@@ -18,7 +19,7 @@ public class ActionServer {
                 ObjectController.instance().onFramePack(tab[2]);
                 break;
             case 1:
-                Game.instance.onInitPack(tab[2],tab[3],tab[4]);
+                Game.instance.onInitPack(tab[2],tab[3],tab[4],parseInt(tab[5]));
 //                Game.instance.onInitPack(tab[2],tab[3],tab[4]);
                 break;
             case 2:
@@ -31,8 +32,19 @@ public class ActionServer {
                 ObjectController.instance().onNewPump(tab[2]);
                 break;
             case 5:
-                GameController.getInstance().onHit(tab[2],tab[3]);
+                GameController.getInstance().onHitMyHero(tab[2],tab[3]);
                 break;
+            case 6:
+                ObjectController.instance().onHitEffect(parseInt(tab[2]));
+                break;
+            case 7:
+                ObjectController.instance().onKillEffectPump(parseInt(tab[2]));
+                break;
+            case 8:
+                Settings.DIFFICULTY = parseFloat(tab[2]);
+                break;
+            case 9:
+                Game.instance.startRound();
         }
     }
 
@@ -49,6 +61,7 @@ public class ActionServer {
     public static function killedPump():void {
         send("1;3;")
     }
+
 
     private static function send(msg:String):void{
         GameServer.getInstance().send(msg);
