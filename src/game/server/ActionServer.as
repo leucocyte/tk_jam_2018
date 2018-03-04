@@ -35,7 +35,7 @@ public class ActionServer {
                 GameController.getInstance().onHitMyHero(tab[2],tab[3]);
                 break;
             case 6:
-                ObjectController.instance().onHitEffect(parseInt(tab[2]));
+                ObjectController.instance().onHitEffect(parseInt(tab[2]),parseInt(tab[3]),parseInt(tab[4]));
                 break;
             case 7:
                 ObjectController.instance().onKillEffectPump(parseInt(tab[2]));
@@ -45,6 +45,13 @@ public class ActionServer {
                 break;
             case 9:
                 Game.instance.startRound();
+                break;
+            case 10:
+                Game.instance.finishRound();
+                break;
+            case 11:
+                Game.instance.trainScene.conductor.play();
+                break;
         }
     }
 

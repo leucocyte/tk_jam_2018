@@ -134,7 +134,7 @@ public class ObjectController {
         _pumps.push(p);
     }
 
-    public function onHitEffect(idHero:int):void {
+    public function onHitEffect(idHero:int,attackType:int,direction:int):void {
         var hero:Hero = findHero(idHero);
     }
 

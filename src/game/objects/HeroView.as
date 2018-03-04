@@ -98,7 +98,7 @@ public class HeroView extends Sprite {
 
 		_label.text = hero.name;
 		_label.y = -Settings.HERO_HEIGHT * 1.3;
-
+		updateState(HeroState.STAND,hero.direction,hero.width,hero.height);
 //		stand();
 	}
 

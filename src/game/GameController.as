@@ -502,8 +502,19 @@ public class GameController
     }
 
     private function killedByConductor():void {
+
+        _attackForceY =+ Settings.DROP_FORCE_Y;
+        _isFalling = true;
         SoundManager.getInstance().killedByConductor();
         Actuate.tween(this,5,{}).onComplete(respawn);
+    }
+
+    public function onConductor():void {
+        if (!_isHanging){
+            killedByConductor();
+        }
+
+
     }
 
     private function respawn():void {
@@ -539,9 +550,6 @@ public class GameController
         return _hero;
     }
 
-    public function onConductor():void {
-        trace('onConductor!');
 
-    }
 }
 }

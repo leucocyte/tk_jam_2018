@@ -120,7 +120,10 @@ public class Game extends Sprite
 
     public function startRound():void {
         GameController.getInstance().onStartRound();
+    }
 
+    public function finishRound():void {
+//        GameController.getInstance().onStartRound();
     }
 
     private function joinClicked(event:Event):void {
