@@ -83,8 +83,6 @@ public class TrainScene extends Sprite {
 
 		_conductor = new ConductorAnim();
 		_train.addChild(_conductor);
-		setTimeout(_conductor.play, 5000);
-		setInterval(_conductor.play, 25000);
 
 		_trainImage = GameAssetsManager.getImageFromMainAtlas('train_middle');
 		_train.addChild(_trainImage);
@@ -121,6 +119,10 @@ public class TrainScene extends Sprite {
 
 	public function get pump():Sprite {
 		return _pump;
+	}
+
+	public function get conductor():ConductorAnim {
+		return _conductor;
 	}
 }
 }
