@@ -14,6 +14,7 @@ import game.ui.FontSettings;
 import game.ui.StartMenu;
 import game.utils.CursorManager;
 import game.utils.Settings;
+import game.view.BigText;
 
 import starling.display.DisplayObject;
 import starling.display.Image;
@@ -28,6 +29,7 @@ public class Game extends Sprite
     private var _startMenu:StartMenu;
     private var _trainScene:TrainScene;
     private var _adminControlPanel:AdminControlPanel;
+	private var _bigText:BigText;
     /*     private var _hero:Hero;
 
     private var _trees:Vector.<Tree>;
@@ -88,6 +90,9 @@ public class Game extends Sprite
             removeChild(_startMenu);
         _trainScene = new TrainScene();
         addChild(_trainScene);
+
+		_bigText = new BigText();
+		addChild(_bigText);
 
         if (Settings.ONLINE){
             ConnectionServer.joinRoomAuto();
@@ -217,6 +222,10 @@ public class Game extends Sprite
     public function get trainScene():TrainScene {
         return _trainScene;
     }
+
+	public function showBigText(text:String):void {
+		_bigText.show(text);
+	}
 
 
 
