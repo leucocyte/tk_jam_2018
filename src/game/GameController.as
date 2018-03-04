@@ -352,7 +352,6 @@ public class GameController
         if (_hero.y < Settings.GROUND_Y || sx!=0){
             sx += Settings.WIND_SPEED;
         }
-        trace("speedY: "+sy+" / "+_isFalling);
         _hero.x+= sx;
         _hero.y+= sy;
 
