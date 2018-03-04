@@ -6,6 +6,7 @@ import flash.display.StageAlign;
 import flash.display.StageScaleMode;
 import flash.events.Event;
 import flash.events.MouseEvent;
+import flash.events.ProgressEvent;
 import flash.net.URLRequest;
 
 [SWF(width='1920', height='1080', backgroundColor='#000000', frameRate='60')]
@@ -24,8 +25,13 @@ public class PreloaderDC extends Sprite {
 		showProgress(0);
 
 		_loader = new Loader();
+		_loader.contentLoaderInfo.addEventListener(ProgressEvent.PROGRESS, onLoader_Progress);
 		_loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onLoader_Complete);
 		_loader.load(new URLRequest('Main.swf'));
+	}
+
+	private function onLoader_Progress(event:ProgressEvent):void {
+		showProgress(_loader.contentLoaderInfo.bytesLoaded / _loader.contentLoaderInfo.bytesTotal);
 	}
 
 	private function onLoader_Complete(event:Event):void {
