@@ -118,9 +118,9 @@ public class Game extends Sprite
         SoundManager.getInstance().playAmbient();
         SoundManager.getInstance().playRandomTxt(true);
 
-        //if (myHero.name == "admin"){
+        if (myHero.name == "admin"){
            _adminControlPanel = new AdminControlPanel();
-        //}
+        }
 
         //TRWA WALKA
      //   if (status==2){

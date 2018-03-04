@@ -530,6 +530,7 @@ public class GameController
     }
 
     public function onConductor():void {
+        SoundManager.getInstance().conductor(true);
         if (!_isHanging){
             killedByConductor();
         }

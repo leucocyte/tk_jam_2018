@@ -34,7 +34,7 @@ public class ConnectingLoginBox extends ConnectingBox{
 //        server.addItem("178.217.186.71:8346");
 //        server.addItem("146.185.28.156:9355");
         server.addItem("192.168.10.101:8346");
-        server.addItem("178.217.186.71:8346");
+//        server.addItem("178.217.186.71:8346");
 
 //        server.addItem("192.168.1.101");
 //        server.addItem("10.0.0.64");

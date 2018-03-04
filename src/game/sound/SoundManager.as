@@ -34,6 +34,9 @@ public class SoundManager
     [Embed(source = "../../../embed/sound/txt/dont_push.mp3")]
     public static const RandomTxt4:Class;
 
+    [Embed(source = "../../../embed/sound/kontroler.mp3")]
+    public static const Conductor:Class;
+
 //    [Embed(source = "../../../embed/sound/ambient.mp3")]
 //    public static const MusicMp3:Class;
 
@@ -151,6 +154,16 @@ public class SoundManager
     public function punch(my:Boolean=false):void
     {
         var single:Sound = (new Punch()) as Sound;
+        if (my)
+            single.play(0,0,_soundTransformMyHits);
+        else
+            single.play(0,0,_soundTransformOtherHits);
+    }
+
+
+    public function conductor(my:Boolean=false):void
+    {
+        var single:Sound = (new Conductor()) as Sound;
         if (my)
             single.play(0,0,_soundTransformMyHits);
         else
