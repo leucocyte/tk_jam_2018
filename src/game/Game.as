@@ -116,6 +116,11 @@ public class Game extends Sprite
         //if (myHero.name == "admin"){
            _adminControlPanel = new AdminControlPanel();
         //}
+
+        //TRWA WALKA
+        if (status==2){
+            //TODO komunikat - Waiting to join the game
+        }
     }
 
     public function startRound():void {
@@ -125,6 +130,10 @@ public class Game extends Sprite
     public function resetRound(msg:String):void {
         GameController.getInstance().onResetRound(msg);
 //        GameController.getInstance().onStartRound();
+    }
+
+    public function winner(name:String):void {
+
     }
 
     private function joinClicked(event:Event):void {

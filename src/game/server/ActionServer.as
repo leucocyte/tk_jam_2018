@@ -53,7 +53,7 @@ public class ActionServer {
                 Game.instance.trainScene.conductor.play();
                 break;
             case 12:
-
+                Game.instance.winner(tab[2]);
                 break;
         }
     }
