@@ -113,7 +113,7 @@ public class Game extends Sprite
         SoundManager.getInstance().playAmbient();
         SoundManager.getInstance().playRandomTxt(true);
 
-        if (h.name == "admin"){
+        if (myHero.name == "admin"){
            _adminControlPanel = new AdminControlPanel();
         }
     }
