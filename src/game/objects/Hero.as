@@ -47,13 +47,11 @@ public class Hero extends CollisionObject {
 			_y = parseInt(split[7]);
 			_direction = parseInt(split[8]);
 		}
-
-		_x = 400;
 		_y = Settings.GROUND_Y;
 
 		_view = new HeroView(this);
 		Game.instance.trainScene.heroes.addChild(_view);
-
+		updateView();
 	}
 
 
