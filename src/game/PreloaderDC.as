@@ -51,6 +51,7 @@ public class PreloaderDC extends Sprite {
 	}
 
 	private function onStageResize(event:Event):void {
+		_screen.scaleX = _screen.scaleY = 1;
 		_screen.scaleX = _screen.scaleY = getRescaleToRect(stage.stageWidth, stage.stageHeight, _screen.width, _screen.height);
 		_screen.x = stage.stageWidth / 2 - _screen.width / 2;
 		_screen.y = stage.stageHeight / 2 - _screen.height / 2;
