@@ -130,15 +130,17 @@ public class Game extends Sprite
 
     public function startRound():void {
         GameController.getInstance().onStartRound();
+        showBigText("Start the Rumble! ");
     }
 
     public function resetRound(msg:String):void {
         GameController.getInstance().onResetRound(msg);
+        showBigText("Reseted! Waiting for players. ");
 //        GameController.getInstance().onStartRound();
     }
 
     public function winner(name:String):void {
-
+        showBigText(name + " is Riding for FREE!")
     }
 
     private function joinClicked(event:Event):void {

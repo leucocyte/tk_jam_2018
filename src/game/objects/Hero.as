@@ -70,6 +70,7 @@ public class Hero extends CollisionObject {
 
 		switch(_state) {
 			case HeroState.SQUAT:
+			case HeroState.DROP:
 				_height = Settings.HERO_HEIGHT_SQUAT;
 				_width = Settings.HERO_WIDTH;
 				break;

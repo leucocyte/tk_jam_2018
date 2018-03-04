@@ -44,7 +44,7 @@ public class Pump extends CollisionObject {
 //        _width = parseInt(arr[4]);
 //        _height = parseInt(arr[5]);
 		_width = 60;
-		_height = 100;
+		_height = 140;
 
 		_y = 0;
 		_x = 2000;
@@ -62,22 +62,29 @@ public class Pump extends CollisionObject {
 			case 0:
 				_quad = new Quad(_width, _height, 0x55ff00);
 				_quad.x = x;
-				_quad.y = -_quad.width;
+				_quad.y = -100 ;
 				_alertImg.y = 600;
 				break;
 			case 1:
 				_quad = new Quad(_width, _height, 0x55ffff);
 				_quad.x = x;
-				_quad.y = -2 * _quad.width;
-				_alertImg.y = 350;
+				_quad.y = -180;
+				_alertImg.y = 500;
 				break;
 			case 2:
 				_quad = new Quad(_width, _height, 0x5500ff);
 				_quad.x = x;
-				_quad.y = -3 * _quad.width;
-				_alertImg.y = 100;
+				_quad.y = -240;
+				_alertImg.y = 400;
+				break;
+			case 3:
+				_quad = new Quad(_width, _height, 0x5500ff);
+				_quad.x = x;
+				_quad.y = -320;
+				_alertImg.y = 300;
 				break;
 		}
+
 
 		Game.instance.trainScene.heroes.addChild(_quad);
 		Game.instance.trainScene.pump.addChild(_view);
@@ -102,7 +109,7 @@ public class Pump extends CollisionObject {
 
 	public function onAnimAlert_Complete():void {
 		_view.visible = true;
-		_quad.visible = true;
+		_quad.visible = Settings.QUAD_VISIBLE;
 		WorldTime.frameSignal.add(onWorldTime_Time);
 	}
 

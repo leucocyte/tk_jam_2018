@@ -25,13 +25,14 @@ public class Drop extends Attack {
         _y = h.y;
         _x = h.x;
 
-        if (Settings.DEBUG_ATTACKS){
-            _quad = new Quad(_width,_height,0x555599);
-            _quad.x = _x;
-            _quad.y = _y+20;
-            Game.instance.trainScene.heroes.addChild(_quad);
-            Actuate.tween(_quad,0.5,{alpha:0.5}).onComplete(function(){Game.instance.trainScene.heroes.removeChild(_quad)});
-        }
+
+        _quad = new Quad(_width,_height,0x555599);
+        _quad.x = _x;
+        _quad.y = _y+20;
+        _quad.visible = Settings.QUAD_VISIBLE;
+        Game.instance.trainScene.heroes.addChild(_quad);
+        Actuate.tween(_quad,0.5,{alpha:0.5}).onComplete(function(){Game.instance.trainScene.heroes.removeChild(_quad)});
+
     }
 
     override public function getRectangle():Rectangle {

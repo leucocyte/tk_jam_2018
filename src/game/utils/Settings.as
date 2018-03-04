@@ -16,22 +16,23 @@ public class Settings {
 
     public static const GRAVITY:Number = 15;
     public static const WALK_SPEED:Number = 8;
-    public static const JUMP_FORCE:Number = 80;
+    public static const JUMP_FORCE:Number = 120;
 
 
     public static const HERO_HEIGHT:Number = 180;
     public static const HERO_WIDTH:Number = 70;
-    public static const HERO_HEIGHT_SQUAT:Number = 50;
+    public static const HERO_HEIGHT_SQUAT:Number = 75;
     public static const HERO_HEIGHT_HANG:Number = 30;
     public static const HERO_WIDTH_HANG:Number = 120;
     public static const KICK_FORCE:int = 30;
     public static const UPPERCUT_FORCE_Y:int = 30;
     public static const UPPERCUT_FORCE_X:int = 30;
 
-    public static const DROP_FORCE_Y:int = 30;
+    public static const DROP_FORCE_Y:int = 10;
 
     public static var DEBUG_ATTACKS:Boolean = true;
     public static var ONLINE:Boolean = true;
+    public static var QUAD_VISIBLE:Boolean = false;
 
 
 

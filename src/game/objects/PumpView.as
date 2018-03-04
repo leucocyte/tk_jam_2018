@@ -22,13 +22,16 @@ public class PumpView extends Sprite {
 		element.x = -181;
 		switch(_pump.type) {
 			case 0:
-				element.y = 150;
+				element.y = 460;
 				break;
 			case 1:
-				element.y = 250;
+				element.y = 410;
 				break;
 			case 2:
-				element.y = 350;
+				element.y = 360;
+				break;
+			case 3:
+				element.y = 280;
 				break;
 		}
 

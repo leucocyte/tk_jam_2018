@@ -9,24 +9,19 @@ import feathers.core.ITextRenderer;
 
 import flash.filters.DropShadowFilter;
 import flash.geom.Rectangle;
-
 import flash.text.TextFormat;
 
 import game.Direction;
 import game.Game;
-import game.load.GameAssetsManager;
 import game.utils.DisplayUtils;
 import game.utils.Settings;
 import game.view.PointerAnim;
 import game.view.hero.HeroStatesDisplay;
 
-import starling.core.Starling;
 import starling.display.DisplayObject;
 import starling.display.MovieClip;
 import starling.display.Quad;
 import starling.display.Sprite;
-import starling.events.Event;
-import starling.utils.RectangleUtil;
 
 public class HeroView extends Sprite {
 
@@ -44,7 +39,7 @@ public class HeroView extends Sprite {
 	protected var _character:MovieClip;
 
 	protected var _quad:Quad;
-	protected var _quadHead:Quad;
+//	protected var _quadHead:Quad;
 	protected var _label:Label;
 	private var _display:HeroStatesDisplay;
 
@@ -56,7 +51,7 @@ public class HeroView extends Sprite {
 		_quad = new Quad(sizeW, sizeH, 0xff0000);
 		_quad.pivotX = int(_quad.width / 2);
 		_quad.pivotY = int(sizeH);
-		_quad.visible = true;
+		_quad.visible = Settings.QUAD_VISIBLE;
 		addChild(_quad);
 
 
@@ -66,13 +61,6 @@ public class HeroView extends Sprite {
 		addChild(_display);
 
 
-		_quadHead = new Quad(sizeW / 2, sizeH / 3, 0xaa44ff);
-		_quadHead.pivotX = int(sizeW / 4);
-		_quadHead.pivotY = int(sizeH / 3);
-		_quadHead.y = -sizeW;
-		_quadHead.x = 10;
-		_quadHead.visible = false;
-		addChild(_quadHead);
 
 		_label = new Label();
 		_label.width = 100;
@@ -109,10 +97,11 @@ public class HeroView extends Sprite {
 	}
 
 	public function setDirection(_direction:int):void {
+		/*
 		if(_direction == Direction.LEFT)
 			_quadHead.x = -10;
 		else if(_direction == Direction.RIGHT)
-			_quadHead.x = 10;
+			_quadHead.x = 10;*/
 	}
 
 	public function updateState(state:Number, dir:int, width:int, height:int):void {
@@ -138,6 +127,7 @@ public class HeroView extends Sprite {
 
 //		trace(_quad.pivotX+" / "+_quad.width+" / "+int(_quad.width / 2));
 
+		_label.y = -Settings.HERO_HEIGHT * 1.3;
 		switch(state) {
 			case HeroState.STAND:
 				if(dir == -1) {
@@ -147,9 +137,11 @@ public class HeroView extends Sprite {
 			case HeroState.WALK:
 				break;
 			case HeroState.HANG:
+				_label.y = -Settings.HERO_HEIGHT * 0.2;
 				_display.y = 0;
 				break;
 			case HeroState.SQUAT:
+				_label.y = -Settings.HERO_HEIGHT * 0.9;
 				if(dir == -1) {
 					flipLeft();
 				}
@@ -178,6 +170,7 @@ public class HeroView extends Sprite {
 			case HeroState.STUN_JUMP:
 				break;
 			case HeroState.DROP:
+				_label.y = -Settings.HERO_HEIGHT * 0.9;
 				_display.y += 56;
 				if(dir == -1) {
 					flipLeft();
@@ -197,19 +190,6 @@ public class HeroView extends Sprite {
 		_display.y = -_display.height;
 	}
 
-	private function kick():void {
-		_quad.color = 0x00ffff;
-	}
-
-	private function stun():void {
-		_quad.color = 0x00ff00;
-	}
-
-	public function squat():void {
-		_quad.y = 0;
-		_quadHead.y = -Settings.HERO_HEIGHT_SQUAT * 0.6;
-		_quad.height = Settings.HERO_HEIGHT_SQUAT;
-	}
 
 	/*
 	 public function stand():void {

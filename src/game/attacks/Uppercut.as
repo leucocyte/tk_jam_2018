@@ -24,17 +24,18 @@ public class Uppercut extends Attack {
         _height = 100;
         _y = h.y - Settings.HERO_HEIGHT/2 - height;
         if (h.direction==Direction.RIGHT){
-            _x = h.x;
+            _x = h.x+35;
         }else
-            _x = h.x-_width;
+            _x = h.x-_width-10;
 
-        if (Settings.DEBUG_ATTACKS){
-            _quad = new Quad(_width,_height,0x555599);
-            _quad.x = _x;
-            _quad.y = _y;
-            Game.instance.trainScene.heroes.addChild(_quad);
-            Actuate.tween(_quad,0.5,{alpha:0.5}).onComplete(function(){Game.instance.trainScene.heroes.removeChild(_quad)});
-        }
+
+        _quad = new Quad(_width,_height,0x555599);
+        _quad.x = _x;
+        _quad.y = _y;
+        Game.instance.trainScene.heroes.addChild(_quad);
+        _quad.visible = Settings.QUAD_VISIBLE;
+        Actuate.tween(_quad,0.5,{alpha:0.5}).onComplete(function(){Game.instance.trainScene.heroes.removeChild(_quad)});
+
     }
 
     override public function getRectangle():Rectangle {

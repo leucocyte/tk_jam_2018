@@ -28,13 +28,14 @@ public class Kick extends Attack{
         }else
             _x = h.x-_width;
 
-        if (Settings.DEBUG_ATTACKS){
-            _quad = new Quad(_width,_height,0xffff00);
-            _quad.x = _x;
-            _quad.y = _y;
-            Game.instance.trainScene.heroes.addChild(_quad);
-            Actuate.tween(_quad,0.5,{alpha:0.5}).onComplete(function(){Game.instance.trainScene.heroes.removeChild(_quad)});
-        }
+
+        _quad = new Quad(_width,_height,0xffff00);
+        _quad.x = _x;
+        _quad.y = _y;
+        _quad.visible = Settings.QUAD_VISIBLE;
+        Game.instance.trainScene.heroes.addChild(_quad);
+        Actuate.tween(_quad,0.5,{alpha:0.5}).onComplete(function(){Game.instance.trainScene.heroes.removeChild(_quad)});
+
     }
 
 
