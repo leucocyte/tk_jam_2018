@@ -73,7 +73,7 @@ public class Main extends Sprite {
 		_starling.start();
 		_starling.showStats = true;
 
-//		setTimeout(onResize, 1000);
+		setTimeout(onResize, 1000);
 		stage.addEventListener(Event.RESIZE, onResize);
 	}
 

@@ -7,6 +7,8 @@ import flash.events.ProgressEvent;
 import flash.events.SecurityErrorEvent;
 import flash.net.XMLSocket;
 
+import game.Game;
+
 /**
 	 * @author Drygu
 	 */
@@ -118,6 +120,7 @@ import flash.net.XMLSocket;
             _connected=false;
             ConnectionServer.onDisconnected();
 			trace("----DISCONNECTED-----");
+            Game.instance.showBigText("DISCONECTED! Please relog :)");
 		}
 
         public function disconnect():void
